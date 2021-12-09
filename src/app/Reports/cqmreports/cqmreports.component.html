@@ -16,45 +16,45 @@
                 <div class="row">
                   <div class="panel-body col-md-6">
                     <ul class="cstm-size"><b>Provider: </b>
-                      <span>{{patientlistmeasure.ProviderName}}</span>
-                      <span class="mx-2"
+                      <span class="cstm-size">{{patientlistmeasure.ProviderName}}</span>
+                      <span class="cstm-size mx-2"
                         *ngIf="patientlistmeasure.Provider_NPI != ''">({{patientlistmeasure.Provider_NPI}})</span>
                     </ul>
                     <ul class="cstm-size"><b>Ran by user: </b>
-                      <span>{{patientlistmeasure.ProviderName}}</span>
+                      <span class="cstm-size">{{patientlistmeasure.ProviderName}}</span>
                     </ul>
                     <ul class="cstm-size"><b>Data Source: </b>
-                      <span> {{patientlistmeasure.LocationName}}</span>
+                      <span class="cstm-size"> {{patientlistmeasure.LocationName}}</span>
                     </ul>
                     <ul class="cstm-size"><b>Patient Count: </b>
-                      <span> {{patientlistmeasure.PatientsCount}} </span>
+                      <span class="cstm-size"> {{patientlistmeasure.PatientsCount}} </span>
                     </ul>
                     <ul class="cstm-size"><b>Bundle: </b>
-                      <span> {{patientlistmeasure.Bundle}} </span>
-                      <span class="mx-1">{{patientlistmeasure.Type}}</span>
+                      <span class="cstm-size"> {{patientlistmeasure.Bundle}} </span>
+                      <span class="cstm-size mx-1">{{patientlistmeasure.Type}}</span>
                     </ul>
                     <ul class="cstm-size"><b>Measures: </b>
-                      <span> {{patientlistmeasure.MeasuresList}}</span>
+                      <span class="cstm-size"> {{patientlistmeasure.MeasuresList}}</span>
                     </ul>
                   </div>
                   <div class="panel-body col-md-6">
                     <ul class="cstm-size"><b>Report Id: </b>
-                      <span>{{patientlistmeasure.ReportId}}</span>
+                      <span class="cstm-size">{{patientlistmeasure.ReportId}}</span>
                     </ul>
                     <ul class="cstm-size"><b>Description: </b>
-                      <span>{{patientlistmeasure.Description}}</span>
+                      <span class="cstm-size">{{patientlistmeasure.Description}}</span>
                     </ul>
                     <ul class="cstm-size"><b>Created on: </b>
-                      <span>{{patientlistmeasure.DateCreated|date:'MM/dd/yyyy h:mm:ss a'}}</span>
+                      <span class="cstm-size">{{patientlistmeasure.DateCreated|date:'MM/dd/yyyy h:mm:ss a'}}</span>
                     </ul>
                     <ul class="cstm-size"><b>Measurement Period: </b>
-                      <span> {{this.startdate}} to {{this.enddate}}</span>
+                      <span class="cstm-size"> {{this.startdate}} to {{this.enddate}}</span>
                     </ul>
                   </div>
                 </div>
               </div>
               <div class="row">
-                <div class="col-xl-2 col-lg-1 col-md-2">
+                <div class="col-xl-1 col-lg-2 col-md-3">
                   <h2>Index</h2>
                   <ul class="list-group">
                     <li class="list-group-item index-border"><a class="index-hover" (click)="toTop68()">CMS {{y[0]}}</a>
@@ -77,7 +77,7 @@
                         {{y[8]}}</a></li>
                   </ul>
                 </div>
-                <div class="col-xl-10 col-lg-8 col-md-10">
+                <div class="col-xl-11 col-lg-10 col-md-9">
                   <div class="ehr-cqm-table-container">
                     <table class="summary" id='p68'>
                       <thead class="summaryheader">
@@ -329,39 +329,39 @@
                 <div class="row">
                   <div class="panel-body col-md-6">
                     <ul class="cstm-size"><b>Provider: </b>
-                      <span>{{patientlistmeasure.ProviderName}}</span>
-                      <span class="mx-2"
+                      <span class="cstm-size">{{patientlistmeasure.ProviderName}}</span>
+                      <span class="cstm-size mx-2"
                         *ngIf="patientlistmeasure.Provider_NPI != ''">({{patientlistmeasure.Provider_NPI}})</span>
                     </ul>
                     <ul class="cstm-size"><b>Ran by user: </b>
-                      <span>{{patientlistmeasure.ProviderName}}</span>
+                      <span class="cstm-size">{{patientlistmeasure.ProviderName}}</span>
                     </ul>
                     <ul class="cstm-size"><b>Data Source: </b>
-                      <span> {{patientlistmeasure.LocationName}}</span>
+                      <span class="cstm-size"> {{patientlistmeasure.LocationName}}</span>
                     </ul>
                     <ul class="cstm-size"><b>Patient Count: </b>
-                      <span> {{patientlistmeasure.PatientsCount}} </span>
+                      <span class="cstm-size"> {{patientlistmeasure.PatientsCount}} </span>
                     </ul>
                     <ul class="cstm-size"><b>Bundle: </b>
-                      <span> {{patientlistmeasure.Bundle}} </span>
-                      <span class="mx-1">{{patientlistmeasure.Type}}</span>
+                      <span class="cstm-size"> {{patientlistmeasure.Bundle}} </span>
+                      <span class="cstm-size mx-1">{{patientlistmeasure.Type}}</span>
                     </ul>
                     <ul class="cstm-size"><b>Measures: </b>
-                      <span> {{patientlistmeasure.MeasuresList}}</span>
+                      <span class="cstm-size"> {{patientlistmeasure.MeasuresList}}</span>
                     </ul>
                   </div>
                   <div class="panel-body col-md-6">
                     <ul class="cstm-size"><b>Report Id: </b>
-                      <span>{{patientlistmeasure.ReportId}}</span>
+                      <span class="cstm-size">{{patientlistmeasure.ReportId}}</span>
                     </ul>
                     <ul class="cstm-size"><b>Description: </b>
-                      <span>{{patientlistmeasure.Description}}</span>
+                      <span class="cstm-size">{{patientlistmeasure.Description}}</span>
                     </ul>
                     <ul class="cstm-size"><b>Created on: </b>
-                      <span>{{patientlistmeasure.DateCreated|date:'MM/dd/yyyy h:mm:ss a'}}</span>
+                      <span class="cstm-size">{{patientlistmeasure.DateCreated|date:'MM/dd/yyyy h:mm:ss a'}}</span>
                     </ul>
                     <ul class="cstm-size"><b>Measurement Period: </b>
-                      <span> {{this.startdate}} to {{this.enddate}}</span>
+                      <span class="cstm-size"> {{this.startdate}} to {{this.enddate}}</span>
                     </ul>
                   </div>
                 </div>
@@ -629,39 +629,40 @@
                           <div class="row">
                             <div class="panel-body col-md-6">
                               <ul class="cstm-size"><b>Provider: </b>
-                                <span>{{patientlistmeasure.ProviderName}}</span>
-                                <span class="mx-2"
+                                <span class="cstm-size">{{patientlistmeasure.ProviderName}}</span>
+                                <span class="cstm-size mx-2"
                                   *ngIf="patientlistmeasure.Provider_NPI != ''">({{patientlistmeasure.Provider_NPI}})</span>
                               </ul>
                               <ul class="cstm-size"><b>Ran by user: </b>
-                                <span>{{patientlistmeasure.ProviderName}}</span>
+                                <span class="cstm-size">{{patientlistmeasure.ProviderName}}</span>
                               </ul>
                               <ul class="cstm-size"><b>Data Source: </b>
-                                <span> {{patientlistmeasure.LocationName}}</span>
+                                <span class="cstm-size"> {{patientlistmeasure.LocationName}}</span>
                               </ul>
                               <ul class="cstm-size"><b>Patient Count: </b>
-                                <span> {{patientlistmeasure.PatientsCount}} </span>
+                                <span class="cstm-size"> {{patientlistmeasure.PatientsCount}} </span>
                               </ul>
                               <ul class="cstm-size"><b>Bundle: </b>
-                                <span> {{patientlistmeasure.Bundle}} </span>
-                                <span class="mx-1">{{patientlistmeasure.Type}}</span>
+                                <span class="cstm-size"> {{patientlistmeasure.Bundle}} </span>
+                                <span class="cstm-size mx-1">{{patientlistmeasure.Type}}</span>
                               </ul>
                               <ul class="cstm-size"><b>Measures: </b>
-                                <span> {{patientlistmeasure.MeasuresList}}</span>
+                                <span class="cstm-size"> {{patientlistmeasure.MeasuresList}}</span>
                               </ul>
                             </div>
                             <div class="panel-body col-md-6">
                               <ul class="cstm-size"><b>Report Id: </b>
-                                <span>{{patientlistmeasure.ReportId}}</span>
+                                <span class="cstm-size">{{patientlistmeasure.ReportId}}</span>
                               </ul>
                               <ul class="cstm-size"><b>Description: </b>
-                                <span>{{patientlistmeasure.Description}}</span>
+                                <span class="cstm-size">{{patientlistmeasure.Description}}</span>
                               </ul>
                               <ul class="cstm-size"><b>Created on: </b>
-                                <span>{{patientlistmeasure.DateCreated|date:'MM/dd/yyyy h:mm:ss a'}}</span>
+                                <span
+                                  class="cstm-size">{{patientlistmeasure.DateCreated|date:'MM/dd/yyyyh:mm:ssa'}}</span>
                               </ul>
                               <ul class="cstm-size"><b>Measurement Period: </b>
-                                <span> {{this.startdate}} to {{this.enddate}}</span>
+                                <span class="cstm-size"> {{this.startdate}} to {{this.enddate}}</span>
                               </ul>
                             </div>
                           </div>
@@ -939,40 +940,40 @@
                     <div class="row">
                       <div class="panel-body col-md-6">
                         <ul class="cstm-size"><b>Measure: </b>
-                          <span> {{this.DrilldownPatientData.MeasureIdentifier}}</span>
-                          <span class="mx-2"
+                          <span class="cstm-size"> {{this.DrilldownPatientData.MeasureIdentifier}}</span>
+                          <span class="cstm-size mx-2"
                             [hidden]="this.DrilldownPatientData.MeasureVersionNumber==null || this.DrilldownPatientData.MeasureVersionNumber==''">v{{this.DrilldownPatientData.MeasureVersionNumber}}</span>
-                          <span class="mx-2">{{this.DrilldownPatientData.MeasureTitle}}</span>
+                          <span class="cstm-size mx-2">{{this.DrilldownPatientData.MeasureTitle}}</span>
                         </ul>
                         <ul class="cstm-size"><b>Patient Name: </b>
-                          <span>{{this.DrilldownPatientData.PatientFirstName}}
+                          <span class="cstm-size">{{this.DrilldownPatientData.PatientFirstName}}
                             {{this.DrilldownPatientData.PatientLastName}}</span>
                         </ul>
                         <ul class="cstm-size"><b>Date of Birth: </b>
-                          <span> {{this.DrilldownPatientData.PatientBirth| date: 'MM/dd/yyyy'}}</span>
+                          <span class="cstm-size"> {{this.DrilldownPatientData.PatientBirth| date: 'MM/dd/yyyy'}}</span>
                         </ul>
                         <ul class="cstm-size"><b>Account #: </b>
-                          <span> {{this.DrilldownPatientData.Account}}</span>
+                          <span class="cstm-size"> {{this.DrilldownPatientData.Account}}</span>
                         </ul>
                         <ul class="cstm-size"><b>Patient ID: </b>
-                          <span> {{this.DrilldownPatientData.PatientId}}</span>
+                          <span class="cstm-size"> {{this.DrilldownPatientData.PatientId}}</span>
                         </ul>
                         <ul class="cstm-size"><b>Race: </b>
-                          <span> {{this.DrilldownPatientData.PatientEthnicity}}</span>
+                          <span class="cstm-size"> {{this.DrilldownPatientData.PatientEthnicity}}</span>
                         </ul>
                       </div>
                       <div class="panel-body col-md-6">
                         <ul class="cstm-size"><b>Report Id: </b>
-                          <span>{{patientlistmeasure.ReportId}}</span>
+                          <span class="cstm-size">{{patientlistmeasure.ReportId}}</span>
                         </ul>
                         <ul class="cstm-size"><b>Description: </b>
-                          <span>{{patientlistmeasure.Description}}</span>
+                          <span class="cstm-size">{{patientlistmeasure.Description}}</span>
                         </ul>
                         <ul class="cstm-size"><b>Created on: </b>
-                          <span>{{patientlistmeasure.DateCreated|date:'MM/dd/yyyy h:mm:ss a'}}</span>
+                          <span class="cstm-size">{{patientlistmeasure.DateCreated|date:'MM/dd/yyyy h:mm:ss a'}}</span>
                         </ul>
                         <ul class="cstm-size"><b>Measurement Period: </b>
-                          <span> {{this.startdate}} to {{this.enddate}}</span>
+                          <span class="cstm-size"> {{this.startdate}} to {{this.enddate}}</span>
                         </ul>
                       </div>
                     </div>
@@ -1305,7 +1306,7 @@
                 </mat-form-field>
 
                 <button appearance="outline" class="w-25 cstm-addon-btn"
-                  style="border-top-left-radius: 0%; border-bottom-left-radius: 0%; height: 46px;">
+                  style="border-top-left-radius: 0%; border-bottom-left-radius: 0%; height: 50px;">
                   <mat-select placeholder="Add" class="addons">
                     <mat-option value="3" (click)="endDateCalculationInQueuedReport(3)"> 3 months </mat-option>
                     <mat-option value="6" (click)="endDateCalculationInQueuedReport(6)"> 6 months </mat-option>
