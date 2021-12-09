@@ -1,0 +1,21 @@
+<div class="container-scroller" *ngIf="IsLoad">
+  <app-navbar></app-navbar>
+  <div class="scroll-container">
+    <div class="scroll-section">
+      <div class="container-fluid">
+        <div class="scrollable-content">
+          <div class="main-panel" style="width: 100%">
+            <div class="content-wrapper">
+              <router-outlet></router-outlet>
+            </div>
+            <app-footer></app-footer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!IsLoad">
+  <app-login></app-login>
+</div>
