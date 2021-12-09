@@ -243,7 +243,7 @@ export class MureportsComponent implements OnInit {
   Stage2PatientListlength: any;
   ReportingDate: string;
   Dates: string;
-  disabledowloadPDF: boolean;
+  disabledowloadPDF: boolean=true;
   mupatientList: any[];
   mupatientListlength: number;
   showControls: boolean;
