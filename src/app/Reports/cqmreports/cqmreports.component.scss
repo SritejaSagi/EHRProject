@@ -142,6 +142,9 @@ td {
 .panel-default {
   border: 1px solid #41b6a6 !important;
 }
+a.index-hover {
+  color: black;
+}
 .index-hover:hover {
   text-decoration: underline #41b6a6 !important;
   color: #41b6a6 !important;
@@ -221,7 +224,7 @@ mat-expansion-panel {
 }
 
 @media (max-width: 768px) {
-  .example-table-container {
+  .ehr-cqm-table-container {
     max-height: 100%;
     max-width: 100%;
     overflow-x: scroll;
@@ -442,7 +445,7 @@ mat-expansion-panel {
   font-size: 15px;
 }
 @media (max-width: 768px) {
-  .example-table-container {
+  .ehr-cqm-table-container {
     max-height: 100%;
     max-width: 100%;
     overflow-x: scroll;

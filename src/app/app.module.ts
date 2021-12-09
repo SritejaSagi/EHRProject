@@ -36,19 +36,22 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { DatePipe } from "@angular/common";
 import { ToastrModule } from "ngx-toastr";
 import { DownloadService } from "./Services/download.service";
-import { EhrInterceptor } from './_helpers/_ehr_interceptor';
-import { AuthenticationService } from './Services/authentication.service';
-import { IdService } from './_helpers/_id.service';
-import { AuthGuard } from './_helpers/auth.guard';
-import { RubyAuthenticationFailedComponenet} from './login/ruby.authentication.failed.component';
-import { ProblemlistComponent } from './Reports/problemlist/problemlist.component';
-import { CategoryreportsComponent } from './Reports/categoryreports/categoryreports.component';
+import { EhrInterceptor } from "./_helpers/_ehr_interceptor";
+import { AuthenticationService } from "./Services/authentication.service";
+import { IdService } from "./_helpers/_id.service";
+import { AuthGuard } from "./_helpers/auth.guard";
+import { RubyAuthenticationFailedComponenet } from "./login/ruby.authentication.failed.component";
+import { ProblemlistComponent } from "./Reports/problemlist/problemlist.component";
+import { CategoryreportsComponent } from "./Reports/categoryreports/categoryreports.component";
 
-import { EncounterlistComponent } from './Reports/encounterlist/encounterlist.component';
-import { PatientlistComponent } from './Reports/patientlist/patientlist.component';
+import { EncounterlistComponent } from "./Reports/encounterlist/encounterlist.component";
+import { PatientlistComponent } from "./Reports/patientlist/patientlist.component";
 
-import { MureportsComponent } from './Reports/mureports/mureports.component';
-import { CqmreportsComponent } from './Reports/cqmreports/cqmreports.component';
+import { MureportsComponent } from "./Reports/mureports/mureports.component";
+import { CqmreportsComponent } from "./Reports/cqmreports/cqmreports.component";
+import { ConditionpadderPipe } from "./Reports/cqmreports/viewhelpers/conditionpadder.pipe";
+import { ConditionformaterPipe } from "./Reports/cqmreports/viewhelpers/conditionformater.pipe";
+import { Condition } from "./Reports/cqmreports/viewhelpers/condition.renderer/condition.renderer.component";
 
 @NgModule({
   exports: [MatInputModule],
@@ -70,7 +73,10 @@ import { CqmreportsComponent } from './Reports/cqmreports/cqmreports.component';
     PatientlistComponent,
 
     MureportsComponent,
-    CqmreportsComponent
+    CqmreportsComponent,
+    ConditionpadderPipe,
+    ConditionformaterPipe,
+    Condition,
   ],
   imports: [
     ToastrModule.forRoot(),
@@ -95,7 +101,7 @@ import { CqmreportsComponent } from './Reports/cqmreports/cqmreports.component';
     MatSelectFilterModule,
     MatTableExporterModule,
     Ng2OrderModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: EhrInterceptor, multi: true },
@@ -106,7 +112,7 @@ import { CqmreportsComponent } from './Reports/cqmreports/cqmreports.component';
     AuthenticationService,
     EndpointBase,
     IdService,
-    AuthGuard
+    AuthGuard,
   ],
   bootstrap: [AppComponent],
 })

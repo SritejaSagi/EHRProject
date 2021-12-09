@@ -353,7 +353,7 @@ mat-cell {
   align-self: stretch !important;
 }
 
-.example-table-container {
+.ehr-cqm-table-container {
   position: relative;
   overflow: auto;
   border: #41b6a6 1px solid;
@@ -384,7 +384,7 @@ mat-expansion-panel-header {
 }
 
 @media (max-width: 1350px) {
-  .example-container {
+  .ehr-cqm-container {
     max-width: 1200px;
     overflow-x: scroll;
   }
