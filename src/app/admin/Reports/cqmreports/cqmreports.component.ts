@@ -30,9 +30,11 @@ import {
   DrillEncounters,
   DrillPatient,
   DrillAuthor,
+  User,
 } from "../../../_models";
 
 import { DownloadService } from "src/app/Services/download.service";
+import { AuthenticationService } from "src/app/Services/authentication.service";
 
 @Component({
   selector: "app-cqmreports",
@@ -82,7 +84,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   expandedElement: DrillEncounters | null;
   expandedElement1: DrillPatient | null;
   expandedElement2: DrillAuthor | null;
-
+  user: User;
   conditions: any = [];
   selected = "100";
   p: any;
@@ -181,6 +183,8 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   enddate: string;
   populationdescription: any;
   patientdob: string;
+  locationarray: string[];
+  measures: any;
 
   public downloadAsPDF() {
     const documenDefinition = {
@@ -338,9 +342,11 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     private toastr: ToastrService,
     protected http: HttpClient,
     private accountservice: Accountservice,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private authenticationService: AuthenticationService
   ) {
     this.getoverrallreport = new MatTableDataSource<CQMReportsData>();
+    this.user = authenticationService.userValue;
   }
 
   ngAfterViewInit(): void {
@@ -354,10 +360,68 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     this.queuedreportapplyfilter();
     this.displayedRows$ = of(messages);
     this.getCQMReportsQueuedReports();
-    this.getProviderList("");
+    this.getProviderList();
     this.getLocationsList("");
+    this.getlocations();
+  }
+  getProviderList() {
+    let locationid = localStorage.getItem("providerlocation");
+
+    var req = {
+      "LocationId": locationid,
+    }
+
+    debugger;
+    this.accountservice.getProviderList(req).subscribe((data) => {
+      if (data.IsSuccess) {
+        this.providerlist = data.ListResult;
+        this.filteredproviderList = this.providerlist.slice();
+        console.log(this.filteredproviderList);
+
+      }
+      console.log(this.filteredproviderList);
+
+    });
   }
 
+  getLocationsList(Location: any) {
+    debugger;
+    this.accountservice.getLocationsList(Location).subscribe(data => {
+      if (data.IsSuccess) {
+        this.locationslist = data.ListResult;
+        this.filteredlocationList = this.locationslist.slice();
+      }
+    });
+    // if (Location == "") {
+    //   this.service.getLocationsList(Location).subscribe(data => {
+    //     if (data.IsSuccess) {
+    //       this.locationslist = data.ListResult;
+    //       this.filteredlocationList = this.locationslist.slice();
+    //     }
+    //   });
+    // }
+  }
+  getlocations() {
+    debugger;
+
+    var location = this.user.LocationName;
+
+
+    this.locationarray = location.split(',');
+
+
+    for (var i = 0; i < this.locationarray.length; i++) {
+
+      this.locationarray[i] = this.locationarray[i].replace(/^\s*/, "").replace(/\s*$/, "");
+
+
+
+    }
+
+
+
+
+  }
   onViewResults(queuedReportData: any) {
     this.patientlistmeasure = queuedReportData;
     this.firstencounter = formatDate(
@@ -482,37 +546,37 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
             ul: [
               [
                 element.eMeasure_Identifier_MAT === 138 ||
-                element.eMeasure_Identifier_MAT === 155
+                  element.eMeasure_Identifier_MAT === 155
                   ? { text: "Performance Rate 1 :" + element.Performance_Rate1 }
                   : { text: "Performance Rate  :" + element.Performance_Rate1 },
               ],
               [
                 element.eMeasure_Identifier_MAT === 138 ||
-                element.eMeasure_Identifier_MAT === 155
+                  element.eMeasure_Identifier_MAT === 155
                   ? { text: "Performance Rate 2 :" + element.Performance_Rate2 }
                   : { text: "" },
               ],
               [
                 element.eMeasure_Identifier_MAT === 138 ||
-                element.eMeasure_Identifier_MAT === 155
+                  element.eMeasure_Identifier_MAT === 155
                   ? { text: "Performance Rate 3 :" + element.Performance_Rate3 }
                   : { text: "" },
               ],
               [
                 element.eMeasure_Identifier_MAT === 138 ||
-                element.eMeasure_Identifier_MAT === 155
+                  element.eMeasure_Identifier_MAT === 155
                   ? { text: "Reporting Rate 1 :" + element.Reporting_Rate1 }
                   : { text: "Reporting Rate  :" + element.Reporting_Rate1 },
               ],
               [
                 element.eMeasure_Identifier_MAT === 138 ||
-                element.eMeasure_Identifier_MAT === 155
+                  element.eMeasure_Identifier_MAT === 155
                   ? { text: "Reporting Rate 2 :" + element.Reporting_Rate2 }
                   : { text: "" },
               ],
               [
                 element.eMeasure_Identifier_MAT === 138 ||
-                element.eMeasure_Identifier_MAT === 155
+                  element.eMeasure_Identifier_MAT === 155
                   ? { text: "Reporting Rate 3 :" + element.Reporting_Rate3 }
                   : { text: "" },
               ],
@@ -564,115 +628,115 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
             ul: [
               element.ResultsFor == "IPP"
                 ? [
-                    {
-                      text:
-                        element.seq == 0
-                          ? "Initial Patient Population :" +
-                            element.ResultsForCount
-                          : "Initial Patient Population " +
-                            element.seq +
-                            ":" +
-                            element.ResultsForCount,
-                    },
-                    {
-                      type: "circle",
-                      fontSize: 11,
-                      ul: [
-                        [
-                          element.MeasureIdentifier === 74 ||
+                  {
+                    text:
+                      element.seq == 0
+                        ? "Initial Patient Population :" +
+                        element.ResultsForCount
+                        : "Initial Patient Population " +
+                        element.seq +
+                        ":" +
+                        element.ResultsForCount,
+                  },
+                  {
+                    type: "circle",
+                    fontSize: 11,
+                    ul: [
+                      [
+                        element.MeasureIdentifier === 74 ||
                           (element.MeasureIdentifier === 155 &&
                             element.seq === 1)
-                            ? {
-                                text:
-                                  "Reporting Stratum 1 :" +
-                                  element.Reporting_Stratum1,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 74 ||
-                          (element.MeasureIdentifier === 155 &&
-                            element.seq === 1)
-                            ? {
-                                text:
-                                  "Reporting Stratum 2 :" +
-                                  element.Reporting_Stratum2,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 155 && element.seq === 2
-                            ? {
-                                text:
-                                  "Reporting Stratum 3 :" +
-                                  element.Reporting_Stratum1,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 74
-                            ? {
-                                text:
-                                  "Reporting Stratum 3 :" +
-                                  element.Reporting_Stratum3,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 155 && element.seq === 2
-                            ? {
-                                text:
-                                  "Reporting Stratum 4 :" +
-                                  element.Reporting_Stratum2,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 155 && element.seq === 3
-                            ? {
-                                text:
-                                  "Reporting Stratum 5 :" +
-                                  element.Reporting_Stratum1,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 155 && element.seq === 3
-                            ? {
-                                text:
-                                  "Reporting Stratum 6 :" +
-                                  element.Reporting_Stratum2,
-                              }
-                            : { text: "" },
-                        ],
-
-                        {
-                          text: "Male :" + element.Male,
-                        },
-                        {
-                          text: "Female :" + element.Female,
-                        },
-                        {
-                          text:
-                            "Not Hispanic or Latino :" + element.NotHispanic,
-                        },
-                        {
-                          text: "Hispanic or Latino:" + element.Hispanic,
-                        },
-                        {
-                          text: "Other Race:" + element.OtherRace,
-                        },
-                        {
-                          text: "Payer - Other:" + element.PayerOther,
-                        },
+                          ? {
+                            text:
+                              "Reporting Stratum 1 :" +
+                              element.Reporting_Stratum1,
+                          }
+                          : { text: "" },
                       ],
-                    },
-                  ]
+                      [
+                        element.MeasureIdentifier === 74 ||
+                          (element.MeasureIdentifier === 155 &&
+                            element.seq === 1)
+                          ? {
+                            text:
+                              "Reporting Stratum 2 :" +
+                              element.Reporting_Stratum2,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 155 && element.seq === 2
+                          ? {
+                            text:
+                              "Reporting Stratum 3 :" +
+                              element.Reporting_Stratum1,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 74
+                          ? {
+                            text:
+                              "Reporting Stratum 3 :" +
+                              element.Reporting_Stratum3,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 155 && element.seq === 2
+                          ? {
+                            text:
+                              "Reporting Stratum 4 :" +
+                              element.Reporting_Stratum2,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 155 && element.seq === 3
+                          ? {
+                            text:
+                              "Reporting Stratum 5 :" +
+                              element.Reporting_Stratum1,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 155 && element.seq === 3
+                          ? {
+                            text:
+                              "Reporting Stratum 6 :" +
+                              element.Reporting_Stratum2,
+                          }
+                          : { text: "" },
+                      ],
+
+                      {
+                        text: "Male :" + element.Male,
+                      },
+                      {
+                        text: "Female :" + element.Female,
+                      },
+                      {
+                        text:
+                          "Not Hispanic or Latino :" + element.NotHispanic,
+                      },
+                      {
+                        text: "Hispanic or Latino:" + element.Hispanic,
+                      },
+                      {
+                        text: "Other Race:" + element.OtherRace,
+                      },
+                      {
+                        text: "Payer - Other:" + element.PayerOther,
+                      },
+                    ],
+                  },
+                ]
                 : [
-                    {
-                      text: "",
-                    },
-                  ],
+                  {
+                    text: "",
+                  },
+                ],
             ],
           },
           {
@@ -681,114 +745,114 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
             ul: [
               element.ResultsFor == "Denominator"
                 ? [
-                    {
-                      text:
-                        element.seq == 0
-                          ? "Denominator :" + element.ResultsForCount
-                          : "Denominator " +
-                            element.seq +
-                            ":" +
-                            element.ResultsForCount,
-                    },
-                    {
-                      type: "circle",
-                      fontSize: 11,
-                      ul: [
-                        [
-                          element.MeasureIdentifier === 74 ||
+                  {
+                    text:
+                      element.seq == 0
+                        ? "Denominator :" + element.ResultsForCount
+                        : "Denominator " +
+                        element.seq +
+                        ":" +
+                        element.ResultsForCount,
+                  },
+                  {
+                    type: "circle",
+                    fontSize: 11,
+                    ul: [
+                      [
+                        element.MeasureIdentifier === 74 ||
                           (element.MeasureIdentifier === 155 &&
                             element.seq === 1)
-                            ? {
-                                text:
-                                  "Reporting Stratum 1 :" +
-                                  element.Reporting_Stratum1,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 74 ||
-                          (element.MeasureIdentifier === 155 &&
-                            element.seq === 1)
-                            ? {
-                                text:
-                                  "Reporting Stratum 2 :" +
-                                  element.Reporting_Stratum2,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 155 && element.seq === 2
-                            ? {
-                                text:
-                                  "Reporting Stratum 3 :" +
-                                  element.Reporting_Stratum1,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 74
-                            ? {
-                                text:
-                                  "Reporting Stratum 3 :" +
-                                  element.Reporting_Stratum3,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 155 && element.seq === 2
-                            ? {
-                                text:
-                                  "Reporting Stratum 4 :" +
-                                  element.Reporting_Stratum2,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 155 && element.seq === 3
-                            ? {
-                                text:
-                                  "Reporting Stratum 5 :" +
-                                  element.Reporting_Stratum1,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 155 && element.seq === 3
-                            ? {
-                                text:
-                                  "Reporting Stratum 6 :" +
-                                  element.Reporting_Stratum2,
-                              }
-                            : { text: "" },
-                        ],
-
-                        {
-                          text: "Male :" + element.Male,
-                        },
-                        {
-                          text: "Female :" + element.Female,
-                        },
-                        {
-                          text:
-                            "Not Hispanic or Latino :" + element.NotHispanic,
-                        },
-                        {
-                          text: "Hispanic or Latino:" + element.Hispanic,
-                        },
-                        {
-                          text: "Other Race:" + element.OtherRace,
-                        },
-                        {
-                          text: "Payer - Other:" + element.PayerOther,
-                        },
+                          ? {
+                            text:
+                              "Reporting Stratum 1 :" +
+                              element.Reporting_Stratum1,
+                          }
+                          : { text: "" },
                       ],
-                    },
-                  ]
+                      [
+                        element.MeasureIdentifier === 74 ||
+                          (element.MeasureIdentifier === 155 &&
+                            element.seq === 1)
+                          ? {
+                            text:
+                              "Reporting Stratum 2 :" +
+                              element.Reporting_Stratum2,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 155 && element.seq === 2
+                          ? {
+                            text:
+                              "Reporting Stratum 3 :" +
+                              element.Reporting_Stratum1,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 74
+                          ? {
+                            text:
+                              "Reporting Stratum 3 :" +
+                              element.Reporting_Stratum3,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 155 && element.seq === 2
+                          ? {
+                            text:
+                              "Reporting Stratum 4 :" +
+                              element.Reporting_Stratum2,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 155 && element.seq === 3
+                          ? {
+                            text:
+                              "Reporting Stratum 5 :" +
+                              element.Reporting_Stratum1,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 155 && element.seq === 3
+                          ? {
+                            text:
+                              "Reporting Stratum 6 :" +
+                              element.Reporting_Stratum2,
+                          }
+                          : { text: "" },
+                      ],
+
+                      {
+                        text: "Male :" + element.Male,
+                      },
+                      {
+                        text: "Female :" + element.Female,
+                      },
+                      {
+                        text:
+                          "Not Hispanic or Latino :" + element.NotHispanic,
+                      },
+                      {
+                        text: "Hispanic or Latino:" + element.Hispanic,
+                      },
+                      {
+                        text: "Other Race:" + element.OtherRace,
+                      },
+                      {
+                        text: "Payer - Other:" + element.PayerOther,
+                      },
+                    ],
+                  },
+                ]
                 : [
-                    {
-                      text: "",
-                    },
-                  ],
+                  {
+                    text: "",
+                  },
+                ],
             ],
           },
           {
@@ -797,114 +861,114 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
             ul: [
               element.ResultsFor == "DenException"
                 ? [
-                    {
-                      text:
-                        element.seq == 0
-                          ? "Denominator Exception :" + element.ResultsForCount
-                          : "Denominator Exception " +
-                            element.seq +
-                            ":" +
-                            element.ResultsForCount,
-                    },
-                    {
-                      type: "circle",
-                      fontSize: 11,
-                      ul: [
-                        [
-                          element.MeasureIdentifier === 74 ||
+                  {
+                    text:
+                      element.seq == 0
+                        ? "Denominator Exception :" + element.ResultsForCount
+                        : "Denominator Exception " +
+                        element.seq +
+                        ":" +
+                        element.ResultsForCount,
+                  },
+                  {
+                    type: "circle",
+                    fontSize: 11,
+                    ul: [
+                      [
+                        element.MeasureIdentifier === 74 ||
                           (element.MeasureIdentifier === 155 &&
                             element.seq === 1)
-                            ? {
-                                text:
-                                  "Reporting Stratum 1 :" +
-                                  element.Reporting_Stratum1,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 74 ||
-                          (element.MeasureIdentifier === 155 &&
-                            element.seq === 1)
-                            ? {
-                                text:
-                                  "Reporting Stratum 2 :" +
-                                  element.Reporting_Stratum2,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 155 && element.seq === 2
-                            ? {
-                                text:
-                                  "Reporting Stratum 3 :" +
-                                  element.Reporting_Stratum1,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 74
-                            ? {
-                                text:
-                                  "Reporting Stratum 3 :" +
-                                  element.Reporting_Stratum3,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 155 && element.seq === 2
-                            ? {
-                                text:
-                                  "Reporting Stratum 4 :" +
-                                  element.Reporting_Stratum2,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 155 && element.seq === 3
-                            ? {
-                                text:
-                                  "Reporting Stratum 5 :" +
-                                  element.Reporting_Stratum1,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 155 && element.seq === 3
-                            ? {
-                                text:
-                                  "Reporting Stratum 6 :" +
-                                  element.Reporting_Stratum2,
-                              }
-                            : { text: "" },
-                        ],
-
-                        {
-                          text: "Male :" + element.Male,
-                        },
-                        {
-                          text: "Female :" + element.Female,
-                        },
-                        {
-                          text:
-                            "Not Hispanic or Latino :" + element.NotHispanic,
-                        },
-                        {
-                          text: "Hispanic or Latino:" + element.Hispanic,
-                        },
-                        {
-                          text: "Other Race:" + element.OtherRace,
-                        },
-                        {
-                          text: "Payer - Other:" + element.PayerOther,
-                        },
+                          ? {
+                            text:
+                              "Reporting Stratum 1 :" +
+                              element.Reporting_Stratum1,
+                          }
+                          : { text: "" },
                       ],
-                    },
-                  ]
+                      [
+                        element.MeasureIdentifier === 74 ||
+                          (element.MeasureIdentifier === 155 &&
+                            element.seq === 1)
+                          ? {
+                            text:
+                              "Reporting Stratum 2 :" +
+                              element.Reporting_Stratum2,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 155 && element.seq === 2
+                          ? {
+                            text:
+                              "Reporting Stratum 3 :" +
+                              element.Reporting_Stratum1,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 74
+                          ? {
+                            text:
+                              "Reporting Stratum 3 :" +
+                              element.Reporting_Stratum3,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 155 && element.seq === 2
+                          ? {
+                            text:
+                              "Reporting Stratum 4 :" +
+                              element.Reporting_Stratum2,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 155 && element.seq === 3
+                          ? {
+                            text:
+                              "Reporting Stratum 5 :" +
+                              element.Reporting_Stratum1,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 155 && element.seq === 3
+                          ? {
+                            text:
+                              "Reporting Stratum 6 :" +
+                              element.Reporting_Stratum2,
+                          }
+                          : { text: "" },
+                      ],
+
+                      {
+                        text: "Male :" + element.Male,
+                      },
+                      {
+                        text: "Female :" + element.Female,
+                      },
+                      {
+                        text:
+                          "Not Hispanic or Latino :" + element.NotHispanic,
+                      },
+                      {
+                        text: "Hispanic or Latino:" + element.Hispanic,
+                      },
+                      {
+                        text: "Other Race:" + element.OtherRace,
+                      },
+                      {
+                        text: "Payer - Other:" + element.PayerOther,
+                      },
+                    ],
+                  },
+                ]
                 : [
-                    {
-                      text: "",
-                    },
-                  ],
+                  {
+                    text: "",
+                  },
+                ],
             ],
           },
 
@@ -914,114 +978,114 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
             ul: [
               element.ResultsFor == "DenExclusion"
                 ? [
-                    {
-                      text:
-                        element.seq == 0
-                          ? "Denominator Exclusion :" + element.ResultsForCount
-                          : "Denominator Exclusion " +
-                            element.seq +
-                            ":" +
-                            element.ResultsForCount,
-                    },
-                    {
-                      type: "circle",
-                      fontSize: 11,
-                      ul: [
-                        [
-                          element.MeasureIdentifier === 74 ||
+                  {
+                    text:
+                      element.seq == 0
+                        ? "Denominator Exclusion :" + element.ResultsForCount
+                        : "Denominator Exclusion " +
+                        element.seq +
+                        ":" +
+                        element.ResultsForCount,
+                  },
+                  {
+                    type: "circle",
+                    fontSize: 11,
+                    ul: [
+                      [
+                        element.MeasureIdentifier === 74 ||
                           (element.MeasureIdentifier === 155 &&
                             element.seq === 1)
-                            ? {
-                                text:
-                                  "Reporting Stratum 1 :" +
-                                  element.Reporting_Stratum1,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 74 ||
-                          (element.MeasureIdentifier === 155 &&
-                            element.seq === 1)
-                            ? {
-                                text:
-                                  "Reporting Stratum 2 :" +
-                                  element.Reporting_Stratum2,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 155 && element.seq === 2
-                            ? {
-                                text:
-                                  "Reporting Stratum 3 :" +
-                                  element.Reporting_Stratum1,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 74
-                            ? {
-                                text:
-                                  "Reporting Stratum 3 :" +
-                                  element.Reporting_Stratum3,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 155 && element.seq === 2
-                            ? {
-                                text:
-                                  "Reporting Stratum 4 :" +
-                                  element.Reporting_Stratum2,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 155 && element.seq === 3
-                            ? {
-                                text:
-                                  "Reporting Stratum 5 :" +
-                                  element.Reporting_Stratum1,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 155 && element.seq === 3
-                            ? {
-                                text:
-                                  "Reporting Stratum 6 :" +
-                                  element.Reporting_Stratum2,
-                              }
-                            : { text: "" },
-                        ],
-
-                        {
-                          text: "Male :" + element.Male,
-                        },
-                        {
-                          text: "Female :" + element.Female,
-                        },
-                        {
-                          text:
-                            "Not Hispanic or Latino :" + element.NotHispanic,
-                        },
-                        {
-                          text: "Hispanic or Latino:" + element.Hispanic,
-                        },
-                        {
-                          text: "Other Race:" + element.OtherRace,
-                        },
-                        {
-                          text: "Payer - Other:" + element.PayerOther,
-                        },
+                          ? {
+                            text:
+                              "Reporting Stratum 1 :" +
+                              element.Reporting_Stratum1,
+                          }
+                          : { text: "" },
                       ],
-                    },
-                  ]
+                      [
+                        element.MeasureIdentifier === 74 ||
+                          (element.MeasureIdentifier === 155 &&
+                            element.seq === 1)
+                          ? {
+                            text:
+                              "Reporting Stratum 2 :" +
+                              element.Reporting_Stratum2,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 155 && element.seq === 2
+                          ? {
+                            text:
+                              "Reporting Stratum 3 :" +
+                              element.Reporting_Stratum1,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 74
+                          ? {
+                            text:
+                              "Reporting Stratum 3 :" +
+                              element.Reporting_Stratum3,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 155 && element.seq === 2
+                          ? {
+                            text:
+                              "Reporting Stratum 4 :" +
+                              element.Reporting_Stratum2,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 155 && element.seq === 3
+                          ? {
+                            text:
+                              "Reporting Stratum 5 :" +
+                              element.Reporting_Stratum1,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 155 && element.seq === 3
+                          ? {
+                            text:
+                              "Reporting Stratum 6 :" +
+                              element.Reporting_Stratum2,
+                          }
+                          : { text: "" },
+                      ],
+
+                      {
+                        text: "Male :" + element.Male,
+                      },
+                      {
+                        text: "Female :" + element.Female,
+                      },
+                      {
+                        text:
+                          "Not Hispanic or Latino :" + element.NotHispanic,
+                      },
+                      {
+                        text: "Hispanic or Latino:" + element.Hispanic,
+                      },
+                      {
+                        text: "Other Race:" + element.OtherRace,
+                      },
+                      {
+                        text: "Payer - Other:" + element.PayerOther,
+                      },
+                    ],
+                  },
+                ]
                 : [
-                    {
-                      text: "",
-                    },
-                  ],
+                  {
+                    text: "",
+                  },
+                ],
             ],
           },
           {
@@ -1030,114 +1094,114 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
             ul: [
               element.ResultsFor == "Numerator"
                 ? [
-                    {
-                      text:
-                        element.seq == 0
-                          ? "Numerator :" + element.ResultsForCount
-                          : "Numerator " +
-                            element.seq +
-                            ":" +
-                            element.ResultsForCount,
-                    },
-                    {
-                      type: "circle",
-                      fontSize: 11,
-                      ul: [
-                        [
-                          element.MeasureIdentifier === 74 ||
+                  {
+                    text:
+                      element.seq == 0
+                        ? "Numerator :" + element.ResultsForCount
+                        : "Numerator " +
+                        element.seq +
+                        ":" +
+                        element.ResultsForCount,
+                  },
+                  {
+                    type: "circle",
+                    fontSize: 11,
+                    ul: [
+                      [
+                        element.MeasureIdentifier === 74 ||
                           (element.MeasureIdentifier === 155 &&
                             element.seq === 1)
-                            ? {
-                                text:
-                                  "Reporting Stratum 1 :" +
-                                  element.Reporting_Stratum1,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 74 ||
-                          (element.MeasureIdentifier === 155 &&
-                            element.seq === 1)
-                            ? {
-                                text:
-                                  "Reporting Stratum 2 :" +
-                                  element.Reporting_Stratum2,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 155 && element.seq === 2
-                            ? {
-                                text:
-                                  "Reporting Stratum 3 :" +
-                                  element.Reporting_Stratum1,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 74
-                            ? {
-                                text:
-                                  "Reporting Stratum 3 :" +
-                                  element.Reporting_Stratum3,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 155 && element.seq === 2
-                            ? {
-                                text:
-                                  "Reporting Stratum 4 :" +
-                                  element.Reporting_Stratum2,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 155 && element.seq === 3
-                            ? {
-                                text:
-                                  "Reporting Stratum 5 :" +
-                                  element.Reporting_Stratum1,
-                              }
-                            : { text: "" },
-                        ],
-                        [
-                          element.MeasureIdentifier === 155 && element.seq === 3
-                            ? {
-                                text:
-                                  "Reporting Stratum 6 :" +
-                                  element.Reporting_Stratum2,
-                              }
-                            : { text: "" },
-                        ],
-
-                        {
-                          text: "Male :" + element.Male,
-                        },
-                        {
-                          text: "Female :" + element.Female,
-                        },
-                        {
-                          text:
-                            "Not Hispanic or Latino :" + element.NotHispanic,
-                        },
-                        {
-                          text: "Hispanic or Latino:" + element.Hispanic,
-                        },
-                        {
-                          text: "Other Race:" + element.OtherRace,
-                        },
-                        {
-                          text: "Payer - Other:" + element.PayerOther,
-                        },
+                          ? {
+                            text:
+                              "Reporting Stratum 1 :" +
+                              element.Reporting_Stratum1,
+                          }
+                          : { text: "" },
                       ],
-                    },
-                  ]
+                      [
+                        element.MeasureIdentifier === 74 ||
+                          (element.MeasureIdentifier === 155 &&
+                            element.seq === 1)
+                          ? {
+                            text:
+                              "Reporting Stratum 2 :" +
+                              element.Reporting_Stratum2,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 155 && element.seq === 2
+                          ? {
+                            text:
+                              "Reporting Stratum 3 :" +
+                              element.Reporting_Stratum1,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 74
+                          ? {
+                            text:
+                              "Reporting Stratum 3 :" +
+                              element.Reporting_Stratum3,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 155 && element.seq === 2
+                          ? {
+                            text:
+                              "Reporting Stratum 4 :" +
+                              element.Reporting_Stratum2,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 155 && element.seq === 3
+                          ? {
+                            text:
+                              "Reporting Stratum 5 :" +
+                              element.Reporting_Stratum1,
+                          }
+                          : { text: "" },
+                      ],
+                      [
+                        element.MeasureIdentifier === 155 && element.seq === 3
+                          ? {
+                            text:
+                              "Reporting Stratum 6 :" +
+                              element.Reporting_Stratum2,
+                          }
+                          : { text: "" },
+                      ],
+
+                      {
+                        text: "Male :" + element.Male,
+                      },
+                      {
+                        text: "Female :" + element.Female,
+                      },
+                      {
+                        text:
+                          "Not Hispanic or Latino :" + element.NotHispanic,
+                      },
+                      {
+                        text: "Hispanic or Latino:" + element.Hispanic,
+                      },
+                      {
+                        text: "Other Race:" + element.OtherRace,
+                      },
+                      {
+                        text: "Payer - Other:" + element.PayerOther,
+                      },
+                    ],
+                  },
+                ]
                 : [
-                    {
-                      text: "",
-                    },
-                  ],
+                  {
+                    text: "",
+                  },
+                ],
             ],
           },
         ]);
@@ -1168,6 +1232,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
 
   getDetails() {
     this.x = this.patientlistmeasure.MeasurementPeriod.split("-");
+
     this.y = this.patientlistmeasure.MeasuresList.split(",");
     var req = {
       SessionName: "Detail",
@@ -1200,38 +1265,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     });
   }
 
-  getProviderList(ProviderId: any) {
-    this.accountservice.getProviderList(ProviderId).subscribe((data) => {
-      if (data.IsSuccess) {
-        this.providerlist = data.ListResult;
-        this.filteredproviderList = this.providerlist.slice();
-      }
-    });
-  }
 
-  getLocationsList(LocationId: any) {
-    this.accountservice.getLocationsList(LocationId).subscribe((data) => {
-      if (data.IsSuccess) {
-        this.locationslist = data.ListResult;
-        this.filteredlocationList = this.locationslist.slice();
-        if (LocationId != "") {
-          this.providerslocationwisefilter = this.providerslocationwise.filter(
-            function (data) {
-              return data.Provider[0].ProviderId == LocationId;
-            }
-          );
-        }
-      } else if (LocationId == 0) {
-        this.providerslocationwisefilter = this.providerslocationwise;
-        this.accountservice.getLocationsList("").subscribe((data) => {
-          if (data.IsSuccess) {
-            this.locationslist = data.ListResult;
-            this.filteredlocationList = this.locationslist.slice();
-          }
-        });
-      }
-    });
-  }
 
   searchByLocationId(Location_Id) {
     if (Location_Id != "") {
@@ -1265,6 +1299,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
         );
         this.getoverrallreportlength = data.ListResult.length;
         this.showQueuedReportsTable = true;
+        this.measures = data.ListResult[0].MeasuresList;
       }
       this.customizedspinner = false;
     });
@@ -1574,14 +1609,14 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
             this.DrilldownPatientData.NumeratorConditions != null
               ? JSON.parse(this.DrilldownPatientData.NumeratorConditions)
               : JSON.parse(
-                  this.numconditions.CMS138[this.populationdescription]
-                );
+                this.numconditions.CMS138[this.populationdescription]
+              );
           this.deno_excep_conditions =
             this.DrilldownPatientData.DenExceptionConditions != null
               ? JSON.parse(this.DrilldownPatientData.DenExceptionConditions)
               : JSON.parse(
-                  this.denexcepconditions.CMS138[this.populationdescription]
-                );
+                this.denexcepconditions.CMS138[this.populationdescription]
+              );
         } else if (this.measureidentifiler == "CMS 155") {
           this.ipp_conditions =
             this.DrilldownPatientData.IPPConditions != null
@@ -1603,8 +1638,8 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
             this.DrilldownPatientData.NumeratorConditions != null
               ? JSON.parse(this.DrilldownPatientData.NumeratorConditions)
               : JSON.parse(
-                  this.numconditions.CMS155[this.populationdescription]
-                );
+                this.numconditions.CMS155[this.populationdescription]
+              );
         }
       });
   }
@@ -1742,6 +1777,9 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   }
 
   onSubmitCreateReport() {
+
+
+    debugger;
     if (this.createReportForm.invalid) {
       return;
     }
@@ -1749,13 +1787,13 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
       description: this.createReportForm.value.description,
       providerId:
         this.createReportForm.value.providerId == "" ||
-        this.createReportForm.value.providerId == null
-          ? this.loc.ProviderId
+          this.createReportForm.value.providerId == null
+          ? this.loc.Provider_Id
           : this.createReportForm.value.providerId,
       locationId:
         this.createReportForm.value.locationId == "" ||
-        this.createReportForm.value.locationId == null
-          ? this.location.LocationId
+          this.createReportForm.value.locationId == null
+          ? this.user.LocationId
           : this.createReportForm.value.locationId,
       bundleYear: this.createReportForm.value.bundleYear,
       startDate: formatDate(
@@ -1768,17 +1806,20 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
         "yyyy-MM-dd",
         "en-US"
       ),
-      measureList: this.loc.Measures,
+      measureList: this.measures,
       ranByUserID:
         this.createReportForm.value.providerId == "" ||
-        this.createReportForm.value.providerId == null
-          ? this.loc.ProviderId
+          this.createReportForm.value.providerId == null
+          ? this.loc.Provider_Id
           : this.createReportForm.value.providerId,
+
     };
     this.createupdateEmployee(Createreport);
+
   }
 
   createupdateEmployee(data: any) {
+    debugger;
     this.customizedspinner = true;
     this.accountservice.CreateQueuedReport(data).subscribe((data) => {
       if (data.IsSuccess) {
@@ -1824,7 +1865,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     this.queuedreportfilterForm.reset();
     this.showUseFilterForm = false;
     this.selected = "100";
-    this.getLocationsList(0);
+    this.getLocationsList("");
     this.showClearFilterBtn = false;
   }
 

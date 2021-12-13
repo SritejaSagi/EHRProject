@@ -230,7 +230,6 @@ export class PatientlistComponent implements OnInit {
   }
   getAllPatientList(data: any) {
     this.customizedspinner = true;
-
     this.service.getAllPatientList(data).subscribe((data) => {
       this.allPatientList.data = [];
       this.allPatientList.data = data.ListResult as PatientData[];
@@ -276,13 +275,13 @@ export class PatientlistComponent implements OnInit {
         this.filteredlocationList = this.locationslist.slice();
       }
     });
-    if (Location == "") {
-      this.service.getLocationsList(Location).subscribe((data) => {
-        if (data.IsSuccess) {
-          this.locationslist = data.ListResult;
-          this.filteredlocationList = this.locationslist.slice();
-        }
-      });
-    }
+    // if (Location == "") {
+    //   this.service.getLocationsList(Location).subscribe((data) => {
+    //     if (data.IsSuccess) {
+    //       this.locationslist = data.ListResult;
+    //       this.filteredlocationList = this.locationslist.slice();
+    //     }
+    //   });
+    // }
   }
 }

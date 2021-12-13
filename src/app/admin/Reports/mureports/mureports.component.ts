@@ -14,10 +14,10 @@ import pdfFonts from "pdfmake/build/vfs_fonts";
 })
 export class MureportsComponent implements OnInit {
 
-  sortDir=1;
+  sortDir = 1;
   tomorrow = new Date();
   provider_Id: string;
-  stage_type:string;
+  stage_type: string;
   muReportForm: FormGroup;
   customizedspinner: boolean = false;
   Stage3: boolean = false;
@@ -243,7 +243,7 @@ export class MureportsComponent implements OnInit {
   Stage2PatientListlength: any;
   ReportingDate: string;
   Dates: string;
-  disabledowloadPDF: boolean=true;
+  disabledowloadPDF: boolean = true;
   mupatientList: any[];
   mupatientListlength: number;
   showControls: boolean;
@@ -289,7 +289,7 @@ export class MureportsComponent implements OnInit {
               text: this.locationphone, alignment: 'left'
             },
             {
-              text:"  ", alignment: 'left'
+              text: "  ", alignment: 'left'
             },
 
             {
@@ -2167,7 +2167,7 @@ export class MureportsComponent implements OnInit {
       console.log('No file');
     }
   }
-  constructor(private authenticationService: AuthenticationService,private service: Accountservice,private fb:FormBuilder,public datepipe: DatePipe) {
+  constructor(private authenticationService: AuthenticationService, private service: Accountservice, private fb: FormBuilder, public datepipe: DatePipe) {
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
   }
 
@@ -2178,12 +2178,12 @@ export class MureportsComponent implements OnInit {
 
   }
 
-  getProviderList(){
+  getProviderList() {
     debugger;
-  let locationid=localStorage.getItem('providerlocation');
+    let locationid = localStorage.getItem('providerlocation');
 
-    var req ={
-      "LocationId":locationid,
+    var req = {
+      "LocationId": locationid,
     }
     this.service.getProviderList(req).subscribe(data => {
       if (data.IsSuccess) {
@@ -2208,20 +2208,20 @@ export class MureportsComponent implements OnInit {
         this.filteredlocationList = this.locationslist.slice();
       }
     });
-    if (Location == "") {
-      this.service.getLocationsList(Location).subscribe(data => {
-        if (data.IsSuccess) {
-          this.locationslist = data.ListResult;
-          this.filteredlocationList = this.locationslist.slice();
-        }
-      });
-    }
+    // if (Location == "") {
+    //   this.service.getLocationsList(Location).subscribe(data => {
+    //     if (data.IsSuccess) {
+    //       this.locationslist = data.ListResult;
+    //       this.filteredlocationList = this.locationslist.slice();
+    //     }
+    //   });
+    // }
   }
   onStage2SubmitPatientList(req) {
     this.customizedspinner = true;
     var Patientreport = {
-      "startDate":  this.datepipe.transform(this.muReportForm.value.strSDate, 'yyyy-MM-dd','en-US'),
-      "endDate": this.datepipe.transform(this.muReportForm.value.strEDate, 'yyyy-MM-dd','en-US'),
+      "startDate": this.datepipe.transform(this.muReportForm.value.strSDate, 'yyyy-MM-dd', 'en-US'),
+      "endDate": this.datepipe.transform(this.muReportForm.value.strEDate, 'yyyy-MM-dd', 'en-US'),
       "provider_Id": this.muReportForm.value.provider_Id,
       "TypeName": req,
     }
@@ -2248,8 +2248,8 @@ export class MureportsComponent implements OnInit {
       return;
     }
     var MUreport = {
-      "startDate":  this.datepipe.transform(this.muReportForm.value.strSDate, 'MM/dd/yyyy','en-US'),
-      "endDate": this.datepipe.transform(this.muReportForm.value.strEDate, 'MM/dd/yyyy','en-US'),
+      "startDate": this.datepipe.transform(this.muReportForm.value.strSDate, 'MM/dd/yyyy', 'en-US'),
+      "endDate": this.datepipe.transform(this.muReportForm.value.strEDate, 'MM/dd/yyyy', 'en-US'),
       "provider_Id": this.muReportForm.value.provider_Id,
       "stage_type": this.muReportForm.value.stage_type,
     }
@@ -2268,7 +2268,7 @@ export class MureportsComponent implements OnInit {
   getStage2NumeDenomicount(data: any) {
     this.customizedspinner = true;
     this.stage2NumeDenomicount = null;
-    this.stage3NumeDenomicount= null;
+    this.stage3NumeDenomicount = null;
     this.service.GetStage2NumeDenomiCount(data).subscribe(data => {
       if (data.IsSuccess) {
         this.customizedspinner = true;
@@ -3191,7 +3191,7 @@ export class MureportsComponent implements OnInit {
   getStage3NumeDenomicount(data1: any) {
     this.customizedspinner = true;
     this.stage2NumeDenomicount = null;
-    this.stage3NumeDenomicount= null;
+    this.stage3NumeDenomicount = null;
     this.service.GetNumeDenomicount(data1).subscribe(data => {
       if (data.IsSuccess) {
         this.Stage2 = false;
@@ -3226,7 +3226,7 @@ export class MureportsComponent implements OnInit {
         var count: number = 0;
 
         this.customizedspinner = true;
-        this.stage3NumeDenomicount= data.ListResult;
+        this.stage3NumeDenomicount = data.ListResult;
         this.disabledowloadPDF = false;
         for (var val of data.ListResult) {
 
@@ -3427,7 +3427,7 @@ export class MureportsComponent implements OnInit {
   getPatientList(data: any) {
     this.customizedspinner = true;
 
-    this.mupatientList=[];
+    this.mupatientList = [];
     this.service.getPatientList(data).subscribe(data => {
       this.mupatientList = [];
       this.mupatientListlength = 0;
@@ -3441,23 +3441,23 @@ export class MureportsComponent implements OnInit {
   }
   onSortClick(event) {
     let target = event.currentTarget,
-    classList = target.classList;
+      classList = target.classList;
     if (classList.contains('fa-chevron-up')) {
       classList.remove('fa-chevron-up');
       classList.add('fa-chevron-down');
-      this.sortDir=-1;
+      this.sortDir = -1;
     } else {
       classList.add('fa-chevron-up');
       classList.remove('fa-chevron-down');
-      this.sortDir=1;
+      this.sortDir = 1;
     }
     this.sortArr('patient_id');
   }
 
-  sortArr(colName:any){
-    this.mupatientList.sort((a,b)=>{
-      a= a[colName].toLowerCase();
-      b= b[colName].toLowerCase();
+  sortArr(colName: any) {
+    this.mupatientList.sort((a, b) => {
+      a = a[colName].toLowerCase();
+      b = b[colName].toLowerCase();
       return a.localeCompare(b) * this.sortDir;
     });
   }
@@ -3468,19 +3468,19 @@ export class MureportsComponent implements OnInit {
     if (classList.contains('fa-chevron-up')) {
       classList.remove('fa-chevron-up');
       classList.add('fa-chevron-down');
-      this.sortDir=-1;
+      this.sortDir = -1;
     } else {
       classList.add('fa-chevron-up');
       classList.remove('fa-chevron-down');
-      this.sortDir=1;
+      this.sortDir = 1;
     }
     this.sortArr1('full_name');
   }
 
-  sortArr1(colName:any){
-    this.mupatientList.sort((a,b)=>{
-      a= a[colName].toLowerCase();
-      b= b[colName].toLowerCase();
+  sortArr1(colName: any) {
+    this.mupatientList.sort((a, b) => {
+      a = a[colName].toLowerCase();
+      b = b[colName].toLowerCase();
       return a.localeCompare(b) * this.sortDir;
     });
   }
@@ -3490,19 +3490,19 @@ export class MureportsComponent implements OnInit {
     if (classList.contains('fa-chevron-up')) {
       classList.remove('fa-chevron-up');
       classList.add('fa-chevron-down');
-      this.sortDir=-1;
+      this.sortDir = -1;
     } else {
       classList.add('fa-chevron-up');
       classList.remove('fa-chevron-down');
-      this.sortDir=1;
+      this.sortDir = 1;
     }
     this.sortArr2('Req_date_format');
   }
 
-  sortArr2(colName:any){
-    this.mupatientList.sort((a,b)=>{
-      a= a[colName].toLowerCase();
-      b= b[colName].toLowerCase();
+  sortArr2(colName: any) {
+    this.mupatientList.sort((a, b) => {
+      a = a[colName].toLowerCase();
+      b = b[colName].toLowerCase();
       return a.localeCompare(b) * this.sortDir;
     });
   }
@@ -3512,19 +3512,19 @@ export class MureportsComponent implements OnInit {
     if (classList.contains('fa-chevron-up')) {
       classList.remove('fa-chevron-up');
       classList.add('fa-chevron-down');
-      this.sortDir=-1;
+      this.sortDir = -1;
     } else {
       classList.add('fa-chevron-up');
       classList.remove('fa-chevron-down');
-      this.sortDir=1;
+      this.sortDir = 1;
     }
     this.sortArr3('Numerator');
   }
 
-  sortArr3(colName:any){
-    this.mupatientList.sort((a,b)=>{
-      a= a[colName].toLowerCase();
-      b= b[colName].toLowerCase();
+  sortArr3(colName: any) {
+    this.mupatientList.sort((a, b) => {
+      a = a[colName].toLowerCase();
+      b = b[colName].toLowerCase();
       return a.localeCompare(b) * this.sortDir;
     });
   }
@@ -3534,18 +3534,18 @@ export class MureportsComponent implements OnInit {
     if (classList.contains('fa-chevron-up')) {
       classList.remove('fa-chevron-up');
       classList.add('fa-chevron-down');
-      this.sortDir=-1;
+      this.sortDir = -1;
     } else {
       classList.add('fa-chevron-up');
       classList.remove('fa-chevron-down');
-      this.sortDir=1;
+      this.sortDir = 1;
     }
     this.sortArr22('patient_id');
   }
-  sortArr21(colName:any){
-    this.Stage2PatientList .sort((a,b)=>{
-      a= a[colName].toLowerCase();
-      b= b[colName].toLowerCase();
+  sortArr21(colName: any) {
+    this.Stage2PatientList.sort((a, b) => {
+      a = a[colName].toLowerCase();
+      b = b[colName].toLowerCase();
       return a.localeCompare(b) * this.sortDir;
     });
   }
@@ -3556,19 +3556,19 @@ export class MureportsComponent implements OnInit {
     if (classList.contains('fa-chevron-up')) {
       classList.remove('fa-chevron-up');
       classList.add('fa-chevron-down');
-      this.sortDir=-1;
+      this.sortDir = -1;
     } else {
       classList.add('fa-chevron-up');
       classList.remove('fa-chevron-down');
-      this.sortDir=1;
+      this.sortDir = 1;
     }
     this.sortArr22('full_name');
   }
 
-  sortArr22(colName:any){
-    this.Stage2PatientList .sort((a,b)=>{
-      a= a[colName].toLowerCase();
-      b= b[colName].toLowerCase();
+  sortArr22(colName: any) {
+    this.Stage2PatientList.sort((a, b) => {
+      a = a[colName].toLowerCase();
+      b = b[colName].toLowerCase();
       return a.localeCompare(b) * this.sortDir;
     });
   }
@@ -3579,19 +3579,19 @@ export class MureportsComponent implements OnInit {
     if (classList.contains('fa-chevron-up')) {
       classList.remove('fa-chevron-up');
       classList.add('fa-chevron-down');
-      this.sortDir=-1;
+      this.sortDir = -1;
     } else {
       classList.add('fa-chevron-up');
       classList.remove('fa-chevron-down');
-      this.sortDir=1;
+      this.sortDir = 1;
     }
     this.sortArr23('display_name');
   }
 
-  sortArr23(colName:any){
-    this.Stage2PatientList .sort((a,b)=>{
-      a= a[colName].toLowerCase();
-      b= b[colName].toLowerCase();
+  sortArr23(colName: any) {
+    this.Stage2PatientList.sort((a, b) => {
+      a = a[colName].toLowerCase();
+      b = b[colName].toLowerCase();
       return a.localeCompare(b) * this.sortDir;
     });
   }
@@ -3602,19 +3602,19 @@ export class MureportsComponent implements OnInit {
     if (classList.contains('fa-chevron-up')) {
       classList.remove('fa-chevron-up');
       classList.add('fa-chevron-down');
-      this.sortDir=-1;
+      this.sortDir = -1;
     } else {
       classList.add('fa-chevron-up');
       classList.remove('fa-chevron-down');
-      this.sortDir=1;
+      this.sortDir = 1;
     }
     this.sortArr24('Date_Submitted');
   }
 
-  sortArr24(colName:any){
-    this.Stage2PatientList .sort((a,b)=>{
-      a= a[colName].toLowerCase();
-      b= b[colName].toLowerCase();
+  sortArr24(colName: any) {
+    this.Stage2PatientList.sort((a, b) => {
+      a = a[colName].toLowerCase();
+      b = b[colName].toLowerCase();
       return a.localeCompare(b) * this.sortDir;
     });
   }
@@ -3624,19 +3624,19 @@ export class MureportsComponent implements OnInit {
     if (classList.contains('fa-chevron-up')) {
       classList.remove('fa-chevron-up');
       classList.add('fa-chevron-down');
-      this.sortDir=-1;
+      this.sortDir = -1;
     } else {
       classList.add('fa-chevron-up');
       classList.remove('fa-chevron-down');
-      this.sortDir=1;
+      this.sortDir = 1;
     }
     this.sortArr25('Numerator');
   }
 
-  sortArr25(colName:any){
-    this.Stage2PatientList .sort((a,b)=>{
-      a= a[colName].toLowerCase();
-      b= b[colName].toLowerCase();
+  sortArr25(colName: any) {
+    this.Stage2PatientList.sort((a, b) => {
+      a = a[colName].toLowerCase();
+      b = b[colName].toLowerCase();
       return a.localeCompare(b) * this.sortDir;
     });
   }

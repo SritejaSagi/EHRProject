@@ -2,7 +2,18 @@
 
 @import "../../styles";
 /* Navbar */
-
+.navmenu:hover {
+  background-color: #41b6a6;
+}
+.navmenu:hover {
+  color: white;
+}
+.textcolor {
+  color: white;
+}
+.textcolor:hover {
+  color: white;
+}
 .navbar {
   font-family: $type-2;
   background: $blue-teal-gradient;

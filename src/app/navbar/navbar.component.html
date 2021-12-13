@@ -28,15 +28,19 @@
               </div>
             </a>
 
-            <div>
-              <mat-form-field appearance="fill" class="col-lg-12">
-                <mat-select [value]="0" [value]="selectedValue" name="locationarray" disableOptionCentering>
+            <div *ngIf="this.locationarray.length!=0">
+              <mat-form-field class="col-lg-12 navmenu">
+                <mat-select class="textcolor" [value]="0" name="locationarray" disableOptionCentering>
                   <mat-option *ngFor="let loc of locationarray; index as i" [value]="i" (click)="change(i)"> {{ loc }}
                   </mat-option>
 
                 </mat-select>
               </mat-form-field>
             </div>
+
+            <a class="dropdown-item" *ngIf="this.locationarray.length==0">
+              No Location Found
+            </a>
             <a class="dropdown-item" (click)="logout()">
               Sign Out
             </a>

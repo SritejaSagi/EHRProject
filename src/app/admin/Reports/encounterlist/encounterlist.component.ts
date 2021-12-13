@@ -194,14 +194,14 @@ export class EncounterlistComponent implements OnInit {
         this.filteredlocationList = this.locationslist.slice();
       }
     });
-    if (Location == "") {
-      this.service.getLocationsList(Location).subscribe((data) => {
-        if (data.IsSuccess) {
-          this.locationslist = data.ListResult;
-          this.filteredlocationList = this.locationslist.slice();
-        }
-      });
-    }
+    // if (Location == "") {
+    //   this.service.getLocationsList(Location).subscribe((data) => {
+    //     if (data.IsSuccess) {
+    //       this.locationslist = data.ListResult;
+    //       this.filteredlocationList = this.locationslist.slice();
+    //     }
+    //   });
+    // }
   }
 
   downloadEncountersExcel() {

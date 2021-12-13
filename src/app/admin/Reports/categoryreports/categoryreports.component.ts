@@ -23,7 +23,7 @@ export class CategoryreportsComponent implements OnInit {
   showControls: boolean;
 
 
-  constructor(private tableutil:TableUtil,private service: Accountservice) { }
+  constructor(private tableutil: TableUtil, private service: Accountservice) { }
 
   ngOnInit(): void {
     debugger;
@@ -53,7 +53,7 @@ export class CategoryreportsComponent implements OnInit {
         { RepId: 8, Name: 'View, Download, Transmit', Id: 1 },
         { RepId: 9, Name: 'Secure Messaging', Id: 1 },
       ];
-      this.reports==0;
+      this.reports == 0;
     }
 
     else if (req == 2) {
@@ -64,7 +64,7 @@ export class CategoryreportsComponent implements OnInit {
       this.Reports = [
         { RepId: 1, Name: 'Patient List Report', Id: 3 },
       ];
-      this.reports==0;
+      this.reports == 0;
       this.showReport(this.categoryId);
 
     }
@@ -72,87 +72,70 @@ export class CategoryreportsComponent implements OnInit {
       this.Reports = [
         { RepId: 1, Name: 'Encouter Report', Id: 4 },
       ];
-      this.reports==0;
+      this.reports == 0;
     }
     else if (req == 5) {
       this.Reports = [
         { RepId: 1, Name: 'Problem List Report', Id: 5 },
       ];
-      this.reports==0;
+      this.reports == 0;
     }
     else {
       this.Reports = [
-        {RepId: 0, Name: 'No results found', Id: 0 },
+        { RepId: 0, Name: 'No results found', Id: 0 },
       ];
-      this.reports==0;
+      this.reports == 0;
     }
     this.showReport(this.categoryId);
   }
 
   reportsId(req) {
-    this.reports=req;
+    this.reports = req;
     if (req == 0 || req == null) {
       this.disable = false;
     }
-    else  if (req >= 1 ){
+    else if (req >= 1) {
       this.disable = true;
-
     }
     this.showReport(this.reports);
   }
   showReport(req) {
-    if (this.categoryId == 1&&this.reports>=1 ) {
+    if (this.categoryId == 1 && this.reports >= 1) {
+      this.cqmreports = false;
+      this.patientlist = false;
+      this.encounterlist = false;
+      this.problem = false;
       this.mureports = true;
-
-      this.cqmreports = false;
+    }
+    else if (req == 2) {
+      this.mureports = false;
       this.patientlist = false;
       this.encounterlist = false;
-      this.problem=false;
-
-    }
-
-    else if(req==2){
+      this.problem = false;
       this.cqmreports = true;
-
-      this.mureports = false;
-
-      this.patientlist = false;
-      this.encounterlist = false;
-      this.problem=false;
-
     }
-    else if (this.categoryId == 3&&this.reports==1 ) {
+    else if (this.categoryId == 3 && this.reports == 1) {
+      this.mureports = false;
+      this.cqmreports = false;
+      this.encounterlist = false;
+      this.problem = false;
       this.patientlist = true;
-
+    }
+    else if (this.categoryId == 4 && this.reports == 1) {
       this.mureports = false;
       this.cqmreports = false;
-
-      this.encounterlist = false;
-      this.problem=false;
-
-    }
-    else if (this.categoryId == 4 &&this.reports==1) {
+      this.patientlist = false;
+      this.problem = false;
       this.encounterlist = true;
-
-      this.mureports = false;
-      this.cqmreports = false;
-      this.patientlist = false;
-
-      this.problem=false;
-
     }
-    else if(this.categoryId==5&&this.reports==1){
-      this.problem=true;
-
+    else if (this.categoryId == 5 && this.reports == 1) {
       this.mureports = false;
       this.cqmreports = false;
       this.patientlist = false;
       this.encounterlist = false;
-
-
+      this.problem = true;
     }
   }
-
-  }
+}
 
 

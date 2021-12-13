@@ -198,14 +198,14 @@ export class ProblemlistComponent implements OnInit {
         this.filteredlocationList = this.locationslist.slice();
       }
     });
-    if (Location == "") {
-      this.service.getLocationsList(Location).subscribe((data) => {
-        if (data.IsSuccess) {
-          this.locationslist = data.ListResult;
-          this.filteredlocationList = this.locationslist.slice();
-        }
-      });
-    }
+    // if (Location == "") {
+    //   this.service.getLocationsList(Location).subscribe((data) => {
+    //     if (data.IsSuccess) {
+    //       this.locationslist = data.ListResult;
+    //       this.filteredlocationList = this.locationslist.slice();
+    //     }
+    //   });
+    // }
   }
   downloadProblemListExcel() {
     if (this.problemreportlist.data.length != 0) {
