@@ -17,7 +17,6 @@ import { ConditionformaterPipe } from "../admin/Reports/cqmreports/viewhelpers/c
 import { FooterComponent } from "../footer/footer.component";
 
 
-
 @NgModule({
   exports: [],
   declarations: [

@@ -505,6 +505,11 @@ button {
 .cstm-border-color {
   border: 1px solid #41b6a6;
 }
+span.font,
+::placeholder {
+  font-size: 14px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 /* Drilldown */
 .tick-mark {

@@ -271,25 +271,21 @@ export class MureportsComponent implements OnInit {
               text: 'Promoting Interoperability (PI/MU) - Stage 3',
               style: "tableHeader",
               alignment: "center"
-
             },
             {
               text: this.ProviderName, alignment: 'left'
             },
             {
-              text: this.locationname, alignment: 'left'
+              text: this.LocationName, alignment: 'left'
             },
             {
-              text: this.locationstreetaddress, alignment: 'left'
+              text: this.LocationStreetAddress, alignment: 'left'
             },
             {
-              text: this.locationcity + ', ' + this.locationstate + ' ' + this.locationzip, alignment: 'left'
+              text: this.LocationCity + ', ' + this.LocationState + ' ' + this.LocationZip, alignment: 'left'
             },
             {
-              text: this.locationphone, alignment: 'left'
-            },
-            {
-              text: "  ", alignment: 'left'
+              text: this.LocationPhone, alignment: 'left'
             },
 
             {
@@ -876,8 +872,11 @@ export class MureportsComponent implements OnInit {
                     layout: {
                       defaultBorder: false,
                     },
+                  },
+                  {
+                    text: "  ", alignment: 'left'
                   },]],
-                  [{ text: '8. Public Health Reporting | ' + this.result8 + ' of 5', style: 'tableHeader', colSpan: '4', alignment: 'left', fillColor: '#ffb080' }],
+                  [{ text: '8. Public Health Reporting | ' + this.result8 + ' of 5', style: 'tableHeader', colSpan: '4', alignment: 'left', fillColor: '#ffb080' },],
                   ['8-1. Immunization Registry Reporting', 'Complete Agent Engagement', [{
                     table: {
                       widths: [5, 80],
@@ -1228,16 +1227,16 @@ export class MureportsComponent implements OnInit {
             text: this.ProviderName, alignment: 'left'
           },
           {
-            text: this.locationname, alignment: 'left'
+            text: this.LocationName, alignment: 'left'
           },
           {
-            text: this.locationstreetaddress, alignment: 'left'
+            text: this.LocationStreetAddress, alignment: 'left'
           },
           {
-            text: this.locationcity + ', ' + this.locationstate + ' ' + this.locationzip, alignment: 'left'
+            text: this.LocationCity + ', ' + this.LocationState + ' ' + this.LocationZip, alignment: 'left'
           },
           {
-            text: this.locationphone, alignment: 'left'
+            text: this.LocationPhone, alignment: 'left'
           },
 
 
@@ -1251,6 +1250,7 @@ export class MureportsComponent implements OnInit {
           {
             text: 'Date Ranges Of Report: ' + this.ReportingDate + ' - ' + this.Dates, alignment: 'left'
           },
+
           {
             table: {
               widths: [30, 130, 80, 80, 40, 50, 60],
@@ -1263,6 +1263,7 @@ export class MureportsComponent implements OnInit {
             table: {
               widths: [30, 130, 277, 60],
               font: 'sans-serif',
+              absolutePosition: { y: 60 },
               body: [
                 [{ text: '1' }, { text: 'Protect PHI' },
                 [
@@ -2173,13 +2174,20 @@ export class MureportsComponent implements OnInit {
 
   ngOnInit() {
     this.getLocationsList('');
-    this.getProviderList();
+    this.getProviderList('');
     this.Stage3Form();
 
   }
 
-  getProviderList() {
-    debugger;
+  getProviderList(Providersdata: any) {
+    this.LocationName = Providersdata.Location_Name;
+    this.LocationPhone = Providersdata.Location_Phone;
+    this.LocationStreetAddress = Providersdata.Location_Street_Address;
+    this.LocationCity = Providersdata.Location_City == undefined ? '' : Providersdata.Location_City;
+    this.LocationState = Providersdata.Location_State == undefined ? '' : Providersdata.Location_State;
+    this.LocationName == undefined ? 0 : this.LocationName;
+    this.LocationZip = Providersdata.Location_Zip == undefined ? '' : Providersdata.Location_Zip;
+
     let locationid = localStorage.getItem('providerlocation');
 
     var req = {
@@ -2195,13 +2203,6 @@ export class MureportsComponent implements OnInit {
 
   getLocationsList(Location: any) {
     this.ProviderName = Location.Provider_Name;
-    this.LocationName = Location.Location_Name;
-    this.LocationPhone = Location.Location_Phone;
-    this.LocationStreetAddress = Location.Location_Street_Address;
-    this.LocationCity = Location.Location_City;
-    this.LocationState = Location.Location_State;
-    this.LocationName == undefined ? 0 : this.LocationName;
-    this.LocationZip = Location.Location_Zip;
     this.service.getLocationsList(Location.Provider_Id).subscribe(data => {
       if (data.IsSuccess) {
         this.locationslist = data.ListResult;

@@ -16,7 +16,10 @@ button:hover {
 .mat-cell {
   border-bottom: #41b6a6 1px solid;
 }
-
+p {
+  font-size: 16px !important;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 .mat-cell,
 .mat-header-cell {
   font-size: 15px;

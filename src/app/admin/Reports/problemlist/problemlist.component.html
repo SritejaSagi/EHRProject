@@ -4,10 +4,10 @@
   </div>
   <div class="container-fluid">
     <form [formGroup]="problemreportform">
-      <div class="row" style="background-color: #e5f8f5;font-family: serif;font-size: 14px;">
-        <div class="col-lg-2 col-md-6 font">
+      <div class="row" style="background-color: #e5f8f5;">
+        <div class="col-lg-2 col-md-3">
         </div>
-        <div class="col-lg-1 col-md-6 ">
+        <div class="col-lg-1 col-md-3">
           <p class="float-left my-4 ">Provider:</p>
         </div>
         <mat-form-field appearance="outline" class="col-lg-2 col-md-6 hover my-2">
@@ -158,7 +158,8 @@
 
       <ng-container matColumnDef="DxEndDate">
         <mat-header-cell class="flex1" *matHeaderCellDef mat-sort-header="DxEndDate">Dx End Date</mat-header-cell>
-        <mat-cell class="flex1 submenu" *matCellDef="let lesson"> {{lesson.DxEndDate | date: 'dd/MM/yyyy'}} </mat-cell>
+        <mat-cell class="flex1 submenu" *matCellDef="let lesson"> {{lesson.DxEndDate | date: 'dd/MM/yyyy'}}
+        </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="SmokingStatus">
