@@ -24,35 +24,37 @@ p {
 .mat-header-cell {
   font-size: 15px;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  padding: 12px 20px;
-  height: 53px;
+  padding: 6px 10px;
+  // height: 53px;
   border-bottom: #41b6a6 1px solid;
+  display: block !important;
+  align-self: stretch !important;
 }
 mat-header-cell {
   background-color: #41b6a6 !important;
   width: 100%;
-  max-height: 54px;
+  // max-height: 54px;
   text-align: left !important;
-  display: block;
-  align-self: stretch !important;
+  // display: block;
+  // align-self: stretch !important;
 }
 mat-cell {
   border-right: 1px solid #41b6a6;
-  max-height: 80px;
+  // max-height: 80px;
   border-bottom: 1px solid #41b6a6;
   text-align: left !important;
   background-color: white !important;
-  display: block;
-  align-self: stretch !important;
+  // display: block;
+  // align-self: stretch !important;
 }
 .mat-header-cell {
   color: white;
   border-right: 1px solid white;
-  max-height: 54px;
+  // max-height: 54px;
 }
 .submenu {
   border-right: 1px solid #41b6a6;
-  padding-top: 25px;
+  // padding-top: 25px;
 }
 .mat-header-row {
   background-color: #41b6a6;
@@ -103,15 +105,15 @@ table {
 .patient {
   mat-cell:nth-child(1),
   mat-header-cell:nth-child(1) {
-    flex: 0 0 20%;
+    flex: 0 0 15%;
   }
   mat-cell:nth-child(2),
   mat-header-cell:nth-child(2) {
-    flex: 0 0 14%;
+    flex: 0 0 13%;
   }
   mat-cell:nth-child(3),
   mat-header-cell:nth-child(3) {
-    flex: 0 0 10%;
+    flex: 0 0 8%;
   }
   mat-cell:nth-child(4),
   mat-header-cell:nth-child(4) {
@@ -119,23 +121,23 @@ table {
   }
   mat-cell:nth-child(5),
   mat-header-cell:nth-child(5) {
-    flex: 0 0 12%;
+    flex: 0 0 10%;
   }
   mat-cell:nth-child(6),
   mat-header-cell:nth-child(6) {
-    flex: 0 0 12%;
+    flex: 0 0 10%;
   }
   mat-cell:nth-child(7),
   mat-header-cell:nth-child(7) {
-    flex: 0 0 12%;
+    flex: 0 0 10%;
   }
   mat-cell:nth-child(8),
   mat-header-cell:nth-child(8) {
-    flex: 0 0 15%;
+    flex: 0 0 13%;
   }
   mat-cell:nth-child(9),
   mat-header-cell:nth-child(9) {
-    flex: 0 0 8%;
+    flex: 0 0 5%;
   }
   mat-cell:nth-child(10),
   mat-header-cell:nth-child(10) {
@@ -143,15 +145,15 @@ table {
   }
   mat-cell:nth-child(11),
   mat-header-cell:nth-child(11) {
-    flex: 0 0 10%;
+    flex: 0 0 8%;
   }
   mat-cell:nth-child(12),
   mat-header-cell:nth-child(12) {
-    flex: 0 0 6%;
+    flex: 0 0 5%;
   }
   mat-cell:nth-child(13),
   mat-header-cell:nth-child(13) {
-    flex: 0 0 10%;
+    flex: 0 0 5%;
   }
   mat-cell:nth-child(14),
   mat-header-cell:nth-child(14) {
@@ -161,8 +163,8 @@ table {
   mat-header-cell:nth-child(15) {
     flex: 0 0 13%;
   }
-  mat-cell:nth-child(16),
-  mat-header-cell:nth-child(16) {
-    flex: 0 0 10%;
-  }
+  // mat-cell:nth-child(16),
+  // mat-header-cell:nth-child(16) {
+  //   flex: 0 0 10%;
+  // }
 }

@@ -27,17 +27,14 @@
               <div class="d-flex border-bottom">
               </div>
             </a>
-
             <div *ngIf="this.locationarray.length!=0">
-              <mat-form-field class="col-lg-12 navmenu">
+              <mat-form-field appearance="outline" class="col-lg-11 mat-form-field-wrapper hover">
                 <mat-select class="textcolor" [value]="0" name="locationarray" disableOptionCentering>
                   <mat-option *ngFor="let loc of locationarray; index as i" [value]="i" (click)="change(i)"> {{ loc }}
                   </mat-option>
-
                 </mat-select>
               </mat-form-field>
             </div>
-
             <a class="dropdown-item" *ngIf="this.locationarray.length==0">
               No Location Found
             </a>

@@ -118,7 +118,7 @@
       <ng-container matColumnDef="Encounter_Date">
         <mat-header-cell class="flex1" *matHeaderCellDef mat-sort-header="Encounter_Date">Encounter Date
         </mat-header-cell>
-        <mat-cell class="flex1 submenu" style="padding-left: 20px;" *matCellDef="let lesson"> {{lesson.Encounter_Date |
+        <mat-cell class="flex1 submenu" *matCellDef="let lesson"> {{lesson.Encounter_Date |
           date: 'MM/dd/yyyy'}} </mat-cell>
       </ng-container>
 

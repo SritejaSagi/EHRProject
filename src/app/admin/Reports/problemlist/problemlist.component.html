@@ -152,13 +152,13 @@
 
       <ng-container matColumnDef="DxStartDate">
         <mat-header-cell class="flex2" *matHeaderCellDef mat-sort-header="DxStartDate">Dx Start Date</mat-header-cell>
-        <mat-cell class="flex2 submenu" *matCellDef="let lesson"> {{lesson.DxStartDate | date: 'dd/MM/yyyy'}}
+        <mat-cell class="flex2 submenu" *matCellDef="let lesson"> {{lesson.DxStartDate | date: 'MM/dd/yyyy'}}
         </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="DxEndDate">
         <mat-header-cell class="flex1" *matHeaderCellDef mat-sort-header="DxEndDate">Dx End Date</mat-header-cell>
-        <mat-cell class="flex1 submenu" *matCellDef="let lesson"> {{lesson.DxEndDate | date: 'dd/MM/yyyy'}}
+        <mat-cell class="flex1 submenu" *matCellDef="let lesson"> {{lesson.DxEndDate | date: 'MM/dd/yyyy'}}
         </mat-cell>
       </ng-container>
 
