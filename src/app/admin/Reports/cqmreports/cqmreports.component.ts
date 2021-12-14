@@ -1261,8 +1261,6 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     });
   }
 
-
-
   searchByLocationId(Location_Id) {
     if (Location_Id != "") {
       this.providerslocationwisefilter = this.providerslocationwise.filter(
