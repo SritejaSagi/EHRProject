@@ -376,17 +376,15 @@ if(i==null||i==""){
     var req ={
       "LocationId":locationid,
     }
-
-    debugger;
     this.accountservice.getProviderList(req).subscribe((data) => {
 
 
       if (data.IsSuccess) {
         this.providerlist = data.ListResult;
 
-        this.filteredproviderList = this.providerlist.slice();
-        console.log(this.filteredproviderList);
-        this.filteredproviders=(this.filteredproviderList);
+        this.filteredproviders = this.providerlist.slice();
+               console.log(this.filteredproviders);
+
         this.filteredproviders=JSON.parse(JSON.stringify( this.filteredproviders));
 
 
@@ -1856,10 +1854,10 @@ debugger;
 
   createupdateEmployee(data: any) {
     debugger;
-    this.customizedspinner = true;$('body').addClass('loadactive');
+    this.customizedspinner = true;$('body').addClass('loadactive').scrollTop(0);
     this.accountservice.CreateQueuedReport(data).subscribe((data) => {
       if (data.IsSuccess) {
-        this.customizedspinner = true;$('body').addClass('loadactive');
+        this.customizedspinner = true;$('body').addClass('loadactive').scrollTop(0);;
         this.queuedreport();
         this.toastr.success("Report created successfully", "Success Message", {
           timeOut: 3000,
