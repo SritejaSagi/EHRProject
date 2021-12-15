@@ -185,6 +185,8 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   patientdob: string;
   locationarray: string[];
   measures: any;
+  providerid: any;
+  filteredproviders: any;
 
   public downloadAsPDF() {
     const documenDefinition = {
@@ -360,32 +362,50 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     this.queuedreportapplyfilter();
     this.displayedRows$ = of(messages);
     this.getCQMReportsQueuedReports();
-    this.getProviderList();
+    this.getProviderList("");
     this.getLocationsList("");
     this.getlocations();
   }
-  getProviderList() {
+  getProviderList(i: any) {
     let locationid = localStorage.getItem("providerlocation");
-
-    var req = {
-      "LocationId": locationid,
-    }
-
-    debugger;
-    this.accountservice.getProviderList(req).subscribe((data) => {
-      if (data.IsSuccess) {
-        this.providerlist = data.ListResult;
-        this.filteredproviderList = this.providerlist.slice();
+    if (i == null || i == "") {
+      var req = {
+        "LocationId": locationid,
       }
-    });
+      debugger;
+      this.accountservice.getProviderList(req).subscribe((data) => {
+        if (data.IsSuccess) {
+          this.providerlist = data.ListResult;
+          this.filteredproviderList = this.providerlist.slice();
+          this.filteredproviders = (this.filteredproviderList);
+        }
+      });
+    }
+    if (i != null || i != "") {
+      var req = {
+        "LocationId": locationid,
+      }
+      debugger;
+      this.accountservice.getProviderList(req).subscribe((data) => {
+        if (data.IsSuccess) {
+          this.providerlist = data.ListResult;
+          this.filteredproviderList = this.providerlist.slice();
+          this.filteredproviderList = this.filteredproviderList.filter(a => a.Provider_Id === i);
+          this.filteredproviderList = JSON.parse(JSON.stringify(this.filteredproviderList));
+        }
+      });
+    }
   }
 
-  getLocationsList(Location: any) {
+  getLocationsList(ProviderId) {
+
+    this.providerid = ProviderId;
     debugger;
-    this.accountservice.getLocationsList(Location).subscribe(data => {
+    this.accountservice.getLocationsList(this.providerid).subscribe(data => {
       if (data.IsSuccess) {
         this.locationslist = data.ListResult;
         this.filteredlocationList = this.locationslist.slice();
+
       }
     });
     // if (Location == "") {
@@ -396,6 +416,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     //     }
     //   });
     // }
+    this.getProviderList(this.providerid)
   }
   getlocations() {
     debugger;
