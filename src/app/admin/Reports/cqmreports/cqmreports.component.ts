@@ -381,8 +381,8 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
 
         if (data.IsSuccess) {
           this.providerlist = data.ListResult;
-
-          this.filteredproviders = this.providerlist.slice();
+          this.filteredproviderList = this.providerlist.slice();
+          this.filteredproviders =  this.filteredproviderList;
           console.log(this.filteredproviders);
 
           this.filteredproviders = JSON.parse(JSON.stringify(this.filteredproviders));
