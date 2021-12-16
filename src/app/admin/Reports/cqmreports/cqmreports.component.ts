@@ -366,7 +366,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     this.queuedreportapplyfilter();
     this.displayedRows$ = of(messages);
     this.getCQMReportsQueuedReports();
-    this.getProviderList("");
+    this.getProviderList(this.providerid);
     this.getLocationsList("");
     this.getlocations();
   }
@@ -434,7 +434,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     //     }
     //   });
     // }
-    this.getProviderList(this.providerid)
+    //this.getProviderList(this.providerid)
   }
   getlocations() {
     debugger;
@@ -1321,12 +1321,12 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     let obj = {
       PracticeId: "5b686dd7c832dd0c444f288a",
     };
-    this.customizedspinner = true; $('body').addClass('loadactive');
+    this.customizedspinner = true;  $('body').addClass('loadactive').scrollTop(0);
     this.accountservice.getCQMReportsQueuedReports(obj).subscribe((data) => {
       this.getoverrallreport.data = [];
       this.getoverrallreportlength = 0;
       if (data.IsSuccess) {
-        this.customizedspinner = true;
+        this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0)
         this.getoverrallreport.data = data.ListResult as CQMReportsData[];
         this.queuedreportdata = JSON.parse(
           JSON.stringify(data.ListResult as CQMReportsData[])
@@ -1538,7 +1538,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     this.MeasureSetId = MeasureSetId;
     this.getPatientListTabData = [];
     this.patientlistfilter = [];
-    this.customizedspinner = true;
+    this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0)
     this.accountservice.getCQMReportsDashboard(req).subscribe((data) => {
       if (data.IsSuccess) {
         this.getPatientListTabData = data;
@@ -1546,7 +1546,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
         this.patientlistfilter = this.getPatientListTabData;
         this.patientlistfilterlength = this.patientlistfilter.length;
       }
-      this.customizedspinner = false;
+      this.customizedspinner = false; $('body').removeClass('loadactive');
     });
   }
 
@@ -1592,9 +1592,10 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
         if (cmscoditions_data.IsSuccess) {
           this.DrilldownPatientData = cmscoditions_data.ListResult[0];
 
-          this.customizedspinner = false;
+          this.customizedspinner = false; $('body').removeClass('loadactive');
         } else {
-          this.customizedspinner = false;
+          this.customizedspinner = false; $('body').removeClass('loadactive');
+
         }
 
         if (
@@ -1863,7 +1864,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
           timeOut: 3000,
         });
       }
-      this.customizedspinner = false; $('body').removeClass('loadactive');;
+      this.customizedspinner = false; $('body').removeClass('loadactive');
     });
   }
 
@@ -2324,7 +2325,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
         this.providerslocationwisefilter = this.providerslocationwise;
         this.providerslocationwise1 = data.ListResult.Provider;
       }
-      this.customizedspinner = false;
+      this.customizedspinner = false; $('body').removeClass('loadactive');
     });
   }
 
