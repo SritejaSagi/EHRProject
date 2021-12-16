@@ -370,55 +370,55 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     this.getLocationsList("");
     this.getlocations();
   }
-  getProviderList(i:any) {
+  getProviderList(i: any) {
     let locationid = localStorage.getItem("providerlocation");
-if(i==null||i==""){
-    var req ={
-      "LocationId":locationid,
+    if (i == null || i == "") {
+      var req = {
+        "LocationId": locationid,
+      }
+      this.accountservice.getProviderList(req).subscribe((data) => {
+
+
+        if (data.IsSuccess) {
+          this.providerlist = data.ListResult;
+
+          this.filteredproviders = this.providerlist.slice();
+          console.log(this.filteredproviders);
+
+          this.filteredproviders = JSON.parse(JSON.stringify(this.filteredproviders));
+
+
+        }
+
+
+      });
     }
-    this.accountservice.getProviderList(req).subscribe((data) => {
-
-
-      if (data.IsSuccess) {
-        this.providerlist = data.ListResult;
-
-        this.filteredproviders = this.providerlist.slice();
-               console.log(this.filteredproviders);
-
-        this.filteredproviders=JSON.parse(JSON.stringify( this.filteredproviders));
-
-
+    if (i != null || i != "") {
+      var req = {
+        "LocationId": locationid,
       }
 
+      debugger;
+      this.accountservice.getProviderList(req).subscribe((data) => {
+        if (data.IsSuccess) {
+          this.providerlist = data.ListResult;
 
-    });
-  }
-  if(i!=null||i!=""){
-    var req ={
-      "LocationId":locationid,
+          this.filteredproviderList = this.providerlist.slice();
+          this.filteredproviderList = this.filteredproviderList.filter(a => a.Provider_Id === i);
+          this.filteredproviderList = JSON.parse(JSON.stringify(this.filteredproviderList));
+
+
+        }
+
+
+      });
     }
-
-    debugger;
-    this.accountservice.getProviderList(req).subscribe((data) => {
-      if (data.IsSuccess) {
-        this.providerlist = data.ListResult;
-
-        this.filteredproviderList = this.providerlist.slice();
-        this.filteredproviderList=this.filteredproviderList.filter(a=>a.Provider_Id===i);
-        this.filteredproviderList=JSON.parse(JSON.stringify( this.filteredproviderList));
-
-
-      }
-
-
-    });
-  }
   }
 
   getLocationsList(ProviderId) {
 
-    this.providerid=ProviderId;
-debugger;
+    this.providerid = ProviderId;
+    debugger;
     this.accountservice.getLocationsList(this.providerid).subscribe(data => {
       if (data.IsSuccess) {
         this.locationslist = data.ListResult;
@@ -1321,7 +1321,7 @@ debugger;
     let obj = {
       PracticeId: "5b686dd7c832dd0c444f288a",
     };
-    this.customizedspinner = true;$('body').addClass('loadactive');
+    this.customizedspinner = true; $('body').addClass('loadactive');
     this.accountservice.getCQMReportsQueuedReports(obj).subscribe((data) => {
       this.getoverrallreport.data = [];
       this.getoverrallreportlength = 0;
@@ -1335,7 +1335,7 @@ debugger;
         this.showQueuedReportsTable = true;
         this.measures = data.ListResult[0].MeasuresList;
       }
-      this.customizedspinner = false;$('body').removeClass('loadactive');
+      this.customizedspinner = false; $('body').removeClass('loadactive');
     });
   }
 
@@ -1538,7 +1538,7 @@ debugger;
     this.MeasureSetId = MeasureSetId;
     this.getPatientListTabData = [];
     this.patientlistfilter = [];
-    this.customizedspinner = false;
+    this.customizedspinner = true;
     this.accountservice.getCQMReportsDashboard(req).subscribe((data) => {
       if (data.IsSuccess) {
         this.getPatientListTabData = data;
@@ -1854,16 +1854,16 @@ debugger;
 
   createupdateEmployee(data: any) {
     debugger;
-    this.customizedspinner = true;$('body').addClass('loadactive').scrollTop(0);
+    this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
     this.accountservice.CreateQueuedReport(data).subscribe((data) => {
       if (data.IsSuccess) {
-        this.customizedspinner = true;$('body').addClass('loadactive').scrollTop(0);;
+        this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);;
         this.queuedreport();
         this.toastr.success("Report created successfully", "Success Message", {
           timeOut: 3000,
         });
       }
-      this.customizedspinner = false;$('body').removeClass('loadactive');;
+      this.customizedspinner = false; $('body').removeClass('loadactive');;
     });
   }
 
