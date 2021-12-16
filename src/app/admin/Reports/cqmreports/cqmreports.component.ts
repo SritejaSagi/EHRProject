@@ -382,7 +382,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
         if (data.IsSuccess) {
           this.providerlist = data.ListResult;
           this.filteredproviderList = this.providerlist.slice();
-          this.filteredproviders =  this.filteredproviderList;
+          this.filteredproviders = this.filteredproviderList;
           console.log(this.filteredproviders);
 
           this.filteredproviders = JSON.parse(JSON.stringify(this.filteredproviders));
@@ -1321,7 +1321,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     let obj = {
       PracticeId: "5b686dd7c832dd0c444f288a",
     };
-    this.customizedspinner = true;  $('body').addClass('loadactive').scrollTop(0);
+    this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
     this.accountservice.getCQMReportsQueuedReports(obj).subscribe((data) => {
       this.getoverrallreport.data = [];
       this.getoverrallreportlength = 0;

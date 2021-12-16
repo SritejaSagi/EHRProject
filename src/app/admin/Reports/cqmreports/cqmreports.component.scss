@@ -465,13 +465,18 @@ h6 {
 }
 .summary {
   width: 100%;
-  border: 2px solid #41b6a6;
-  margin-top: 3.4%;
+  border: 1px solid #41b6a6;
+  margin-top: 2.7%;
 }
 .pp {
   font-weight: bold;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin-left: 5%;
+  margin-top: 10px;
+}
+.hr-height {
+  margin-top: 0rem;
+  margin-bottom: 0.5rem;
 }
 .body {
   background-color: #f5f5f5;
