@@ -15,6 +15,7 @@ import { PageEvent } from "@angular/material/paginator";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { formatDate } from "@angular/common";
 import * as pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
 import {
   animate,
   state,
@@ -35,7 +36,7 @@ import {
 
 import { DownloadService } from "src/app/Services/download.service";
 import { AuthenticationService } from "src/app/Services/authentication.service";
-
+declare const $: any;
 @Component({
   selector: "app-cqmreports",
   templateUrl: "./cqmreports.component.html",
@@ -53,6 +54,7 @@ import { AuthenticationService } from "src/app/Services/authentication.service";
   encapsulation: ViewEncapsulation.None,
 })
 export class CqmreportsComponent implements OnInit, AfterViewInit {
+
   drilldownEncounterColumns = [
     "Action",
     "Date_Start",
@@ -97,7 +99,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   sample: any = [];
   isViewResults: boolean;
   ViewResults: boolean = true;
-  customizedspinner: boolean = false;
+  customizedspinner: boolean = true;
   getDashBoardreport: any;
   showQueuedReportsTable: boolean;
   panelOpenState: boolean = false;
@@ -185,10 +187,11 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   patientdob: string;
   locationarray: string[];
   measures: any;
-  providerid: any;
   filteredproviders: any;
+  providerid: any;
 
   public downloadAsPDF() {
+    debugger;
     const documenDefinition = {
       content: [
         {
@@ -349,6 +352,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   ) {
     this.getoverrallreport = new MatTableDataSource<CQMReportsData>();
     this.user = authenticationService.userValue;
+    pdfMake.vfs = pdfFonts.pdfMake.vfs;
   }
 
   ngAfterViewInit(): void {
@@ -366,41 +370,55 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     this.getLocationsList("");
     this.getlocations();
   }
-  getProviderList(i: any) {
+  getProviderList(i:any) {
     let locationid = localStorage.getItem("providerlocation");
-    if (i == null || i == "") {
-      var req = {
-        "LocationId": locationid,
-      }
-      debugger;
-      this.accountservice.getProviderList(req).subscribe((data) => {
-        if (data.IsSuccess) {
-          this.providerlist = data.ListResult;
-          this.filteredproviderList = this.providerlist.slice();
-          this.filteredproviders = (this.filteredproviderList);
-        }
-      });
+if(i==null||i==""){
+    var req ={
+      "LocationId":locationid,
     }
-    if (i != null || i != "") {
-      var req = {
-        "LocationId": locationid,
+    this.accountservice.getProviderList(req).subscribe((data) => {
+
+
+      if (data.IsSuccess) {
+        this.providerlist = data.ListResult;
+
+        this.filteredproviders = this.providerlist.slice();
+               console.log(this.filteredproviders);
+
+        this.filteredproviders=JSON.parse(JSON.stringify( this.filteredproviders));
+
+
       }
-      debugger;
-      this.accountservice.getProviderList(req).subscribe((data) => {
-        if (data.IsSuccess) {
-          this.providerlist = data.ListResult;
-          this.filteredproviderList = this.providerlist.slice();
-          this.filteredproviderList = this.filteredproviderList.filter(a => a.Provider_Id === i);
-          this.filteredproviderList = JSON.parse(JSON.stringify(this.filteredproviderList));
-        }
-      });
+
+
+    });
+  }
+  if(i!=null||i!=""){
+    var req ={
+      "LocationId":locationid,
     }
+
+    debugger;
+    this.accountservice.getProviderList(req).subscribe((data) => {
+      if (data.IsSuccess) {
+        this.providerlist = data.ListResult;
+
+        this.filteredproviderList = this.providerlist.slice();
+        this.filteredproviderList=this.filteredproviderList.filter(a=>a.Provider_Id===i);
+        this.filteredproviderList=JSON.parse(JSON.stringify( this.filteredproviderList));
+
+
+      }
+
+
+    });
+  }
   }
 
   getLocationsList(ProviderId) {
 
-    this.providerid = ProviderId;
-    debugger;
+    this.providerid=ProviderId;
+debugger;
     this.accountservice.getLocationsList(this.providerid).subscribe(data => {
       if (data.IsSuccess) {
         this.locationslist = data.ListResult;
@@ -1293,6 +1311,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   }
 
   getCQMReportsQueuedReports() {
+
     debugger;
     // let locationid = localStorage.getItem("providerlocation");
 
@@ -1302,7 +1321,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     let obj = {
       PracticeId: "5b686dd7c832dd0c444f288a",
     };
-    this.customizedspinner = true;
+    this.customizedspinner = true;$('body').addClass('loadactive');
     this.accountservice.getCQMReportsQueuedReports(obj).subscribe((data) => {
       this.getoverrallreport.data = [];
       this.getoverrallreportlength = 0;
@@ -1316,7 +1335,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
         this.showQueuedReportsTable = true;
         this.measures = data.ListResult[0].MeasuresList;
       }
-      this.customizedspinner = false;
+      this.customizedspinner = false;$('body').removeClass('loadactive');
     });
   }
 
@@ -1519,7 +1538,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     this.MeasureSetId = MeasureSetId;
     this.getPatientListTabData = [];
     this.patientlistfilter = [];
-    this.customizedspinner = true;
+    this.customizedspinner = false;
     this.accountservice.getCQMReportsDashboard(req).subscribe((data) => {
       if (data.IsSuccess) {
         this.getPatientListTabData = data;
@@ -1835,16 +1854,16 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
 
   createupdateEmployee(data: any) {
     debugger;
-    this.customizedspinner = true;
+    this.customizedspinner = true;$('body').addClass('loadactive').scrollTop(0);
     this.accountservice.CreateQueuedReport(data).subscribe((data) => {
       if (data.IsSuccess) {
-        this.customizedspinner = true;
+        this.customizedspinner = true;$('body').addClass('loadactive').scrollTop(0);;
         this.queuedreport();
         this.toastr.success("Report created successfully", "Success Message", {
           timeOut: 3000,
         });
       }
-      this.customizedspinner = false;
+      this.customizedspinner = false;$('body').removeClass('loadactive');;
     });
   }
 

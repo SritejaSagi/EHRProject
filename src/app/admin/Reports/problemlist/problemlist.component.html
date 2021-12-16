@@ -26,8 +26,8 @@
         </div>
         <mat-form-field appearance="outline" class="col-lg-2 col-md-6 my-2 hover">
           <mat-select placeholder="Select One" disableOptionCentering formControlName="LocationId">
-            <mat-select-filter disabledOptionCentering [placeholder]="'Search...'" [displayMember]="'Location_Name'"
-              [array]="locationslist" (filteredReturn)="filteredlocationList =$event"></mat-select-filter>
+            <!-- <mat-select-filter disabledOptionCentering [placeholder]="'Search...'" [displayMember]="'Location_Name'"
+              [array]="locationslist" (filteredReturn)="filteredlocationList =$event"></mat-select-filter> -->
             <mat-option *ngFor="let name of filteredlocationList" [value]="name.Location_Id"
               (click)="getProviderList(name)">
               {{name.Location_Name}}
