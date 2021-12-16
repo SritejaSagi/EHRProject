@@ -55,8 +55,8 @@
         </div>
         <mat-form-field appearance="outline" class="col-lg-2 col-md-6">
           <input matInput class="pointer" autocomplete="off" (dateChange)="disableApplyButtonProblemlist()"
-            [max]="tomorrow" [matDatepicker]="picker18" (click)="picker18.open()" readonly placeholder="Stop Date"
-            formControlName="EndDate">
+            [min]="problemreportform.value.StartDate" [max]="tomorrow" [matDatepicker]="picker18"
+            (click)="picker18.open()" readonly placeholder="Stop Date" formControlName="EndDate">
           <mat-datepicker-toggle matSuffix [for]="picker18"></mat-datepicker-toggle>
           <mat-datepicker #picker18></mat-datepicker>
         </mat-form-field>

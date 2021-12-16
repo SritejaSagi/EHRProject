@@ -54,8 +54,9 @@
         </mat-form-field>
         <span style="font-size: 30px;" class="d-none d-lg-inline-block">-</span>
         <mat-form-field appearance="outline" class="col-lg-2 col-md-6">
-          <input matInput class="pointer" autocomplete="off" [max]="tomorrow" placeholder="Stop Date"
-            [matDatepicker]="picker2" (click)="picker2.open()" readonly formControlName="strEDate">
+          <input matInput class="pointer" autocomplete="off" [max]="tomorrow" [min]="muReportForm.value.strSDate"
+            placeholder="Stop Date" [matDatepicker]="picker2" (click)="picker2.open()" readonly
+            formControlName="strEDate">
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>

@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     private accountservice: Accountservice,
     private authenticationService: AuthenticationService,
     protected router: Router
-  ) {}
+  ) { }
   provider_id: any;
   hash_key: any = "";
   creds: any;
@@ -43,15 +43,15 @@ export class LoginComponent implements OnInit {
         this.authenticationService.loginWithRubyCredentials(
           this.ruby_session_id
         );
-      }else
-      this.showspinner = false;
+      } else
+        this.showspinner = false;
     }
 
     this.buildForm();
   }
 
   onSignIn() {
-    this.router.navigate(["/mureports"]);
+    this.router.navigate(["/categoryreports"]);
   }
 
   buildForm() {
@@ -74,7 +74,7 @@ export class LoginComponent implements OnInit {
 
     this.authenticationService.loginWithFormCredentials(creds).subscribe(resp => {
 
-      if (!resp.IsSuccess){
+      if (!resp.IsSuccess) {
         this.showspinner = false;
         this.message = '';
         //this.authfailedmessage = "Enter valid Email Id and Password";

@@ -1511,8 +1511,8 @@
               </div>
               <mat-form-field appearance="outline" class="col-lg-12 ">
                 <input matInput class="pointer" style="text-overflow: ellipsis;" placeholder="End Date"
-                  autocomplete="off" [matDatepicker]="picker2" (click)="picker2.open()" readonly
-                  formControlName="endDate">
+                  autocomplete="off" [min]="createReportForm.value.startDate" [matDatepicker]="picker2"
+                  (click)="picker2.open()" readonly formControlName="endDate">
                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                 <mat-datepicker #picker2></mat-datepicker>
               </mat-form-field>

@@ -11,7 +11,6 @@ export class CategoryreportsComponent implements OnInit {
   category: { Id: number; Name: string; }[];
   categoryId: any;
   reports: number;
-  disable: boolean;
   mureportsstage2: boolean;
   mureportsstage3: boolean;
   cqmreports: boolean;
@@ -92,10 +91,11 @@ export class CategoryreportsComponent implements OnInit {
   reportsId(req) {
     this.reports = req;
     if (req == 0 || req == null) {
-      this.disable = false;
-    }
-    else if (req >= 1) {
-      this.disable = true;
+      this.mureports = false;
+      this.patientlist = false;
+      this.encounterlist = false;
+      this.problem = false;
+      this.cqmreports = false;
     }
     this.showReport(this.reports);
   }

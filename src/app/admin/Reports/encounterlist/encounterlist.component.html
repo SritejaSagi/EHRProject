@@ -55,8 +55,8 @@
         </div>
         <mat-form-field appearance="outline" class="col-lg-2 col-md-6">
           <input matInput class="pointer" autocomplete="off" (dateChange)="disableApplyButtonEncounterlist()"
-            [max]="tomorrow" [matDatepicker]="picker8" (click)="picker8.open()" readonly placeholder="Stop Date"
-            formControlName="SendDate">
+            [min]="encounterForm.value.SstartDate" [max]="tomorrow" [matDatepicker]="picker8" (click)="picker8.open()"
+            readonly placeholder="Stop Date" formControlName="SendDate">
           <mat-datepicker-toggle matSuffix [for]="picker8"></mat-datepicker-toggle>
           <mat-datepicker #picker8></mat-datepicker>
         </mat-form-field>
