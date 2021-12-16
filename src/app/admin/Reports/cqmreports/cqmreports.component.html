@@ -849,7 +849,8 @@
                         <span class="font">First Name</span>
                       </div>
                       <mat-form-field appearance="outline" class="col-lg-12">
-                        <input matInput placeholder="First Name Filter" formControlName="firstName">
+                        <input matInput placeholder="First Name Filter" formControlName="firstName"
+                          style="text-overflow: ellipsis;">
                       </mat-form-field>
                     </div>
                     <div class="col-lg-2">
@@ -857,7 +858,8 @@
                         <span class="font">Last Name</span>
                       </div>
                       <mat-form-field appearance="outline" class="col-lg-12">
-                        <input matInput placeholder="Last Name Filter" formControlName="lastName">
+                        <input matInput placeholder="Last Name Filter" formControlName="lastName"
+                          style="text-overflow: ellipsis;">
                       </mat-form-field>
                     </div>
                     <div class="col-lg-2">
@@ -865,19 +867,21 @@
                         <span class="font">Patient ID</span>
                       </div>
                       <mat-form-field appearance="outline" class="col-lg-12">
-                        <input matInput placeholder="Patient ID Filter" formControlName="patientId">
+                        <input matInput placeholder="Patient ID Filter" formControlName="patientId"
+                          style="text-overflow: ellipsis;">
                       </mat-form-field>
                     </div>
                     <div class="col-lg-6">
                       <div class="col-lg-12">
                         <div class="row">
                           <div class="col-xl-6 col-lg-12 col-md-10">
-                            <button mat-button class="col-xl-3 col-lg-3 col-md-3 col-12 mx-1 my-4"
-                              style="height: 38px; margin-top: 2px;" (click)="patientlisttabfilter()">Filter</button>
+                            <button mat-button class="col-xl-3 col-lg-3 col-md-3 col-12"
+                              style="height: 37px; margin-top: 27px;" (click)="patientlisttabfilter()">Filter</button>
                             <button mat-button class="col-xl-3 col-lg-3 col-md-3 col-12 mx-1"
-                              style="height: 38px; margin-top: 2px;"
+                              style="height: 37px; margin-top: 27px;"
                               (click)="patientlisttabfilterClear()">Clear</button>
-                            <button mat-button class="col-xl-5 col-lg-5 col-md-4 my-1" style="height: 38px;">Default
+                            <button mat-button class="col-xl-5 col-lg-5 col-md-4 my-1"
+                              style="height: 37px; margin-top: 27px;">Default
                               View</button>
                           </div>
                         </div>

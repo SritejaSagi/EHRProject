@@ -218,14 +218,20 @@ a {
   border-right: 1px solid white;
   max-height: 54px;
 }
+.mat-header-cell:last-child {
+  border-right: none;
+}
 .submenu {
   border-right: 1px solid #41b6a6;
   padding-top: 25px;
 }
+.submenu:last-child {
+  border-right: none;
+}
 .mat-header-row {
   background-color: #41b6a6;
-  border-right-width: 1px;
-  border-right-style: solid;
+  // border-right-width: 1px;
+  // border-right-style: solid;
 }
 .mat-row:hover {
   background-color: #e5f8f5;
@@ -236,6 +242,7 @@ a {
   align-items: center;
   height: 53px;
   font-family: serif;
+  border-right: 1px solid #41b6a6;
 }
 .menu:hover {
   background-color: rgb(227, 238, 248);
