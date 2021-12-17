@@ -43,6 +43,7 @@ export class ProblemlistComponent implements OnInit {
   customizedspinner: boolean;
   tomorrow = new Date();
   applyButtonToDisableproblem: boolean = true;
+  disableEndDateInput: boolean = true;
 
   problemreportlistdata: {
     StartDate: any;
@@ -112,7 +113,14 @@ export class ProblemlistComponent implements OnInit {
       this.applyButtonToDisableproblem = true;
     } else if (Provider_Id != "" && StartDate == "" && EndDate != "") {
       this.applyButtonToDisableproblem = true;
-    } else {
+    }
+    else if (StartDate == "") {
+      this.disableEndDateInput = true;
+    }
+    else if (StartDate != "") {
+      this.disableEndDateInput = false;
+    }
+    else {
       this.applyButtonToDisableproblem = true;
     }
   }

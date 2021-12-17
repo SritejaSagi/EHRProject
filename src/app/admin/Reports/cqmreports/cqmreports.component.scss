@@ -19,25 +19,25 @@
     line-height: 1;
   }
 }
-.mat-table {
-  border: 1px solid #41b6a6 !important;
+.cqm-mat-table {
+  .mat-table {
+    border: 1px solid #41b6a6 !important;
+  }
+  .cstm-mat-cell-align .mat-cell {
+    display: block;
+    align-self: stretch;
+  }
+  .mat-row {
+    border-bottom-color: #41b6a6;
+  }
+  .mat-header-cell {
+    font-size: 16px;
+  }
 }
-
-.cstm-mat-cell-align .mat-cell {
-  display: block;
-  align-self: stretch;
-}
-.mat-row {
-  border-bottom-color: #41b6a6;
-}
-
 .ng-container {
   padding: 10px 0;
 }
 
-.mat-header-cell {
-  font-size: 16px;
-}
 .description {
   color: #428bca;
 }
@@ -180,14 +180,11 @@ mat-expansion-panel {
   margin-top: 0.5%;
   height: 48px;
 }
+// new report
 .panel-overflow {
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: 500px;
 }
-// .panel {
-//   overflow-y: scroll;
-//   max-height: 500px;
-// }
 .cqmcheckbox {
   color: red;
   font-weight: bold;
@@ -505,6 +502,9 @@ button {
 .fa {
   color: #41b6a6;
   font-size: 25px;
+}
+.fa-download {
+  font-size: 18px !important;
 }
 .cstm-border-color {
   border: 1px solid #41b6a6;

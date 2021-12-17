@@ -64,6 +64,7 @@ export class PatientlistComponent implements OnInit {
     "Prime_Subscriber_Name",
   ];
   applyButtonToDisable: boolean = true;
+  disableEndDateInput: boolean = true;
   name: string;
   subject: string;
   disabledowloadExportbtn: boolean = true;
@@ -224,7 +225,14 @@ export class PatientlistComponent implements OnInit {
       EndDate == ""
     ) {
       this.applyButtonToDisable = true;
-    } else {
+    }
+    else if (StartDate == "") {
+      this.disableEndDateInput = true;
+    }
+    else if (StartDate != "") {
+      this.disableEndDateInput = false;
+    }
+    else {
       this.applyButtonToDisable = true;
     }
   }

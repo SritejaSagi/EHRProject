@@ -123,9 +123,9 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   pageIndex = 0;
   pageSizeOptions: number[] = [5, 10, 25, 100];
   pageEvent: PageEvent;
-  providerlist: any;
+  providerlist: any[] = [];
   locationslist: any;
-  filteredproviderList: any;
+  filteredproviderList: any = [];
   filteredlocationList: any;
   checksbtn: boolean = true;
   countsbtn: boolean = false;
@@ -377,86 +377,49 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
         "LocationId": locationid,
       }
       this.accountservice.getProviderList(req).subscribe((data) => {
-
-
         if (data.IsSuccess) {
           this.providerlist = data.ListResult;
           this.filteredproviderList = this.providerlist.slice();
           this.filteredproviders = this.filteredproviderList;
-          console.log(this.filteredproviders);
-
-          this.filteredproviders = JSON.parse(JSON.stringify(this.filteredproviders));
-
-
+          this.filteredproviders = JSON.parse(JSON.stringify(this.providerlist));
         }
-
-
       });
     }
-    if (i != null || i != "") {
+    else if (i != null || i != "") {
       var req = {
         "LocationId": locationid,
       }
-
       debugger;
       this.accountservice.getProviderList(req).subscribe((data) => {
         if (data.IsSuccess) {
           this.providerlist = data.ListResult;
-
           this.filteredproviderList = this.providerlist.slice();
-          this.filteredproviderList = this.filteredproviderList.filter(a => a.Provider_Id === i);
+          this.filteredproviderList = this.providerlist.filter(a => a.Provider_Id === i);
           this.filteredproviderList = JSON.parse(JSON.stringify(this.filteredproviderList));
-
-
         }
-
-
       });
     }
   }
 
   getLocationsList(ProviderId) {
-
     this.providerid = ProviderId;
     debugger;
     this.accountservice.getLocationsList(this.providerid).subscribe(data => {
       if (data.IsSuccess) {
         this.locationslist = data.ListResult;
         this.filteredlocationList = this.locationslist.slice();
-
       }
+      this.getProviderList(ProviderId);
     });
-    // if (Location == "") {
-    //   this.service.getLocationsList(Location).subscribe(data => {
-    //     if (data.IsSuccess) {
-    //       this.locationslist = data.ListResult;
-    //       this.filteredlocationList = this.locationslist.slice();
-    //     }
-    //   });
-    // }
-    //this.getProviderList(this.providerid)
   }
   getlocations() {
-    debugger;
-
     var location = this.user.LocationName;
-
-
     this.locationarray = location.split(',');
-
-
     for (var i = 0; i < this.locationarray.length; i++) {
-
       this.locationarray[i] = this.locationarray[i].replace(/^\s*/, "").replace(/\s*$/, "");
-
-
-
     }
-
-
-
-
   }
+
   onViewResults(queuedReportData: any) {
     this.patientlistmeasure = queuedReportData;
     this.firstencounter = formatDate(

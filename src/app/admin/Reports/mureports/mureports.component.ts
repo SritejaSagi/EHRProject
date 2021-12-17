@@ -261,6 +261,8 @@ export class MureportsComponent implements OnInit {
   LocationStreetAddress: any;
   LocationCity: any;
   LocationState: any;
+  disableEndDateInput: boolean = true;
+
   public downloadAsPDF() {
     debugger;
     if (this.stage3NumeDenomicount != null) {
@@ -2227,6 +2229,19 @@ export class MureportsComponent implements OnInit {
     }
     console.log(this.muReportForm.value);
     this.getStage2PatientList(Patientreport);
+  }
+
+  disableEndDate() {
+    var StartDate =
+      this.muReportForm.value.strSDate == null
+        ? ""
+        : this.muReportForm.value.strSDate;
+    if (StartDate != "") {
+      this.disableEndDateInput = false;
+    }
+    else {
+      this.disableEndDateInput = true;
+    }
   }
 
   getStage2PatientList(data: any) {

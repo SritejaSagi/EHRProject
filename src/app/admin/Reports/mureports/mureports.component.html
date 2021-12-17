@@ -47,25 +47,26 @@
         <!-- <div class="col-lg-1 col-md-6">
           </div> -->
         <mat-form-field appearance="outline" class="col-lg-2 col-md-6">
-          <input matInput class="pointer" autocomplete="off" [max]="tomorrow" [matDatepicker]="picker1"
-            (click)="picker1.open()" readonly placeholder="Start Date" formControlName="strSDate">
+          <input matInput class="pointer" autocomplete="off" [max]="tomorrow" (dateChange)="disableEndDate()"
+            [matDatepicker]="picker1" (click)="picker1.open()" readonly placeholder="Start Date"
+            formControlName="strSDate">
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
           <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
         <span style="font-size: 30px;" class="d-none d-lg-inline-block">-</span>
         <mat-form-field appearance="outline" class="col-lg-2 col-md-6">
-          <input matInput class="pointer" autocomplete="off" [max]="tomorrow" [min]="muReportForm.value.strSDate"
-            placeholder="Stop Date" [matDatepicker]="picker2" (click)="picker2.open()" readonly
-            formControlName="strEDate">
+          <input matInput class="cstm-disable pointer" autocomplete="off" [max]="tomorrow"
+            [min]="muReportForm.value.strSDate" placeholder="Stop Date" [matDatepicker]="picker2"
+            (click)="picker2.open()" readonly formControlName="strEDate" [disabled]="disableEndDateInput">
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>
-        <div class="col-lg-2 col-md-6 margin-bottom">
+        <div class="col-lg-2 col-md-6">
           <button class="btn col-lg-8 my-1 float-right" (click)="onSubmitMUReport()" [disabled]="muReportForm.invalid">
             Apply Filters
           </button>
         </div>
-        <div class="col-lg-2 col-md-6 margin-bottom">
+        <div class="col-lg-2 col-md-6">
           <button class="btn col-lg-9 my-1 " (click)="downloadAsPDF();" [disabled]="disabledowloadPDF">
             Download PDF
           </button>

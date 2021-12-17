@@ -24,6 +24,7 @@ export class EncounterlistComponent implements OnInit {
   @ViewChildren(MatPaginator) paginator = new QueryList<MatPaginator>();
   @ViewChildren(MatSort) sort = new QueryList<MatSort>();
   applyButtonToDisableencounter: boolean = true;
+  disableEndDateInput: boolean = true;
   length: number;
   pageSize = 10;
   pageIndex = 0;
@@ -98,13 +99,23 @@ export class EncounterlistComponent implements OnInit {
         : this.encounterForm.value.SendDate;
     if (Provider_Id != "" && StartDate == "" && EndDate == "") {
       this.applyButtonToDisableencounter = false;
-    } else if (Provider_Id != "" && StartDate != "" && EndDate != "") {
+    }
+    else if (Provider_Id != "" && StartDate != "" && EndDate != "") {
       this.applyButtonToDisableencounter = false;
-    } else if (Provider_Id != "" && StartDate != "" && EndDate == "") {
+    }
+    else if (Provider_Id != "" && StartDate != "" && EndDate == "") {
       this.applyButtonToDisableencounter = true;
-    } else if (Provider_Id != "" && StartDate == "" && EndDate != "") {
+    }
+    else if (Provider_Id != "" && StartDate == "" && EndDate != "") {
       this.applyButtonToDisableencounter = true;
-    } else {
+    }
+    else if (StartDate == "") {
+      this.disableEndDateInput = true;
+    }
+    else if (StartDate != "") {
+      this.disableEndDateInput = false;
+    }
+    else {
       this.applyButtonToDisableencounter = true;
     }
   }

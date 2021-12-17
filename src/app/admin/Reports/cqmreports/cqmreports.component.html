@@ -469,10 +469,10 @@
                     <div>
                       <h4>Table of Contents:</h4>
                       <ul class="mx-md-5 mx-3">
-                        <li (click)="ReportingParameters()" style="text-decoration: underline;">
+                        <li class="pointer" (click)="ReportingParameters()" style="text-decoration: underline;">
                           <p>Reporting Parameters</p>
                         </li>
-                        <li (click)="Measuresection()" style="text-decoration: underline;">
+                        <li class="pointer" (click)="Measuresection()" style="text-decoration: underline;">
                           <p> Measure section</p>
                         </li>
                       </ul>
@@ -734,12 +734,10 @@
                                           *ngIf="(details.MeasureIdentifier == 'CMS 74' || details.MeasureIdentifier == 'CMS 155') && details.StratificationText == null">
                                         <b *ngIf="(details.MeasureIdentifier == 'CMS 74' || details.MeasureIdentifier == 'CMS 155') && details.StratificationText == null"
                                           style="color: #239B56;">Unstratified</b>
-
                                       </td>
                                       <td style="width: 8%;">
                                         <div class="row">
                                           <b class="col-xl-3 col-lg-4 col-md-4 col-4">{{details.PerformanceRate}}%</b>
-
                                           <div class="progress col-xl-9 col-lg-8 col-md-8 col-8">
                                             <div id="progressBar" class="progress-bar"
                                               style="width:0%; background:#428bca;">
@@ -911,18 +909,16 @@
                       <tr *ngFor="let i of patientlistfilter | paginate: { itemsPerPage: 50, currentPage: p }">
                         <td>{{i.Patient_Name}}</td>
                         <td>{{i.DoB|date:'MM/dd/yyyy'}}</td>
-
                         <td>
                           <div [ngClass]="{'d-none': i.IppCheck != 1 || i.DenominatorCheck != 1}">
-                            <button class="btn" (click)="downloadpatient(i.PatientId)">
-                              <i class="fa fa-download patientdownload"></i>
-                            </button>
+                            <!-- <button class="btn" (click)="downloadpatient(i.PatientId)"> -->
+                            <i class="fa fa-download pointer mx-1" (click)="downloadpatient(i.PatientId)"></i>
+                            <!-- </button> -->
                             {{i.PatientId}}
                           </div>
                           <div [ngClass]="{'d-none': i.IppCheck == 1 || i.DenominatorCheck == 1}">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{i.PatientId}}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{i.PatientId}}
                           </div>
-
                         </td>
 
                         <td>{{i.Account}}</td>
@@ -1045,7 +1041,7 @@
                             </mat-panel-title>
                           </mat-expansion-panel-header>
                           <br>
-                          <div class="ehr-cqm-table-container">
+                          <div class="ehr-cqm-table-container cqm-mat-table">
                             <table mat-table class="drilltab" [dataSource]="getDrilldownListTabData"
                               multiTemplateDataRows class="custom-expand-table">
 
@@ -1131,7 +1127,7 @@
                             </mat-panel-title>
                           </mat-expansion-panel-header>
                           <br>
-                          <div class="ehr-cqm-table-container">
+                          <div class="ehr-cqm-table-container cqm-mat-table">
                             <table mat-table class="drilltab" [dataSource]="getDrilldownEncountersData"
                               multiTemplateDataRows class="custom-expand-table">
 
@@ -1201,7 +1197,7 @@
                             <span class="mat-cell">Authors</span>
                           </mat-expansion-panel-header>
                           <br>
-                          <div class="ehr-cqm-table-container">
+                          <div class="ehr-cqm-table-container cqm-mat-table">
                             <table mat-table class="drilltab" [dataSource]="getDrilldownListTabData"
                               multiTemplateDataRows class="custom-expand-table">
 
@@ -1391,7 +1387,7 @@
               </div>
             </form>
           </div>
-          <div class="ehr-cqm-table-container">
+          <div class="ehr-cqm-table-container cqm-mat-table">
             <mat-table class="table table-responsive cstm-mat-cell-align" [dataSource]="getoverrallreport" matSort>
               <ng-container matColumnDef="Description">
                 <mat-header-cell fxFlex="20%" *matHeaderCellDef mat-sort-header="Description" class="cstm-widthgd qr">
@@ -1543,7 +1539,7 @@
                 <mat-select placeholder="Select Provider" disableOptionCentering formControlName="providerId">
                   <mat-select-filter [placeholder]="'Search...'" [displayMember]="'Provider_Name'"
                     [array]="providerlist" (filteredReturn)="filteredproviderList =$event"> </mat-select-filter>
-                  <mat-option (click)="getProviderList()">
+                  <mat-option (click)="getProviderList(null)">
                     Show all Providers
                   </mat-option>
                   <mat-option *ngFor="let item of filteredproviders" [value]="item.Provider_Id"

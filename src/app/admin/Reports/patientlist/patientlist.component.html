@@ -55,25 +55,26 @@
         <mat-form-field appearance="outline" class="col-lg-2 my-2">
           <input matInput class="pointer" autocomplete="off" (dateChange)="disableApplyButton()" [max]="tomorrow"
             [min]="patientForm.value.SstartDate" [matDatepicker]="picker4" (click)="picker4.open()" readonly
-            placeholder="Stop Date" formControlName="SendDate">
+            placeholder="Stop Date" formControlName="SendDate" [disabled]='disableEndDateInput'>
           <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
           <mat-datepicker #picker4></mat-datepicker>
         </mat-form-field>
         <div class="col-lg-2 my-2">
-          <button class="btn col-lg-12 my-1" (click)="onSubmitallpatientlist()" [disabled]='applyButtonToDisable'>
+          <button class="btn col-lg-12 btn-height my-1" (click)="onSubmitallpatientlist()"
+            [disabled]='applyButtonToDisable'>
             Apply Filters
           </button>
         </div>
         <div class="col-lg-2 my-2">
-          <button class="btn col-lg-12 my-1 px-lg-3 px-2 my-1" (click)="downloadPatientListExcel()"
+          <button class="btn col-lg-12 btn-height my-1 px-lg-3 px-2 my-1" (click)="downloadPatientListExcel()"
             [disabled]="disabledowloadExportbtn">
             Export CSV
           </button>
         </div>
       </div>
-      <div class="row" style="background-color: #e5f8f5; height: 50px;">
+      <div class="row" style="background-color: #e5f8f5;">
         <div class="col-lg-3"></div>
-        <div class="col-lg-4 margin-bottom">
+        <div class="col-lg-4 my-1 mb-3">
           <mat-checkbox class="col-lg-12 col-md-12 example-margin" style="margin-left: 0px;" formControlName="Checked">
           </mat-checkbox><span>Include Inactive
             Patients</span>

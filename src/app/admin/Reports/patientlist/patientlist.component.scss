@@ -19,55 +19,13 @@ button:hover {
   color: #fff;
   border: 1px solid #fff;
 }
-.mat-cell {
-  border-bottom: #41b6a6 1px solid;
+.btn-height {
+  height: 50px;
 }
 p {
   font-size: 16px !important;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-.mat-cell,
-.mat-header-cell {
-  font-size: 15px;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  padding: 6px 10px;
-  // height: 53px;
-  border-bottom: #41b6a6 1px solid;
-  display: block !important;
-  align-self: stretch !important;
-}
-mat-header-cell {
-  background-color: #41b6a6 !important;
-  width: 100%;
-  // max-height: 54px;
-  text-align: left !important;
-  // display: block;
-  // align-self: stretch !important;
-}
-mat-cell {
-  border-right: 1px solid #41b6a6;
-  // max-height: 80px;
-  border-bottom: 1px solid #41b6a6;
-  text-align: left !important;
-  background-color: white !important;
-  // display: block;
-  // align-self: stretch !important;
-}
-.mat-header-cell {
-  color: white;
-  border-right: 1px solid white;
-  // max-height: 54px;
-}
-.submenu {
-  border-right: 1px solid #41b6a6;
-  // padding-top: 25px;
-}
-.mat-header-row {
-  background-color: #41b6a6;
-  border-right-width: 1px;
-  border-right-style: solid;
-}
-
 ::ng-deep .example-margin {
   & .mat-checkbox-background,
   .mat-checkbox-frame {
@@ -109,6 +67,40 @@ table {
   text-align: center;
 }
 .patient {
+  .mat-cell,
+  .mat-header-cell {
+    font-size: 15px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    padding: 6px 10px;
+    display: block !important;
+    align-self: stretch !important;
+  }
+  .mat-header-cell {
+    background-color: #41b6a6 !important;
+    width: 100%;
+    text-align: left !important;
+  }
+  .mat-cell {
+    border-right: 1px solid #41b6a6;
+    border-bottom: 1px solid #41b6a6;
+    text-align: left !important;
+    background-color: white !important;
+  }
+  .mat-cell:last-child {
+    border-right: none;
+  }
+  .mat-header-cell {
+    color: white;
+    border-right: 1px solid white;
+    border-bottom: none;
+  }
+  .mat-header-cell:last-child {
+    border-right: none;
+  }
+  .mat-header-row {
+    background-color: #41b6a6;
+  }
+
   mat-cell:nth-child(1),
   mat-header-cell:nth-child(1) {
     flex: 0 0 17%;
