@@ -102,9 +102,11 @@ export class EncounterlistComponent implements OnInit {
     }
     else if (Provider_Id != "" && StartDate != "" && EndDate != "") {
       this.applyButtonToDisableencounter = false;
+      this.disableEndDateInput = false;
     }
     else if (Provider_Id != "" && StartDate != "" && EndDate == "") {
       this.applyButtonToDisableencounter = true;
+      this.disableEndDateInput = false;
     }
     else if (Provider_Id != "" && StartDate == "" && EndDate != "") {
       this.applyButtonToDisableencounter = true;

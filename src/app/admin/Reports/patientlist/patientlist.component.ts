@@ -177,6 +177,7 @@ export class PatientlistComponent implements OnInit {
       AendDate != ""
     ) {
       this.applyButtonToDisable = false;
+      this.disableEndDateInput = false;
     } else if (
       Provider_Id != "" &&
       StartDate != "" &&
@@ -185,6 +186,7 @@ export class PatientlistComponent implements OnInit {
       AendDate == ""
     ) {
       this.applyButtonToDisable = false;
+      this.disableEndDateInput = false;
     } else if (
       Provider_Id != "" &&
       StartDate == "" &&
@@ -201,6 +203,7 @@ export class PatientlistComponent implements OnInit {
       AendDate == ""
     ) {
       this.applyButtonToDisable = true;
+      this.disableEndDateInput = false;
     } else if (
       Provider_Id != "" &&
       StartDate == "" &&

@@ -107,11 +107,16 @@ export class ProblemlistComponent implements OnInit {
         : this.problemreportform.value.EndDate;
     if (Provider_Id != "" && StartDate == "" && EndDate == "") {
       this.applyButtonToDisableproblem = false;
-    } else if (Provider_Id != "" && StartDate != "" && EndDate != "") {
+    }
+    else if (Provider_Id != "" && StartDate != "" && EndDate != "") {
       this.applyButtonToDisableproblem = false;
-    } else if (Provider_Id != "" && StartDate != "" && EndDate == "") {
+      this.disableEndDateInput = false;
+    }
+    else if (Provider_Id != "" && StartDate != "" && EndDate == "") {
       this.applyButtonToDisableproblem = true;
-    } else if (Provider_Id != "" && StartDate == "" && EndDate != "") {
+      this.disableEndDateInput = false;
+    }
+    else if (Provider_Id != "" && StartDate == "" && EndDate != "") {
       this.applyButtonToDisableproblem = true;
     }
     else if (StartDate == "") {

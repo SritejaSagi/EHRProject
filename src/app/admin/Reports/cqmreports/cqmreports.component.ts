@@ -109,6 +109,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   showUseFilterForm: boolean = false;
   showClearFilterBtn: boolean = false;
   showChooseFile: boolean = false;
+  disableEndDateInput: boolean = true;
   queuedReportsColumns = [
     "Description",
     "Measures",
@@ -447,6 +448,19 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     this.GetDashBoardReport(queuedReportData.ReportId);
     // this.getPatientList(queuedReportData.ReportId);
     this.detailsTab("dashBoard");
+  }
+
+  disableEndDate() {
+    var StartDate =
+      this.createReportForm.value.startDate == null
+        ? ""
+        : this.createReportForm.value.startDate;
+    if (StartDate != "") {
+      this.disableEndDateInput = false;
+    }
+    else {
+      this.disableEndDateInput = true;
+    }
   }
 
   getMeasures() {
@@ -1276,21 +1290,21 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   getCQMReportsQueuedReports() {
 
     debugger;
-    // let locationid = localStorage.getItem("providerlocation");
+    let locationid = localStorage.getItem("providerlocation");
 
-    // let obj = {
-    //   practiceId: locationid,
-    // };
     let obj = {
-      PracticeId: "5b686dd7c832dd0c444f288a",
+      practiceId: locationid,
     };
+    // let obj = {
+    //   PracticeId: "5b686dd7c832dd0c444f288a",
+    // };
     this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
     this.accountservice.getCQMReportsQueuedReports(obj).subscribe((data) => {
       this.getoverrallreport.data = [];
       this.getoverrallreportlength = 0;
       if (data.IsSuccess) {
         this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0)
-        this.getoverrallreport.data = data.ListResult as CQMReportsData[];
+        this.getoverrallreport.data = data.ListResult[0] as CQMReportsData[];
         this.queuedreportdata = JSON.parse(
           JSON.stringify(data.ListResult as CQMReportsData[])
         );
@@ -1508,6 +1522,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
         this.getPatientListTabData = this.getPatientListTabData.ListResult;
         this.patientlistfilter = this.getPatientListTabData;
         this.patientlistfilterlength = this.patientlistfilter.length;
+        this.p = 1;
       }
       this.customizedspinner = false; $('body').removeClass('loadactive');
     });
