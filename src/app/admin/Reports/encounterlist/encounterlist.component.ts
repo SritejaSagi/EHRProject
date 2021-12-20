@@ -25,12 +25,10 @@ export class EncounterlistComponent implements OnInit {
   @ViewChildren(MatSort) sort = new QueryList<MatSort>();
   applyButtonToDisableencounter: boolean = true;
   disableEndDateInput: boolean = true;
-  length: number;
   pageSize = 10;
   pageIndex = 0;
   pageSizeOptions: number[] = [5, 10, 25, 100];
   pageEvent: PageEvent;
-  encounterlength: number;
   tomorrow = new Date();
   encounterdata: {
     SstartDate: string;
@@ -172,13 +170,11 @@ export class EncounterlistComponent implements OnInit {
 
     this.service.getEncountersList(data).subscribe((data) => {
       this.encounterlist.data = [];
-      this.encounterlength = 0;
       this.showencounterTable = true;
       if (data.IsSuccess) {
         this.showEncounterControls = true;
         this.customizedspinner = true;
         this.encounterlist.data = data.ListResult as EncounterData[];
-        this.encounterlength = data.ListResult.length;
         this.showencounterTable = true;
         this.disabledowloadExportbtn = false;
       }

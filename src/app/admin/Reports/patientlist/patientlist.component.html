@@ -166,11 +166,11 @@
       <mat-header-row *matHeaderRowDef="PatientListColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: PatientListColumns;"></mat-row>
     </mat-table>
-    <div style="color: red;text-align: center;" *ngIf="patientlistlength==0">
+    <div style="color: red;text-align: center;" *ngIf="allPatientList.data.length==0">
       No Records Found!
     </div>
   </div>
-  <mat-paginator class="arrow" #paginator [length]="patientlistlength" [pageIndex]="pageIndex" [pageSize]="pageSize"
-    [pageSizeOptions]="pageSizeOptions" [hidden]="!showpatientTable">
+  <mat-paginator class="arrow" #paginator [length]="allPatientList.data.length" [pageIndex]="pageIndex"
+    [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" [hidden]="!showpatientTable">
   </mat-paginator>
 </div>

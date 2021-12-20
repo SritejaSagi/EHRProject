@@ -21,7 +21,6 @@ import { TableUtil } from "../tableUtil";
 export class PatientlistComponent implements OnInit {
   @ViewChildren(MatPaginator) paginator = new QueryList<MatPaginator>();
   @ViewChildren(MatSort) sort = new QueryList<MatSort>();
-  length: number;
   pageSize = 10;
   pageIndex = 0;
   pageSizeOptions: number[] = [5, 10, 25, 100];
@@ -32,8 +31,6 @@ export class PatientlistComponent implements OnInit {
   filteredlocationList: any;
   provider_Id: string;
   customizedspinner: boolean;
-
-  patientlistlength: any;
   showpatientTable: boolean;
   patientForm: FormGroup;
   tomorrow = new Date();
@@ -244,13 +241,11 @@ export class PatientlistComponent implements OnInit {
     this.service.getAllPatientList(data).subscribe((data) => {
       this.allPatientList.data = [];
       this.allPatientList.data = data.ListResult as PatientData[];
-      this.patientlistlength = 0;
       this.showpatientTable = true;
       if (data.IsSuccess) {
         this.showPatientControls = true;
         this.customizedspinner = true;
         this.allPatientList.data = data.ListResult as PatientData[];
-        this.patientlistlength = data.ListResult.length;
         this.showpatientTable = true;
         this.disabledowloadExportbtn = false;
       }

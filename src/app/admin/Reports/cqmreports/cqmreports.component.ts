@@ -119,7 +119,6 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     "Report",
     "Action",
   ];
-  length: number;
   pageSize = 10;
   pageIndex = 0;
   pageSizeOptions: number[] = [5, 10, 25, 100];
@@ -137,7 +136,6 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   public getoverrallreport = new MatTableDataSource<CQMReportsData>();
 
   router: any;
-  getoverrallreportlength: any;
   cqmcreatereport: boolean;
   tabId: string;
   isLoggedIn: boolean;
@@ -145,10 +143,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   datasesssion: string;
   getPatientListTabData: any;
   ReportId: MatTableDataSource<CQMReportsData>;
-  getPatientListTabDatalength: any;
   showcheckcountbtn: boolean;
-  getDrilldownListTabDatalength: any;
-  getDrilldownEncountersDatalength: any;
   displayedRows$: Observable<any>;
   patientlistdata: any = {};
   patientlistmeasure: any;
@@ -167,7 +162,6 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   providerslocationwisefilter: any;
   startDate: any;
   patientlistfilter: any;
-  patientlistfilterlength: any;
   xml: any;
   qrdareport: any;
   queuedreportdata: any = [];
@@ -1314,14 +1308,12 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
     this.accountservice.getCQMReportsQueuedReports(obj).subscribe((data) => {
       this.getoverrallreport.data = [];
-      this.getoverrallreportlength = 0;
       if (data.IsSuccess) {
         this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0)
         this.getoverrallreport.data = data.ListResult[0] as CQMReportsData[];
         this.queuedreportdata = JSON.parse(
           JSON.stringify(data.ListResult[0] as CQMReportsData[])
         );
-        this.getoverrallreportlength = data.ListResult[0].length;
         this.showQueuedReportsTable = true;
         this.measures = data.ListResult[0].MeasuresList;
       }
@@ -1418,7 +1410,6 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
       (PatientForm.endDate == "" || PatientForm.endDate == null)
     ) {
       this.getoverrallreport.data = this.queuedreportdata;
-      this.getoverrallreportlength = this.getoverrallreport.data.length;
       this.showUseFilterForm = false;
       this.showClearFilterBtn = true;
     } else {
@@ -1450,7 +1441,6 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
           (StartDate == startDate && EndDate == enDate)
         );
       });
-      this.getoverrallreportlength = this.getoverrallreport.data.length;
       this.showUseFilterForm = false;
       this.showClearFilterBtn = true;
     }
@@ -1458,7 +1448,6 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   queuedreporttabfilterClear() {
     this.queuedreportfilterForm.reset();
     this.getoverrallreport.data = this.queuedreportdata;
-    this.getoverrallreportlength = this.getoverrallreport.data.length;
     this.selected = "100";
     this.showUseFilterForm = false;
     this.showClearFilterBtn = false;
@@ -1497,7 +1486,6 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
       (PatientForm.patientId == "" || PatientForm.patientId == null)
     ) {
       this.patientlistfilter = this.getPatientListTabData;
-      this.patientlistfilterlength = this.patientlistfilter.length;
     } else {
       this.patientlistfilter = this.getPatientListTabData.filter(function (
         data
@@ -1509,14 +1497,12 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
           data.PatientId.toLowerCase() == PatientForm.patientId.toLowerCase()
         );
       });
-      this.patientlistfilterlength = this.patientlistfilter.length;
     }
   }
 
   patientlisttabfilterClear() {
     this.patientlistfilterForm.reset();
     this.patientlistfilter = this.getPatientListTabData;
-    this.patientlistfilterlength = this.patientlistfilter.length;
   }
 
   getPatientList(MeasureSetId) {
@@ -1534,7 +1520,6 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
         this.getPatientListTabData = data;
         this.getPatientListTabData = this.getPatientListTabData.ListResult;
         this.patientlistfilter = this.getPatientListTabData;
-        this.patientlistfilterlength = this.patientlistfilter.length;
         this.p = 1;
       }
       this.customizedspinner = false; $('body').removeClass('loadactive');
@@ -1556,12 +1541,10 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     this.accountservice.getCQMReportsDashboard(req).subscribe((data) => {
       this.getDrilldownListTabData = data.ListResult[0];
       this.getDrilldownListTabData.data = data.ListResult as DrillPatient[];
-      this.getDrilldownListTabDatalength = data.ListResult[0].length;
       this.getDrilldownEncountersData = data.ListResult[1];
       this.getDrilldownListTabData1.data = data.ListResult[1] as DrillAuthor[];
       this.getDrilldownEncountersData.data =
         data.ListResult as DrillEncounters[];
-      this.getDrilldownEncountersDatalength = data.ListResult[1].length;
     });
   }
 

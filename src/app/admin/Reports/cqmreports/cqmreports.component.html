@@ -960,7 +960,7 @@
                     </tbody>
                   </table>
                   <div style="color: red; text-align: center; font-size: 14px;" class="my-2"
-                    *ngIf="patientlistfilterlength==0">
+                    *ngIf="patientlistfilter.length==0">
                     No Records Found!
                   </div>
                   <ul class="pagination my-3">
@@ -1446,16 +1446,13 @@
               <mat-row *matRowDef="let row; columns: queuedReportsColumns"></mat-row>
             </mat-table>
             <table class="Norecordstable">
-              <tr [hidden]="getoverrallreportlength!=0">
+              <tr [hidden]="getoverrallreport.data.length!=0">
                 <td style="color: red; text-align: center;">
                   No Records Found!
                 </td>
               </tr>
             </table>
           </div>
-          <!-- <mat-paginator class="arrow" #paginator [length]="getoverrallreportlength" [pageIndex]="pageIndex" [pageSize]="pageSize"
-            [pageSizeOptions]="pageSizeOptions">
-            </mat-paginator> -->
         </div>
       </div>
     </div>

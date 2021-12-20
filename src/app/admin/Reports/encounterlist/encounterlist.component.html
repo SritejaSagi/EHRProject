@@ -161,11 +161,11 @@
       <mat-row *matRowDef="let row; columns: EncountersColumns;">
       </mat-row>
     </mat-table>
-    <div style="color: red;text-align: center;" *ngIf="encounterlength==0">
+    <div style="color: red;text-align: center;" *ngIf="encounterlist.data.length==0">
       No Records Found!
     </div>
   </div>
-  <mat-paginator class="arrow" #paginator [length]="encounterlength" [pageIndex]="pageIndex" [pageSize]="pageSize"
-    [pageSizeOptions]="pageSizeOptions" [hidden]="!showencounterTable">
+  <mat-paginator class="arrow" #paginator [length]="encounterlist.data.length" [pageIndex]="pageIndex"
+    [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" [hidden]="!showencounterTable">
   </mat-paginator>
 </div>
