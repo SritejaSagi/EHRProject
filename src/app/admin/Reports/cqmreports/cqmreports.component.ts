@@ -450,11 +450,24 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     this.detailsTab("dashBoard");
   }
 
-  disableEndDate() {
+  disableEndDateInCreateReport() {
     var StartDate =
       this.createReportForm.value.startDate == null
         ? ""
         : this.createReportForm.value.startDate;
+    if (StartDate != "") {
+      this.disableEndDateInput = false;
+    }
+    else {
+      this.disableEndDateInput = true;
+    }
+  }
+
+  disableEndDateInQueuedReports() {
+    var StartDate =
+      this.queuedreportfilterForm.value.startDate == null
+        ? ""
+        : this.queuedreportfilterForm.value.startDate;
     if (StartDate != "") {
       this.disableEndDateInput = false;
     }
@@ -1306,9 +1319,9 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
         this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0)
         this.getoverrallreport.data = data.ListResult[0] as CQMReportsData[];
         this.queuedreportdata = JSON.parse(
-          JSON.stringify(data.ListResult as CQMReportsData[])
+          JSON.stringify(data.ListResult[0] as CQMReportsData[])
         );
-        this.getoverrallreportlength = data.ListResult.length;
+        this.getoverrallreportlength = data.ListResult[0].length;
         this.showQueuedReportsTable = true;
         this.measures = data.ListResult[0].MeasuresList;
       }

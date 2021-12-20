@@ -28,7 +28,6 @@ import { PatientlistComponent } from "../patientlist/patientlist.component";
 export class ProblemlistComponent implements OnInit {
   @ViewChildren(MatPaginator) paginator = new QueryList<MatPaginator>();
   @ViewChildren(MatSort) sort = new QueryList<MatSort>();
-  length: number;
   pageSize = 10;
   pageIndex = 0;
   pageSizeOptions: number[] = [5, 10, 25, 100];
@@ -39,7 +38,6 @@ export class ProblemlistComponent implements OnInit {
   filteredlocationList: any;
   provider_Id: string;
   problemreportform: FormGroup;
-  problemreportlistlength: number;
   customizedspinner: boolean;
   tomorrow = new Date();
   applyButtonToDisableproblem: boolean = true;
@@ -176,13 +174,11 @@ export class ProblemlistComponent implements OnInit {
 
     this.service.getProblemListReportByProviderId(data).subscribe((data) => {
       this.problemreportlist.data = [];
-      this.problemreportlistlength = 0;
       this.showPromblemListTable = true;
       if (data.IsSuccess) {
         this.showProblemListControls = true;
         this.customizedspinner = true;
         this.problemreportlist.data = data.ListResult as ProblemData[];
-        this.problemreportlistlength = data.ListResult.length;
         this.showPromblemListTable = true;
         this.disabledowloadExportbtn = false;
       }

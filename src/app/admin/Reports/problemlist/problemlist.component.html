@@ -153,13 +153,13 @@
 
       <ng-container matColumnDef="DxStartDate">
         <mat-header-cell class="flex2" *matHeaderCellDef mat-sort-header="DxStartDate">Dx Start Date</mat-header-cell>
-        <mat-cell class="flex2 submenu" *matCellDef="let lesson"> {{lesson.DxStartDate | date: 'MM/dd/yyyy'}}
+        <mat-cell class="flex2 submenu" *matCellDef="let lesson"> {{lesson.DxStartDate}}
         </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="DxEndDate">
         <mat-header-cell class="flex1" *matHeaderCellDef mat-sort-header="DxEndDate">Dx End Date</mat-header-cell>
-        <mat-cell class="flex1 submenu" *matCellDef="let lesson"> {{lesson.DxEndDate | date: 'MM/dd/yyyy'}}
+        <mat-cell class="flex1 submenu" *matCellDef="let lesson"> {{lesson.DxEndDate}}
         </mat-cell>
       </ng-container>
 
@@ -177,11 +177,11 @@
       <mat-header-row *matHeaderRowDef="ProblemListColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: ProblemListColumns;"></mat-row>
     </mat-table>
-    <div style="color: red;text-align: center;" *ngIf="problemreportlistlength==0">
+    <div style="color: red;text-align: center;" *ngIf="problemreportlist.data.length==0">
       No Records Found!
     </div>
   </div>
-  <mat-paginator [hidden]="!showPromblemListTable" class="arrow" #paginator [length]="problemreportlistlength"
+  <mat-paginator [hidden]="!showPromblemListTable" class="arrow" #paginator [length]="problemreportlist.data.length"
     [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions">
   </mat-paginator>
 </div>

@@ -180,6 +180,9 @@ mat-expansion-panel {
   margin-top: 0.5%;
   height: 48px;
 }
+.mat-form-field-invalid .mat-input-element {
+  caret-color: black !important;
+}
 // new report
 .panel-overflow {
   overflow-y: auto;
