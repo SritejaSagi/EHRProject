@@ -11,13 +11,13 @@ export class DownloadService {
   baseUrl: string = environment.baseUrl;
   private readonly DownloadQRDA3Report =
     this.baseUrl + "CQMReports/DownloadQRDA3MedicaidReport?ReportId=";
-    private readonly DownloadQRDA1Report =
+  private readonly DownloadQRDA1Report =
     this.baseUrl + "CQMReports/DownloadQRDA1Report";
-    private readonly DownloadPatientReport =
+  private readonly DownloadPatientReport =
     this.baseUrl + "CQMReports/QRDAPatientDownloadReport";
-    private readonly DownloadQRDA3MIPSReport =
+  private readonly DownloadQRDA3MIPSReport =
     this.baseUrl + "CQMReports/DownloadQRDA3MIPSReport";
-    private readonly DownloadQRDA3 =
+  private readonly DownloadQRDA3 =
     this.baseUrl + "CQMReports/DownloadQRDA3Report";
 
   constructor(private http: HttpClient) {
@@ -25,8 +25,8 @@ export class DownloadService {
   }
   getdownloadQRDA3Report<T>(reqObj: any) {
     const endpointUrl = this.DownloadQRDA3Report + reqObj;
-   // const reportid = reqObj;
-   console.log(endpointUrl);
+    // const reportid = reqObj;
+    console.log(endpointUrl);
 
     this.http
       .post(endpointUrl, reqObj, { observe: "response", responseType: "text" })
@@ -46,11 +46,12 @@ export class DownloadService {
         }
       );
   }
+
   getdownloadQRDA3MIPSReport<T>(reqObj: any) {
     debugger;
     const endpointUrl = this.DownloadQRDA3MIPSReport;
-   // const reportid = reqObj;
-   console.log(endpointUrl);
+    // const reportid = reqObj;
+    console.log(endpointUrl);
 
     this.http
       .post(endpointUrl, reqObj, { observe: "response", responseType: "text" })
@@ -72,8 +73,8 @@ export class DownloadService {
   }
   getdownloadQRDA3<T>(reqObj: any) {
     const endpointUrl = this.DownloadQRDA3;
-   // const reportid = reqObj;
-   console.log(endpointUrl);
+    // const reportid = reqObj;
+    console.log(endpointUrl);
 
     this.http
       .post(endpointUrl, reqObj, { observe: "response", responseType: "text" })
@@ -106,7 +107,7 @@ export class DownloadService {
             type: data.headers.get("content-type"),
           });
           const url = window.URL.createObjectURL(blob);
-          FileSaver.saveAs(url, "cqm_for_" +reqObj.ProviderName );
+          FileSaver.saveAs(url, "cqm_for_" + reqObj.ProviderName);
         },
         (error) => {
           console.log(error);
@@ -115,15 +116,15 @@ export class DownloadService {
   }
   getdownloadPatientReport<T>(reqObj: any) {
     const endpointUrl = this.DownloadPatientReport;
-   // const reportid = reqObj;
-   console.log(endpointUrl);
-  // endpointUrl = "http://183.82.111.111/EHRCQMReports/API/CQMReports/QRDAIndividualPatientDownloadReport?ReportId=90&MeasureSetId=1824&PatientId=598887a8bc6117675962fd7c"
+    // const reportid = reqObj;
+    console.log(endpointUrl);
+    // endpointUrl = "http://183.82.111.111/EHRCQMReports/API/CQMReports/QRDAIndividualPatientDownloadReport?ReportId=90&MeasureSetId=1824&PatientId=598887a8bc6117675962fd7c"
 
     this.http
       .post(endpointUrl, reqObj, { observe: "response", responseType: "text" })
       .subscribe(
         (data) => {
-          const data1=data.body;
+          const data1 = data.body;
           console.log(data1);
 
           const blob = new Blob([data1], {

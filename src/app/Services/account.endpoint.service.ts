@@ -36,6 +36,9 @@ export class Accountserviceendpoint extends EndpointBase {
   private readonly _CQMReportsMeasurePatientMetInfo =
     "CQMReports/CQMReportsMeasurePatientMetInfo";
 
+  private readonly _DrilldownViewConditions =
+    "CQMReports/DrilldownViewConditions";
+
   get GetProvidersLocationwise() {
     return this.baseUrl + this._GetProvidersLocationwise;
   }
@@ -99,6 +102,10 @@ export class Accountserviceendpoint extends EndpointBase {
   }
   get CreateQueuedReportUrl() {
     return this.baseUrl + this._CreateQueuedReport;
+  }
+
+  get DrilldownViewConditionsUrl() {
+    return this.baseUrl + this._DrilldownViewConditions;
   }
 
   constructor(private http: HttpClient) {
@@ -245,7 +252,7 @@ export class Accountserviceendpoint extends EndpointBase {
     );
   }
 
-  getProviderList<T>(req:any): Observable<T> {
+  getProviderList<T>(req: any): Observable<T> {
     const endpointUrl = this.getProvidersListUrl + req.LocationId;
     return this.http.post<T>(endpointUrl, req.LocationId).pipe(
       tap((data) => {
@@ -326,7 +333,16 @@ export class Accountserviceendpoint extends EndpointBase {
     );
   }
 
-  //Handel Errors
+  DrilldownViewConditions<T>(data: any): Observable<T> {
+    const endpointUrl = this.DrilldownViewConditionsUrl;
+    return this.http.post<T>(endpointUrl, data).pipe(
+      tap((data) => {
+        return data;
+      }),
+      catchError(this.handleError)
+    );
+  }
+  //Handel Errorss
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.error("An error occurred:", error.error.message);

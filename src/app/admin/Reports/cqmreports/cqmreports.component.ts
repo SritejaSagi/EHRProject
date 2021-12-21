@@ -1,3 +1,5 @@
+import { Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 import {
   AfterViewInit,
   Component,
@@ -179,6 +181,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   startdate: string;
   enddate: string;
   populationdescription: any;
+  stratificationText: any;
   patientdob: string;
   locationarray: string[];
   measures: any;
@@ -1309,7 +1312,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     this.accountservice.getCQMReportsQueuedReports(obj).subscribe((data) => {
       this.getoverrallreport.data = [];
       if (data.IsSuccess) {
-        this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0)
+        this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
         this.getoverrallreport.data = data.ListResult[0] as CQMReportsData[];
         this.queuedreportdata = JSON.parse(
           JSON.stringify(data.ListResult[0] as CQMReportsData[])
@@ -1876,12 +1879,14 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     this.selected = "100";
     this.getLocationsList("");
     this.showClearFilterBtn = false;
+    this.disableEndDateInput = true;
   }
 
   showPatientListTab(details) {
     this.patientlistdata = details;
     //var populationdescription = details.PopulationDescription;
     this.populationdescription = details.PopulationDescription;
+    this.stratificationText = details.StratificationText;
     this.MeasureIdentifier = details.MeasureIdentifier;
     this.showTopData = false;
     this.showPatientList = true;
@@ -1897,300 +1902,323 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     this.tabId = "drilldown";
     this.getDrilldownList(PatientId, PracticeId);
     this.getCMSConditionsData(PatientId);
-    this.drilldownConditions();
+    // this.drilldownConditions();
+    this.drilldownViewConditions(PatientId);
   }
 
-  drilldownConditions() {
-    this.conditions = [
-      {
-        section: "Initial Patient Population:",
-        conditions: [
-          {
-            title: '[1] define "Initial Population":',
-            groupIndex: 1,
-            tabIndex: 1,
-            newLine: 0,
-          },
-          {
-            title:
-              '[0] Qualifying Encounters During Measurement Period" QualifyingEncounter',
-            groupIndex: 1,
-            tabIndex: 2,
-            newLine: 0,
-          },
-          {
-            title:
-              '[1] where "Patient Age 18 or Older at Start of Measurement Period"',
-            groupIndex: 1,
-            tabIndex: 3,
-            newLine: 0,
-          },
-          {
-            title:
-              '[1] define "Patient Age 18 or Older at Start of Measurement Period":',
-            groupIndex: 2,
-            tabIndex: 1,
-            newLine: 1,
-          },
-          {
-            title: '[1] exists ["Patient Characteristic Birthdate"] BirthDate',
-            groupIndex: 2,
-            tabIndex: 2,
-            newLine: 0,
-          },
-          {
-            title:
-              '[1] where Global."CalendarAgeInYearsAt"(BirthDate.birthDatetime, start of "Measurement Period")>= 18',
-            groupIndex: 2,
-            tabIndex: 3,
-            newLine: 0,
-          },
-          {
-            title:
-              '[1] define "Qualifying Encounters During Measurement Period":',
-            groupIndex: 3,
-            tabIndex: 1,
-            newLine: 1,
-          },
-          {
-            title:
-              '[1] ["Encounter, Performed": "Medications Encounter Code Set"] QualifyingEncounter',
-            groupIndex: 3,
-            tabIndex: 2,
-            newLine: 0,
-          },
-          {
-            title:
-              '[1] where QualifyingEncounter.relevantPeriod during "Measurement Period"',
-            groupIndex: 3,
-            tabIndex: 3,
-            newLine: 0,
-          },
-        ],
-      },
+  // drilldownConditions() {
+  //   this.conditions = [
+  //     {
+  //       section: "Initial Patient Population:",
+  //       conditions: [
+  //         {
+  //           title: '[1] define "Initial Population":',
+  //           groupindex: 1,
+  //           tabindex: 1,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title:
+  //             '[0] Qualifying Encounters During Measurement Period" QualifyingEncounter',
+  //           groupIndex: 1,
+  //           tabIndex: 2,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title:
+  //             '[1] where "Patient Age 18 or Older at Start of Measurement Period"',
+  //           groupIndex: 1,
+  //           tabIndex: 3,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title:
+  //             '[1] define "Patient Age 18 or Older at Start of Measurement Period":',
+  //           groupIndex: 2,
+  //           tabIndex: 1,
+  //           newLine: 1,
+  //         },
+  //         {
+  //           title: '[1] exists ["Patient Characteristic Birthdate"] BirthDate',
+  //           groupIndex: 2,
+  //           tabIndex: 2,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title:
+  //             '[1] where Global."CalendarAgeInYearsAt"(BirthDate.birthDatetime, start of "Measurement Period")>= 18',
+  //           groupIndex: 2,
+  //           tabIndex: 3,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title:
+  //             '[1] define "Qualifying Encounters During Measurement Period":',
+  //           groupIndex: 3,
+  //           tabIndex: 1,
+  //           newLine: 1,
+  //         },
+  //         {
+  //           title:
+  //             '[1] ["Encounter, Performed": "Medications Encounter Code Set"] QualifyingEncounter',
+  //           groupIndex: 3,
+  //           tabIndex: 2,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title:
+  //             '[1] where QualifyingEncounter.relevantPeriod during "Measurement Period"',
+  //           groupIndex: 3,
+  //           tabIndex: 3,
+  //           newLine: 0,
+  //         },
+  //       ],
+  //     },
 
-      {
-        section: "Denominator:",
-        conditions: [
-          {
-            title: '[1] define "Denominator":',
-            groupIndex: 1,
-            tabIndex: 1,
-            newLine: 0,
-          },
-          {
-            title: '[1] "Initial Population"',
-            groupIndex: 1,
-            tabIndex: 2,
-            newLine: 0,
-          },
-          {
-            title: '[1] define "Initial Population":',
-            groupIndex: 2,
-            tabIndex: 1,
-            newLine: 1,
-          },
-          {
-            title:
-              '[1] "Qualifying Encounters During Measurement Period" QualifyingEncounter',
-            groupIndex: 2,
-            tabIndex: 2,
-            newLine: 0,
-          },
-          {
-            title:
-              '[1]  where "Patient Age 18 or Older at Start of Measurement Period"',
-            groupIndex: 2,
-            tabIndex: 3,
-            newLine: 0,
-          },
-          {
-            title:
-              '[1]  define "Patient Age 18 or Older at Start of Measurement Period":',
-            groupIndex: 3,
-            tabIndex: 1,
-            newLine: 1,
-          },
-          {
-            title: '[1]  exists ["Patient Characteristic Birthdate"] BirthDate',
-            groupIndex: 3,
-            tabIndex: 2,
-            newLine: 0,
-          },
-          {
-            title:
-              '[1]  where Global."CalendarAgeInYearsAt"(BirthDate.birthDatetime, start of "Measurement Period")>= 18',
-            groupIndex: 3,
-            tabIndex: 3,
-            newLine: 0,
-          },
-          {
-            title:
-              '[1]  define "Qualifying Encounters During Measurement Period":',
-            groupIndex: 4,
-            tabIndex: 1,
-            newLine: 1,
-          },
-          {
-            title:
-              '[1]  ["Encounter, Performed": "Medications Encounter Code Set"] QualifyingEncounter',
-            groupIndex: 4,
-            tabIndex: 2,
-            newLine: 0,
-          },
-          {
-            title:
-              '[1]  where QualifyingEncounter.relevantPeriod during "Measurement Period"',
-            groupIndex: 4,
-            tabIndex: 3,
-            newLine: 0,
-          },
-        ],
-      },
+  //     {
+  //       section: "Denominator:",
+  //       conditions: [
+  //         {
+  //           title: '[1] define "Denominator":',
+  //           groupIndex: 1,
+  //           tabIndex: 1,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title: '[1] "Initial Population"',
+  //           groupIndex: 1,
+  //           tabIndex: 2,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title: '[1] define "Initial Population":',
+  //           groupIndex: 2,
+  //           tabIndex: 1,
+  //           newLine: 1,
+  //         },
+  //         {
+  //           title:
+  //             '[1] "Qualifying Encounters During Measurement Period" QualifyingEncounter',
+  //           groupIndex: 2,
+  //           tabIndex: 2,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title:
+  //             '[1]  where "Patient Age 18 or Older at Start of Measurement Period"',
+  //           groupIndex: 2,
+  //           tabIndex: 3,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title:
+  //             '[1]  define "Patient Age 18 or Older at Start of Measurement Period":',
+  //           groupIndex: 3,
+  //           tabIndex: 1,
+  //           newLine: 1,
+  //         },
+  //         {
+  //           title: '[1]  exists ["Patient Characteristic Birthdate"] BirthDate',
+  //           groupIndex: 3,
+  //           tabIndex: 2,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title:
+  //             '[1]  where Global."CalendarAgeInYearsAt"(BirthDate.birthDatetime, start of "Measurement Period")>= 18',
+  //           groupIndex: 3,
+  //           tabIndex: 3,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title:
+  //             '[1]  define "Qualifying Encounters During Measurement Period":',
+  //           groupIndex: 4,
+  //           tabIndex: 1,
+  //           newLine: 1,
+  //         },
+  //         {
+  //           title:
+  //             '[1]  ["Encounter, Performed": "Medications Encounter Code Set"] QualifyingEncounter',
+  //           groupIndex: 4,
+  //           tabIndex: 2,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title:
+  //             '[1]  where QualifyingEncounter.relevantPeriod during "Measurement Period"',
+  //           groupIndex: 4,
+  //           tabIndex: 3,
+  //           newLine: 0,
+  //         },
+  //       ],
+  //     },
 
-      {
-        section: "Numerator:",
-        conditions: [
-          {
-            title: '[0]  define "Numerator":',
-            groupIndex: 1,
-            tabIndex: 1,
-            newLine: 0,
-          },
-          {
-            title: '[0]  "Medications Documented During Qualifying Encounter"',
-            groupIndex: 1,
-            tabIndex: 2,
-            newLine: 0,
-          },
-          {
-            title:
-              '[0]  define "Medications Documented During Qualifying Encounter":',
-            groupIndex: 2,
-            tabIndex: 1,
-            newLine: 1,
-          },
-          {
-            title:
-              '[1]  "Qualifying Encounters During Measurement Period" QualifyingEncounterDuringMeasurementPeriod',
-            groupIndex: 2,
-            tabIndex: 2,
-            newLine: 0,
-          },
-          {
-            title:
-              '[0]  with ["Procedure, Performed": "Documentation of current medications (procedure)"] MedicationsDocumented',
-            groupIndex: 2,
-            tabIndex: 3,
-            newLine: 0,
-          },
-          {
-            title:
-              "such that MedicationsDocumented.relevantPeriod during QualifyingEncounterDuringMeasurementPeriod.relevantPeriod",
-            groupIndex: 2,
-            tabIndex: 4,
-            newLine: 0,
-          },
-          {
-            title:
-              '[1] define "Qualifying Encounters During Measurement Period":',
-            groupIndex: 3,
-            tabIndex: 1,
-            newLine: 1,
-          },
-          {
-            title:
-              '[1] ["Encounter, Performed": "Medications Encounter Code Set"] QualifyingEncounter',
-            groupIndex: 3,
-            tabIndex: 2,
-            newLine: 0,
-          },
-          {
-            title:
-              '[1] where QualifyingEncounter.relevantPeriod during "Measurement Period"',
-            groupIndex: 3,
-            tabIndex: 3,
-            newLine: 0,
-          },
-        ],
-      },
+  //     {
+  //       section: "Numerator:",
+  //       conditions: [
+  //         {
+  //           title: '[0]  define "Numerator":',
+  //           groupIndex: 1,
+  //           tabIndex: 1,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title: '[0]  "Medications Documented During Qualifying Encounter"',
+  //           groupIndex: 1,
+  //           tabIndex: 2,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title:
+  //             '[0]  define "Medications Documented During Qualifying Encounter":',
+  //           groupIndex: 2,
+  //           tabIndex: 1,
+  //           newLine: 1,
+  //         },
+  //         {
+  //           title:
+  //             '[1]  "Qualifying Encounters During Measurement Period" QualifyingEncounterDuringMeasurementPeriod',
+  //           groupIndex: 2,
+  //           tabIndex: 2,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title:
+  //             '[0]  with ["Procedure, Performed": "Documentation of current medications (procedure)"] MedicationsDocumented',
+  //           groupIndex: 2,
+  //           tabIndex: 3,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title:
+  //             "such that MedicationsDocumented.relevantPeriod during QualifyingEncounterDuringMeasurementPeriod.relevantPeriod",
+  //           groupIndex: 2,
+  //           tabIndex: 4,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title:
+  //             '[1] define "Qualifying Encounters During Measurement Period":',
+  //           groupIndex: 3,
+  //           tabIndex: 1,
+  //           newLine: 1,
+  //         },
+  //         {
+  //           title:
+  //             '[1] ["Encounter, Performed": "Medications Encounter Code Set"] QualifyingEncounter',
+  //           groupIndex: 3,
+  //           tabIndex: 2,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title:
+  //             '[1] where QualifyingEncounter.relevantPeriod during "Measurement Period"',
+  //           groupIndex: 3,
+  //           tabIndex: 3,
+  //           newLine: 0,
+  //         },
+  //       ],
+  //     },
 
-      {
-        section: "Denominator Exception:",
-        conditions: [
-          {
-            title: '[0] define "Denominator Exceptions":',
-            groupIndex: 1,
-            tabIndex: 1,
-            newLine: 0,
-          },
-          {
-            title:
-              '[1] "Qualifying Encounters During Measurement Period" EncounterDuringMeasurementPeriod',
-            groupIndex: 1,
-            tabIndex: 2,
-            newLine: 0,
-          },
-          {
-            title:
-              '[0] with "Medications Not Documented for Medical Reason" MedicationsNotDocumented',
-            groupIndex: 1,
-            tabIndex: 3,
-            newLine: 0,
-          },
-          {
-            title:
-              "such that MedicationsNotDocumented.authorDatetime during EncounterDuringMeasurementPeriod.relevantPeriod",
-            groupIndex: 1,
-            tabIndex: 4,
-            newLine: 0,
-          },
-          {
-            title:
-              '[0] define "Medications Not Documented for Medical Reason":',
-            groupIndex: 2,
-            tabIndex: 1,
-            newLine: 1,
-          },
-          {
-            title:
-              '[0] ["Procedure, Not Performed": "Documentation of current medications (procedure)"] NotPerformed',
-            groupIndex: 2,
-            tabIndex: 2,
-            newLine: 0,
-          },
-          {
-            title:
-              'where NotPerformed.negationRationale in "Medical or Other reason not done"',
-            groupIndex: 2,
-            tabIndex: 3,
-            newLine: 0,
-          },
-          {
-            title:
-              '[1] define "Qualifying Encounters During Measurement Period":',
-            groupIndex: 3,
-            tabIndex: 1,
-            newLine: 1,
-          },
-          {
-            title:
-              '[1] ["Encounter, Performed": "Medications Encounter Code Set"] QualifyingEncounter',
-            groupIndex: 3,
-            tabIndex: 2,
-            newLine: 0,
-          },
-          {
-            title:
-              '[1] where QualifyingEncounter.relevantPeriod during "Measurement Period"',
-            groupIndex: 3,
-            tabIndex: 3,
-            newLine: 0,
-          },
-        ],
-      },
-    ];
+  //     {
+  //       section: "Denominator Exception:",
+  //       conditions: [
+  //         {
+  //           title: '[0] define "Denominator Exceptions":',
+  //           groupIndex: 1,
+  //           tabIndex: 1,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title:
+  //             '[1] "Qualifying Encounters During Measurement Period" EncounterDuringMeasurementPeriod',
+  //           groupIndex: 1,
+  //           tabIndex: 2,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title:
+  //             '[0] with "Medications Not Documented for Medical Reason" MedicationsNotDocumented',
+  //           groupIndex: 1,
+  //           tabIndex: 3,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title:
+  //             "such that MedicationsNotDocumented.authorDatetime during EncounterDuringMeasurementPeriod.relevantPeriod",
+  //           groupIndex: 1,
+  //           tabIndex: 4,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title:
+  //             '[0] define "Medications Not Documented for Medical Reason":',
+  //           groupIndex: 2,
+  //           tabIndex: 1,
+  //           newLine: 1,
+  //         },
+  //         {
+  //           title:
+  //             '[0] ["Procedure, Not Performed": "Documentation of current medications (procedure)"] NotPerformed',
+  //           groupIndex: 2,
+  //           tabIndex: 2,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title:
+  //             'where NotPerformed.negationRationale in "Medical or Other reason not done"',
+  //           groupIndex: 2,
+  //           tabIndex: 3,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title:
+  //             '[1] define "Qualifying Encounters During Measurement Period":',
+  //           groupIndex: 3,
+  //           tabIndex: 1,
+  //           newLine: 1,
+  //         },
+  //         {
+  //           title:
+  //             '[1] ["Encounter, Performed": "Medications Encounter Code Set"] QualifyingEncounter',
+  //           groupIndex: 3,
+  //           tabIndex: 2,
+  //           newLine: 0,
+  //         },
+  //         {
+  //           title:
+  //             '[1] where QualifyingEncounter.relevantPeriod during "Measurement Period"',
+  //           groupIndex: 3,
+  //           tabIndex: 3,
+  //           newLine: 0,
+  //         },
+  //       ],
+  //     },
+  //   ];
+  // }
+  drilldownViewConditions(PatientId) {
+    debugger;
+    var req = {
+      // ReportId: this.MeasureReportId,
+      // MeasureId: this.MeasureSetId,
+      // PatientId: PatientId,
+      // PopulationId: this.populationdescription,
+      // Stratum: this.stratificationText
+      // for Testing
+      "ReportId": 44,
+      "MeasureId": 68,
+      "PatientId": "5c191704c832dd2f7910404b",
+    };
+    this.accountservice.DrilldownViewConditions(req).subscribe(data => {
+      this.conditions = JSON.parse(data.Result);
+    });
   }
+  //   this.downloadservice.getDrilldownViewConditions(req);
+  //   if (data.IsSuccess) {
+  //     this.conditions = data.Result;
+  //     }
+  //  });
 
   toTop68() {
     document.getElementById("p68").scrollIntoView();

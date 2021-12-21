@@ -5,7 +5,7 @@ import { Accountservice } from 'src/app/Services/account.service';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
 import * as pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
-
+declare const $: any;
 
 @Component({
   selector: 'app-mureports',
@@ -2281,12 +2281,11 @@ export class MureportsComponent implements OnInit {
   }
 
   getStage2NumeDenomicount(data: any) {
-    this.customizedspinner = true;
+    this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
     this.stage2NumeDenomicount = null;
     this.stage3NumeDenomicount = null;
     this.service.GetStage2NumeDenomiCount(data).subscribe(data => {
       if (data.IsSuccess) {
-        this.customizedspinner = true;
         this.Stage2 = true;
         this.Stage3 = false;
         this.checkboxevent01(this.checkbox01);
@@ -2359,7 +2358,7 @@ export class MureportsComponent implements OnInit {
             this.percentage9 = val.Percentage;
           }
         }
-        this.customizedspinner = false;
+        this.customizedspinner = false; $('body').removeClass('loadactive');
       }
     });
   }
@@ -3203,11 +3202,11 @@ export class MureportsComponent implements OnInit {
     }
 
   }
-  getStage3NumeDenomicount(data1: any) {
-    this.customizedspinner = true;
+  getStage3NumeDenomicount(data: any) {
+    this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
     this.stage2NumeDenomicount = null;
     this.stage3NumeDenomicount = null;
-    this.service.GetNumeDenomicount(data1).subscribe(data => {
+    this.service.GetNumeDenomicount(data).subscribe(data => {
       if (data.IsSuccess) {
         this.Stage2 = false;
         this.Stage3 = true;
@@ -3415,7 +3414,7 @@ export class MureportsComponent implements OnInit {
       this.result6 = this.patientelectronicacess61 + this.patientelectronicacess62 + this.patientelectronicacess63;
       this.result7 = this.patientelectronicacess71 + this.patientelectronicacess72 + this.patientelectronicacess73;
       this.result8 = (this.patientelectronicacess81 == undefined ? 0 : this.patientelectronicacess81) + (this.patientelectronicacess82 == undefined ? 0 : this.patientelectronicacess82) + (this.patientelectronicacess83 == undefined ? 0 : this.patientelectronicacess83) + (this.patientelectronicacess84 == undefined ? 0 : this.patientelectronicacess84) + (this.patientelectronicacess85 == undefined ? 0 : this.patientelectronicacess85);
-      this.customizedspinner = false;
+      this.customizedspinner = false; $('body').removeClass('loadactive');
     });
   }
   Stage3Form() {

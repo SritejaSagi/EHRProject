@@ -5,18 +5,18 @@ import { DomSanitizer } from "@angular/platform-browser";
   name: "conditionpadder",
 })
 export class ConditionpadderPipe implements PipeTransform {
-  constructor(protected sanitizer: DomSanitizer) {}
-  transform(value: number, newline: number): any {
+  constructor(protected sanitizer: DomSanitizer) { }
+  transform(value: number, LineIndex: number): any {
     debugger;
     let paddingmultiplier: number = 30;
     let linemultiplier: number = 20;
-    if (newline > 0) {
+    if (LineIndex > 0) {
       return this.sanitizer.bypassSecurityTrustStyle(
         "padding-left:" +
-          value * paddingmultiplier +
-          "px; padding-top:" +
-          newline * linemultiplier +
-          "px;"
+        value * paddingmultiplier +
+        "px; padding-top:" +
+        LineIndex * linemultiplier +
+        "px;"
       );
     } else {
       return this.sanitizer.bypassSecurityTrustStyle(
