@@ -1,4 +1,3 @@
-import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {
   AfterViewInit,
@@ -1318,7 +1317,10 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
           JSON.stringify(data.ListResult[0] as CQMReportsData[])
         );
         this.showQueuedReportsTable = true;
-        this.measures = data.ListResult[0].MeasuresList;
+        for (var i of data.ListResult[0]) {
+          this.measures = i.MeasuresList;
+          break;
+        }
       }
       this.customizedspinner = false; $('body').removeClass('loadactive');
     });
@@ -1789,8 +1791,6 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   }
 
   onSubmitCreateReport() {
-
-
     debugger;
     if (this.createReportForm.invalid) {
       return;
@@ -1824,10 +1824,8 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
           this.createReportForm.value.providerId == null
           ? this.loc.Provider_Id
           : this.createReportForm.value.providerId,
-
     };
     this.createupdateEmployee(Createreport);
-
   }
 
   createupdateEmployee(data: any) {

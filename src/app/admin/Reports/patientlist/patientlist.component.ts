@@ -255,7 +255,6 @@ export class PatientlistComponent implements OnInit {
   getProviderList() {
     debugger;
     let locationid = localStorage.getItem("providerlocation");
-
     var req = {
       LocationId: locationid,
     };
