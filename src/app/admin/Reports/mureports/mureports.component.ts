@@ -2220,7 +2220,7 @@ export class MureportsComponent implements OnInit {
     // }
   }
   onStage2SubmitPatientList(req) {
-    this.customizedspinner = true;
+    this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
     var Patientreport = {
       "startDate": this.datepipe.transform(this.muReportForm.value.strSDate, 'yyyy-MM-dd', 'en-US'),
       "endDate": this.datepipe.transform(this.muReportForm.value.strEDate, 'yyyy-MM-dd', 'en-US'),
@@ -2253,7 +2253,7 @@ export class MureportsComponent implements OnInit {
         this.Stage2PatientList = data.ListResult;
         this.Stage2PatientListlength = data.ListResult.length;
       }
-      this.customizedspinner = false;
+      this.customizedspinner = false; $('body').removeClass('loadactive');
     });
   }
 
@@ -3239,7 +3239,7 @@ export class MureportsComponent implements OnInit {
         this.checkboxevent85c(this.checkbox85c);
         var count: number = 0;
 
-        this.customizedspinner = true;
+        this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
         this.stage3NumeDenomicount = data.ListResult;
         this.disabledowloadPDF = false;
         for (var val of data.ListResult) {
@@ -3403,7 +3403,7 @@ export class MureportsComponent implements OnInit {
               this.patientelectronicacess73 = count;
             }
           }
-          this.customizedspinner = false;
+          this.customizedspinner = false; $('body').removeClass('loadactive');
         }
       }
       this.result1 = this.patientelectronicacess1 == undefined ? 0 : this.patientelectronicacess1;
@@ -3427,7 +3427,7 @@ export class MureportsComponent implements OnInit {
   }
 
   onSubmitPatientList(req) {
-    this.customizedspinner = true;
+    this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
     var Patientreport = {
       "startDate": this.muReportForm.value.strSDate,
       "endDate": this.muReportForm.value.strEDate,
@@ -3439,18 +3439,18 @@ export class MureportsComponent implements OnInit {
   }
 
   getPatientList(data: any) {
-    this.customizedspinner = true;
+    this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
 
     this.mupatientList = [];
     this.service.getPatientList(data).subscribe(data => {
       this.mupatientList = [];
       this.mupatientListlength = 0;
       if (data.IsSuccess) {
-        this.customizedspinner = true;
+        this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
         this.mupatientList = data.ListResult;
         this.mupatientListlength = data.ListResult.length;
       }
-      this.customizedspinner = false;
+      this.customizedspinner = false; $('body').removeClass('loadactive');
     });
   }
   onSortClick(event) {

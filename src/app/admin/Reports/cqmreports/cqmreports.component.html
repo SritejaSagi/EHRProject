@@ -1535,7 +1535,8 @@
               <mat-form-field appearance="outline" class="col-lg-4 col-md-6 my-2 hover">
                 <mat-select placeholder="Select Provider" disableOptionCentering formControlName="providerId">
                   <mat-select-filter [placeholder]="'Search...'" [displayMember]="'Provider_Name'"
-                    [array]="providerlist" (filteredReturn)="filteredproviderList =$event"> </mat-select-filter>
+                    [array]="providerlist" (filteredReturn)="filteredproviderList =$event">
+                  </mat-select-filter>
                   <mat-option (click)="getProviderList(null)">
                     Show all Providers
                   </mat-option>

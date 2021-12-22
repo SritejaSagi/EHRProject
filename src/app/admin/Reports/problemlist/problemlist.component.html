@@ -11,10 +11,11 @@
           <p class="float-left my-4 ">Provider:</p>
         </div>
         <mat-form-field appearance="outline" class="col-lg-2 col-md-6 hover my-2">
-          <mat-select placeholder="Select One" disabledOptionCentering formControlName="ProviderId"
+          <mat-select placeholder="Select One" disabledOptionCentering #searchedItem formControlName="ProviderId"
             (selectionChange)="disableApplyButtonProblemlist()">
             <mat-select-filter disabledOptionCentering [placeholder]="'Search...'" [displayMember]="'Provider_Name'"
-              [array]="providerlist" (filteredReturn)="filteredproviderList =$event"> </mat-select-filter>
+              [array]="providerlist" (filteredReturn)="filteredproviderList =$event" *ngIf="searchedItem.focused">
+            </mat-select-filter>
             <mat-option *ngFor="let item of filteredproviderList" [value]="item.Provider_Id"
               (click)="getLocationsList(item)">
               {{item.Provider_Name}}
