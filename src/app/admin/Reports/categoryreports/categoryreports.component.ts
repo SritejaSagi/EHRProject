@@ -1,6 +1,4 @@
-import { TableUtil } from './../tableUtil';
 import { Component, OnInit } from '@angular/core';
-import { Accountservice } from 'src/app/Services/account.service';
 
 @Component({
   selector: 'app-categoryreports',
@@ -21,12 +19,9 @@ export class CategoryreportsComponent implements OnInit {
   mureports: boolean;
   showControls: boolean;
 
-
-  constructor(private tableutil: TableUtil, private service: Accountservice) { }
+  constructor() { }
 
   ngOnInit(): void {
-    debugger;
-
     this.category = [
       { Id: 1, Name: 'MeaningfulUse' },
       { Id: 2, Name: ' Clinical Quality Measures' },
@@ -38,7 +33,6 @@ export class CategoryreportsComponent implements OnInit {
   }
 
   changereports(req) {
-    debugger;
     this.categoryId = req;
     if (req == 1) {
       this.Reports = [

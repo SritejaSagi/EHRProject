@@ -8,7 +8,6 @@ import {
   MatTableDataSource,
   PageEvent,
 } from "@angular/material";
-
 import { Accountservice } from "src/app/Services/account.service";
 import { EncounterData } from "../../../_models";
 import { TableUtil } from "../tableUtil";
@@ -38,7 +37,6 @@ export class EncounterlistComponent implements OnInit {
     location_Id: any;
   };
   showEncounterControls: boolean;
-
   showencounterTable: boolean;
   customizedspinner: boolean;
   EncountersColumns = [
@@ -82,7 +80,6 @@ export class EncounterlistComponent implements OnInit {
     this.encounterlist.sort = this.sort.toArray()[0];
   }
   disableApplyButtonEncounterlist() {
-    debugger;
     var Provider_Id =
       this.encounterForm.value.provider_Id == null
         ? ""
@@ -120,7 +117,6 @@ export class EncounterlistComponent implements OnInit {
     }
   }
   EncounterForm() {
-    debugger;
     this.encounterForm = this.fb.group({
       SstartDate: [""],
       SendDate: [""],
@@ -131,7 +127,6 @@ export class EncounterlistComponent implements OnInit {
   }
 
   onSubmitEncounterlist() {
-    debugger;
     if (
       this.encounterForm.value.provider_Id == "" &&
       this.encounterForm.value.location_Id == ""
@@ -164,10 +159,8 @@ export class EncounterlistComponent implements OnInit {
   }
 
   getEncountersList(data: any) {
-    debugger;
     this.encounters = data;
     this.customizedspinner = true;
-
     this.service.getEncountersList(data).subscribe((data) => {
       this.encounterlist.data = [];
       this.showencounterTable = true;
@@ -182,9 +175,7 @@ export class EncounterlistComponent implements OnInit {
     });
   }
   getProviderList() {
-    debugger;
     let locationid = localStorage.getItem("providerlocation");
-
     var req = {
       LocationId: locationid,
     };
@@ -214,7 +205,6 @@ export class EncounterlistComponent implements OnInit {
   }
 
   downloadEncountersExcel() {
-    debugger;
     if (this.encounterlist.data.length != 0) {
       this.tableutil.exportAsExcelFileEncounter(
         this.encounterlist.data,

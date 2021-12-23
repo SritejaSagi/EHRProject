@@ -419,11 +419,11 @@ td {
 #sortpointer th {
   cursor: pointer;
 }
-::ng-deep
-  .mat-form-field-appearance:disabled
-  .mat-form-field-appearance-legacy:disabled
-  .mat-form-field-underline:disabled {
-  .matInput:disabled {
-    background: #dddddd !important;
-  }
-}
+// ::ng-deep
+//   .mat-form-field-appearance:disabled
+//   .mat-form-field-appearance-legacy:disabled
+//   .mat-form-field-underline:disabled {
+//   .matInput:disabled {
+//     background: #dddddd !important;
+//   }
+// }

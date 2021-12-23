@@ -2,7 +2,6 @@ import { FormGroup } from "@angular/forms";
 import { DatePipe } from "@angular/common";
 import { Component, OnInit, QueryList, ViewChildren } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
-
 import { Accountservice } from "src/app/Services/account.service";
 import { PatientData } from "../../../_models";
 import {
@@ -253,7 +252,6 @@ export class PatientlistComponent implements OnInit {
     });
   }
   getProviderList() {
-    debugger;
     let locationid = localStorage.getItem("providerlocation");
     var req = {
       LocationId: locationid,

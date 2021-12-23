@@ -2,10 +2,8 @@ import { ProblemData } from ".././../../_models/problem";
 import { DatePipe } from "@angular/common";
 import {
   Component,
-  Input,
   OnInit,
   QueryList,
-  ViewChild,
   ViewChildren,
 } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
@@ -18,7 +16,6 @@ import {
 
 import { Accountservice } from "src/app/Services/account.service";
 import { TableUtil } from "../tableUtil";
-import { PatientlistComponent } from "../patientlist/patientlist.component";
 
 @Component({
   selector: "app-problemlist",
@@ -186,7 +183,6 @@ export class ProblemlistComponent implements OnInit {
     });
   }
   getProviderList() {
-    debugger;
     let locationid = localStorage.getItem("providerlocation");
 
     var req = {

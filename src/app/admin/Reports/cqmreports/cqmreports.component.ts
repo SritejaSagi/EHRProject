@@ -1298,7 +1298,6 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
 
   getCQMReportsQueuedReports() {
 
-    debugger;
     let locationid = localStorage.getItem("providerlocation");
 
     let obj = {
