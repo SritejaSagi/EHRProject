@@ -377,7 +377,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
         if (data.IsSuccess) {
           this.providerlist = data.ListResult;
           this.filteredproviderList = this.providerlist.slice();
-          this.filteredproviders = this.filteredproviderList;
+          this.filteredproviders = this.providerlist;
           this.filteredproviders = JSON.parse(JSON.stringify(this.providerlist));
         }
       });
@@ -391,8 +391,8 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
         if (data.IsSuccess) {
           this.providerlist = data.ListResult;
           this.filteredproviderList = this.providerlist.slice();
-          this.filteredproviderList = this.providerlist.filter(a => a.Provider_Id === i);
-          this.filteredproviderList = JSON.parse(JSON.stringify(this.filteredproviderList));
+          this.filteredproviders = this.providerlist.filter(a => a.Provider_Id === i);
+          //this.filteredproviders = JSON.parse(JSON.stringify(this.providerlist));
         }
       });
     }
@@ -431,12 +431,12 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     );
     this.startdate = formatDate(
       this.patientlistmeasure.StartDate,
-      "dd/MM/yyyy",
+      "MM/dd/yyyy",
       "en-US"
     );
     this.enddate = formatDate(
       this.patientlistmeasure.EndDate,
-      "dd/MM/yyyy",
+      "MM/dd/yyyy",
       "en-US"
     );
     this.isViewResults = true;

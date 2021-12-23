@@ -48,7 +48,8 @@
                         <span class="cstm-size">{{patientlistmeasure.DateCreated|date:'MM/dd/yyyy h:mm:ss a'}}</span>
                       </ul>
                       <ul class="cstm-size"><b>Measurement Period: </b>
-                        <span class="cstm-size"> {{this.startdate}} to {{this.enddate}}</span>
+                        <span class="cstm-size"> {{this.startdate |date:'MM/dd/yyyy'}} to
+                          {{this.enddate|date:'MM/dd/yyyy'}}</span>
                       </ul>
                     </div>
                   </div>
@@ -86,7 +87,7 @@
                       <table class="summary" id='p68'>
                         <thead class="summaryheader">
                           <th class="heading-middle px-3">CMS
-                            {{y[0]}}&nbsp;-&nbsp;{{getDashBoardreport[0].MeasureTitle}}
+                            {{y[0]}}&nbsp;-&nbsp;{{getDashBoardreport[0]?.MeasureTitle}}
                           </th>
                         </thead>
                         <tbody>
@@ -109,7 +110,7 @@
                       <table class="summary" id='p69'>
                         <thead class="summaryheader">
                           <th class="heading-middle px-3">CMS
-                            {{y[1]}}&nbsp;-&nbsp;{{getDashBoardreport[1].MeasureTitle}}
+                            {{y[1]}}&nbsp;-&nbsp;{{getDashBoardreport[1]?.MeasureTitle}}
                           </th>
                         </thead>
                         <tbody>
@@ -136,7 +137,7 @@
                       <table class="summary" id='p74'>
                         <thead class="summaryheader">
                           <th class="heading-middle px-3">CMS
-                            {{y[2]}}&nbsp;-&nbsp;{{getDashBoardreport[2].MeasureTitle}}
+                            {{y[2]}}&nbsp;-&nbsp;{{getDashBoardreport[2]?.MeasureTitle}}
                           </th>
                         </thead>
                         <tbody>
@@ -160,7 +161,7 @@
                       <table class="summary" id='p75'>
                         <thead class="summaryheader">
                           <th class="heading-middle px-3">CMS
-                            {{y[3]}}&nbsp;-&nbsp;{{getDashBoardreport[3].MeasureTitle}}
+                            {{y[3]}}&nbsp;-&nbsp;{{getDashBoardreport[3]?.MeasureTitle}}
                           </th>
                         </thead>
                         <tbody>
@@ -184,7 +185,7 @@
                       <table class="summary" id='p127'>
                         <thead class="summaryheader">
                           <th class="heading-middle px-3">CMS
-                            {{y[4]}}&nbsp;-&nbsp;{{getDashBoardreport[4].MeasureTitle}}
+                            {{y[4]}}&nbsp;-&nbsp;{{getDashBoardreport[4]?.MeasureTitle}}
                           </th>
                         </thead>
                         <tbody>
@@ -208,7 +209,7 @@
                       <table class="summary" id='p138'>
                         <thead class="summaryheader">
                           <th class="heading-middle px-3">CMS
-                            {{y[5]}}&nbsp;-&nbsp;{{getDashBoardreport[5].MeasureTitle}}
+                            {{y[5]}}&nbsp;-&nbsp;{{getDashBoardreport[5]?.MeasureTitle}}
                           </th>
                         </thead>
                         <tbody>
@@ -256,7 +257,7 @@
                       <table class="summary" id='p147'>
                         <thead class="summaryheader">
                           <th class="heading-middle px-3">CMS
-                            {{y[6]}}&nbsp;-&nbsp;{{getDashBoardreport[6].MeasureTitle}}
+                            {{y[6]}}&nbsp;-&nbsp;{{getDashBoardreport[6]?.MeasureTitle}}
                           </th>
                         </thead>
                         <tbody>
@@ -279,7 +280,7 @@
                       <table class="summary" id='p155'>
                         <thead class="summaryheader">
                           <th class="heading-middle px-3">CMS
-                            {{y[7]}}&nbsp;-&nbsp;{{getDashBoardreport[7].MeasureTitle}}
+                            {{y[7]}}&nbsp;-&nbsp;{{getDashBoardreport[7]?.MeasureTitle}}
                           </th>
                         </thead>
                         <tbody>
@@ -330,7 +331,7 @@
                       <table class="summary" id='p165'>
                         <thead class="summaryheader">
                           <th class="heading-middle px-3">CMS
-                            {{y[8]}}&nbsp;-&nbsp;{{getDashBoardreport[8].MeasureTitle}}
+                            {{y[8]}}&nbsp;-&nbsp;{{getDashBoardreport[8]?.MeasureTitle}}
                             /th>
                         </thead>
                         <tbody>
@@ -393,7 +394,8 @@
                         <span class="cstm-size">{{patientlistmeasure.DateCreated|date:'MM/dd/yyyy h:mm:ss a'}}</span>
                       </ul>
                       <ul class="cstm-size"><b>Measurement Period: </b>
-                        <span class="cstm-size"> {{this.startdate}} to {{this.enddate}}</span>
+                        <span class="cstm-size"> {{this.startdate |date:'MM/dd/yyyy' }} to {{this.enddate
+                          |date:'MM/dd/yyyy' }}</span>
                       </ul>
                     </div>
                   </div>
@@ -693,11 +695,12 @@
                                   <span class="cstm-size">{{patientlistmeasure.Description}}</span>
                                 </ul>
                                 <ul class="cstm-size"><b>Created on: </b>
-                                  <span
-                                    class="cstm-size">{{patientlistmeasure.DateCreated|date:'MM/dd/yyyyh:mm:ssa'}}</span>
+                                  <span class="cstm-size">{{patientlistmeasure.DateCreated |
+                                    date:'MM/dd/yyyy h:mm:ssa'}}</span>
                                 </ul>
                                 <ul class="cstm-size"><b>Measurement Period: </b>
-                                  <span class="cstm-size"> {{this.startdate}} to {{this.enddate}}</span>
+                                  <span class="cstm-size"> {{this.startdate | date: 'MM/dd/yyyy'}} to {{this.enddate |
+                                    date: 'MM/dd/yyyy'}}</span>
                                 </ul>
                               </div>
                             </div>
@@ -835,7 +838,7 @@
                       </li>
                       <li>
                         <b>Measurement Period:</b>
-                        <span> {{this.startdate}} to {{this.enddate}}</span>
+                        <span> {{this.startdate |date:'MM/dd/yyyy' }} to {{this.enddate |date:'MM/dd/yyyy' }}</span>
                       </li>
                     </ul>
                   </div>
@@ -1014,7 +1017,8 @@
                               a'}}</span>
                           </ul>
                           <ul class="cstm-size"><b>Measurement Period: </b>
-                            <span class="cstm-size"> {{this.startdate}} to {{this.enddate}}</span>
+                            <span class="cstm-size"> {{this.startdate|date:'MM/dd/yyyy'}} to
+                              {{this.enddate|date:'MM/dd/yyyy'}}</span>
                           </ul>
                         </div>
                       </div>
@@ -1534,14 +1538,15 @@
           <div class="col-lg-9 body my-3">
             <div class="row" style="margin-top:1%;margin-left: 1%;">
               <mat-form-field appearance="outline" class="col-lg-4 col-md-6 my-2 hover">
-                <mat-select placeholder="Select Provider" disableOptionCentering formControlName="providerId">
+                <mat-select placeholder="Select Provider" disableOptionCentering #searchedItem
+                  formControlName="providerId">
                   <mat-select-filter [placeholder]="'Search...'" [displayMember]="'Provider_Name'"
-                    [array]="providerlist" (filteredReturn)="filteredproviderList =$event">
+                    [array]="providerlist" (filteredReturn)="filteredproviderList =$event" *ngIf="searchedItem.focused">
                   </mat-select-filter>
-                  <mat-option (click)="getProviderList(null)">
+                  <mat-option value="0" (click)="getProviderList(null)">
                     Show all Providers
                   </mat-option>
-                  <mat-option *ngFor="let item of filteredproviders" [value]="item.Provider_Id"
+                  <mat-option *ngFor="let item of filteredproviderList" [value]="item.Provider_Id"
                     (click)="getLocationsList(item.Provider_Id)">
                     {{item.Provider_Name}}
                   </mat-option>
@@ -1569,7 +1574,7 @@
                   </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div class="row ">
-                  <div class="panel-body col-lg-12" *ngFor="let loc of filteredproviderList">
+                  <div class="panel-body col-lg-12" *ngFor="let loc of filteredproviders">
                     <mat-checkbox class="example-margin" [checked]="loc.Provider_Id" (click)="matCheckbox(loc,location)"
                       formControlName="measureList">
                       <span> {{loc.Provider_Name }}

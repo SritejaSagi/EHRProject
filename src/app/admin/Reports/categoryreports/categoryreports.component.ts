@@ -51,7 +51,6 @@ export class CategoryreportsComponent implements OnInit {
 
     else if (req == 2) {
       this.showReport(this.categoryId);
-
     }
     else if (req == 3) {
       this.Reports = [
@@ -59,7 +58,6 @@ export class CategoryreportsComponent implements OnInit {
       ];
       this.reports == 0;
       this.showReport(this.categoryId);
-
     }
     else if (req == 4) {
       this.Reports = [
