@@ -269,7 +269,6 @@ export class MureportsComponent implements OnInit {
       const documenDefinition = {
         content:
           [
-
             {
               text: 'Promoting Interoperability (PI/MU) - Stage 3',
               style: "tableHeader",
@@ -290,14 +289,11 @@ export class MureportsComponent implements OnInit {
             {
               text: this.LocationPhone, alignment: 'left'
             },
-
             {
               image: 'data:image/jpg;base64,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',
               fit: [100, 100], absolutePosition: { x: 21, y: 53 },
               alignment: 'right'
             },
-
-
             {
               text: 'Date Ranges Of Report: ' + this.ReportingDate + ' - ' + this.Dates, alignment: 'left'
             },
@@ -305,13 +301,10 @@ export class MureportsComponent implements OnInit {
               text: "  ", alignment: 'left'
             },
             {
-
               table: {
                 widths: [200, 100, 100, 100],
-
                 font: 'sans-serif',
                 body: [
-
                   [{ text: 'Name', fillColor: '#41b6a6', color: 'white' }, { text: 'Goal', fillColor: '#41b6a6', color: 'white' }, { text: 'Status', fillColor: '#41b6a6', color: 'white' }, { text: 'Exclusion Claimed', fillColor: '#41b6a6', color: 'white' }],
                   [{ text: '1. Protect Electronic Protected Health Info | ' + this.result1 + ' of 1', style: 'tableHeader', colSpan: '4', alignment: 'left', fillColor: '#ffb080' }],
                   ['Protect Electronic Protected Health Information', 'Complete Security Risk Analysis',
@@ -319,7 +312,6 @@ export class MureportsComponent implements OnInit {
                       table: {
                         widths: [5, 80],
                         body: [
-
                           [
                             {
                               table: {
@@ -332,16 +324,13 @@ export class MureportsComponent implements OnInit {
                             },
                             {
                               text: '| Complete',
-
                               lineHeight: 1.1,
                               margin: [7, 1],
-
                               fontSize: 12,
                               alignment: 'center',
                             },
                           ],
                         ],
-
                       },
                       layout: {
                         defaultBorder: false,
@@ -354,7 +343,6 @@ export class MureportsComponent implements OnInit {
                       table: {
                         widths: [5, 80],
                         body: [
-
                           [
                             {
                               table: {
@@ -363,15 +351,12 @@ export class MureportsComponent implements OnInit {
                                   [{ text: this.pdfcheckbox2, preserveLeadingSpaces: true }],
                                 ],
                               },
-
-
                               margin: [1, 0],
                             },
                             {
                               text: '| Exclusion',
                               lineHeight: 1.1,
                               margin: [5, 0],
-
                               fontSize: 12,
                               alignment: 'center',
                             },
@@ -387,7 +372,6 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [5, 80],
                       body: [
-
                         [
                           {
                             table: {
@@ -396,16 +380,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfcheckbox31c, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 0],
                           },
                           {
                             text: '| Complete',
-
                             lineHeight: 1.1,
                             margin: [5, 0],
-
                             fontSize: 12,
                             alignment: 'center',
                           },
@@ -419,7 +399,6 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [5, 80],
                       body: [
-
                         [
                           {
                             table: {
@@ -428,16 +407,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfcheckbox31, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 0],
                           },
                           {
                             text: '| Exclusion ',
-
                             lineHeight: 1.1,
                             margin: [5, 0],
-
                             fontSize: 12,
                             alignment: 'center',
                           },
@@ -452,7 +427,6 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [5, 80],
                       body: [
-
                         [
                           {
                             table: {
@@ -461,16 +435,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfcheckbox32c, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 0],
                           },
                           {
                             text: '| Complete',
-
                             lineHeight: 1.1,
                             margin: [5, 0],
-
                             fontSize: 12,
                             alignment: 'center',
                           },
@@ -484,7 +454,6 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [5, 80],
                       body: [
-
                         [
                           {
                             table: {
@@ -493,16 +462,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfcheckbox32, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 0],
                           },
                           {
                             text: '| Exclusion ',
-
                             lineHeight: 1.1,
                             margin: [5, 0],
-
                             fontSize: 12,
                             alignment: 'center',
                           },
@@ -518,7 +483,6 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [5, 80],
                       body: [
-
                         [
                           {
                             table: {
@@ -527,16 +491,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfcheckbox41, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 0],
                           },
                           {
                             text: '| Exclusion ',
-
                             lineHeight: 1.1,
                             margin: [5, 0],
-
                             fontSize: 12,
                             alignment: 'center',
                           },
@@ -551,7 +511,6 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [5, 80],
                       body: [
-
                         [
                           {
                             table: {
@@ -560,16 +519,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfcheckbox42, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 0],
                           },
                           {
                             text: '| Exclusion ',
-
                             lineHeight: 1.1,
                             margin: [5, 0],
-
                             fontSize: 12,
                             alignment: 'center',
                           },
@@ -584,7 +539,6 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [5, 80],
                       body: [
-
                         [
                           {
                             table: {
@@ -593,16 +547,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfcheckbox43, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 0],
                           },
                           {
                             text: '| Exclusion ',
-
                             lineHeight: 1.1,
                             margin: [5, 0],
-
                             fontSize: 12,
                             alignment: 'center',
                           },
@@ -618,7 +568,6 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [5, 80],
                       body: [
-
                         [
                           {
                             table: {
@@ -627,16 +576,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfcheckbox51, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 0],
                           },
                           {
                             text: '| Exclusion ',
-
                             lineHeight: 1.1,
                             margin: [5, 0],
-
                             fontSize: 12,
                             alignment: 'center',
                           },],
@@ -650,7 +595,6 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [5, 80],
                       body: [
-
                         [
                           {
                             table: {
@@ -659,16 +603,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfcheckbox52, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 0],
                           },
                           {
                             text: '| Exclusion ',
-
                             lineHeight: 1.1,
                             margin: [5, 0],
-
                             fontSize: 12,
                             alignment: 'center',
                           },
@@ -684,7 +624,6 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [5, 80],
                       body: [
-
                         [
                           {
                             table: {
@@ -693,16 +632,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfcheckbox61, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 0],
                           },
                           {
                             text: '| Exclusion ',
-
                             lineHeight: 1.1,
                             margin: [5, 0],
-
                             fontSize: 12,
                             alignment: 'center',
                           },
@@ -717,7 +652,6 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [5, 80],
                       body: [
-
                         [
                           {
                             table: {
@@ -726,16 +660,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfcheckbox62, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 0],
                           },
                           {
                             text: '| Exclusion ',
-
                             lineHeight: 1.1,
                             margin: [5, 0],
-
                             fontSize: 12,
                             alignment: 'center',
                           },
@@ -750,7 +680,6 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [5, 80],
                       body: [
-
                         [
                           {
                             table: {
@@ -759,16 +688,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfcheckbox63, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 0],
                           },
                           {
                             text: '| Exclusion ',
-
                             lineHeight: 1.1,
                             margin: [5, 0],
-
                             fontSize: 12,
                             alignment: 'center',
                           },
@@ -784,7 +709,6 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [5, 80],
                       body: [
-
                         [
                           {
                             table: {
@@ -793,16 +717,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfcheckbox71, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 0],
                           },
                           {
                             text: '| Exclusion ',
-
                             lineHeight: 1.1,
                             margin: [5, 0],
-
                             fontSize: 12,
                             alignment: 'center',
                           },
@@ -817,7 +737,6 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [5, 80],
                       body: [
-
                         [
                           {
                             table: {
@@ -826,16 +745,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfcheckbox72, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 0],
                           },
                           {
                             text: '| Exclusion ',
-
                             lineHeight: 1.1,
                             margin: [5, 0],
-
                             fontSize: 10,
                             alignment: 'center',
                           },
@@ -850,7 +765,6 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [5, 80],
                       body: [
-
                         [
                           {
                             table: {
@@ -859,16 +773,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfcheckbox73, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 0],
                           },
                           {
                             text: '| Exclusion ',
-
                             lineHeight: 1.1,
                             margin: [5, 0],
-
                             fontSize: 12,
                             alignment: 'center',
                           },
@@ -878,13 +788,12 @@ export class MureportsComponent implements OnInit {
                     layout: {
                       defaultBorder: false,
                     },
-                  },]],
-                  [{ text: '8. Public Health Reporting | ' + this.result8 + ' of 5', style: 'tableHeader', colSpan: '4', alignment: 'left', fillColor: '#ffb080' },],
+                  },],],
+                  [{ text: '8. Public Health Reporting | ' + this.result8 + ' of 5', style: 'tableHeader', colSpan: '4', alignment: 'left', fillColor: '#ffb080', pageBreak: "before" },],
                   ['8-1. Immunization Registry Reporting', 'Complete Agent Engagement', [{
                     table: {
                       widths: [5, 80],
                       body: [
-
                         [
                           {
                             table: {
@@ -893,16 +802,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfcheckbox81c, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 0],
                           },
                           {
                             text: '| Complete',
-
                             lineHeight: 1.1,
                             margin: [5, 0],
-
                             fontSize: 12,
                             alignment: 'center',
                           },
@@ -917,7 +822,6 @@ export class MureportsComponent implements OnInit {
                       table: {
                         widths: [5, 80],
                         body: [
-
                           [
                             {
                               table: {
@@ -926,16 +830,12 @@ export class MureportsComponent implements OnInit {
                                   [{ text: this.pdfcheckbox81, preserveLeadingSpaces: true }],
                                 ],
                               },
-
-
                               margin: [1, 0],
                             },
                             {
                               text: '| Exclusion ',
-
                               lineHeight: 1.1,
                               margin: [5, 0],
-
                               fontSize: 12,
                               alignment: 'center',
                             },
@@ -950,7 +850,6 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [5, 80],
                       body: [
-
                         [
                           {
                             table: {
@@ -959,16 +858,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfcheckbox82c, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 0],
                           },
                           {
                             text: '| Complete',
-
                             lineHeight: 1.1,
                             margin: [5, 0],
-
                             fontSize: 12,
                             alignment: 'center',
                           },
@@ -982,7 +877,6 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [5, 80],
                       body: [
-
                         [
                           {
                             table: {
@@ -991,16 +885,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfcheckbox82, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 0],
                           },
                           {
                             text: '| Exclusion ',
-
                             lineHeight: 1.1,
                             margin: [5, 0],
-
                             fontSize: 12,
                             alignment: 'center',
                           },
@@ -1015,7 +905,6 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [5, 80],
                       body: [
-
                         [
                           {
                             table: {
@@ -1024,16 +913,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfcheckbox83c, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 0],
                           },
                           {
                             text: '| Complete',
-
                             lineHeight: 1.1,
                             margin: [5, 0],
-
                             fontSize: 12,
                             alignment: 'center',
                           },
@@ -1047,7 +932,6 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [5, 80],
                       body: [
-
                         [
                           {
                             table: {
@@ -1056,16 +940,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfcheckbox83, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 0],
                           },
                           {
                             text: '| Exclusion ',
-
                             lineHeight: 1.1,
                             margin: [5, 0],
-
                             fontSize: 12,
                             alignment: 'center',
                           },
@@ -1080,7 +960,6 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [5, 80],
                       body: [
-
                         [
                           {
                             table: {
@@ -1089,16 +968,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfcheckbox84c, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 0],
                           },
                           {
                             text: '| Complete',
-
                             lineHeight: 1.1,
                             margin: [5, 0],
-
                             fontSize: 12,
                             alignment: 'center',
                           },
@@ -1112,7 +987,6 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [5, 80],
                       body: [
-
                         [
                           {
                             table: {
@@ -1121,16 +995,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfcheckbox84, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 0],
                           },
                           {
                             text: '| Exclusion ',
-
                             lineHeight: 1.1,
                             margin: [5, 0],
-
                             fontSize: 12,
                             alignment: 'center',
                           },
@@ -1146,7 +1016,6 @@ export class MureportsComponent implements OnInit {
                       table: {
                         widths: [5, 80],
                         body: [
-
                           [
                             {
                               table: {
@@ -1155,16 +1024,12 @@ export class MureportsComponent implements OnInit {
                                   [{ text: this.pdfcheckbox85c, preserveLeadingSpaces: true }],
                                 ],
                               },
-
-
                               margin: [1, 0],
                             },
                             {
                               text: '| Complete',
-
                               lineHeight: 1.1,
                               margin: [5, 0],
-
                               fontSize: 12,
                               alignment: 'center',
                             },
@@ -1178,7 +1043,6 @@ export class MureportsComponent implements OnInit {
                       table: {
                         widths: [5, 80],
                         body: [
-
                           [
                             {
                               table: {
@@ -1187,16 +1051,12 @@ export class MureportsComponent implements OnInit {
                                   [{ text: this.pdfcheckbox85, preserveLeadingSpaces: true }],
                                 ],
                               },
-
-
                               margin: [1, 0],
                             },
                             {
                               text: '| Exclusion ',
-
                               lineHeight: 1.1,
                               margin: [5, 0],
-
                               fontSize: 12,
                               alignment: 'center',
                             },
@@ -1211,7 +1071,6 @@ export class MureportsComponent implements OnInit {
               }
             }
           ]
-
       };
       pdfMake.createPdf(documenDefinition).download('Stage3.Pdf');
     }
@@ -1272,24 +1131,18 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [130, 5, 10, 10, 10],
                       body: [
-
                         [
                           {
                             text: 'SRA Completed? ',
-
                             lineHeight: 1.1,
-                            margin: [20, 7],
-
+                            margin: [20, 4],
                             fontSize: 12,
                             alignment: 'left',
                           },
-
                           {
                             text: 'Y',
-
                             lineHeight: 1.1,
-                            margin: [1, 7],
-
+                            margin: [1, 4],
                             fontSize: 11,
                             alignment: 'right',
                           },
@@ -1300,17 +1153,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfradioy1, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 1],
                           },
-
                           {
                             text: 'N',
-
                             lineHeight: 1.1,
-                            margin: [5, 7],
-
+                            margin: [5, 4],
                             fontSize: 11,
                             alignment: 'left',
                           },
@@ -1321,23 +1169,16 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfradion1, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 1],
                           },
-
                         ],
                       ],
-
                     },
                     layout: {
                       defaultBorder: false,
                     },
                   },],
                 ]
-
-
-
                   , {
                   table: {
                     widths: [8],
@@ -1345,7 +1186,7 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox01, preserveLeadingSpaces: true }],
                     ],
                   },
-                  margin: [10, 6],
+                  margin: [10, 4],
                 },],
               ]
             }
@@ -1361,24 +1202,18 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [130, 5, 10, 10, 10],
                       body: [
-
                         [
                           {
                             text: '5 Min. Enabled?',
-
                             lineHeight: 1.1,
-                            margin: [20, 7],
-
+                            margin: [20, 4],
                             fontSize: 12,
                             alignment: 'left',
                           },
-
                           {
                             text: 'Y',
-
                             lineHeight: 1.1,
-                            margin: [1, 7],
-
+                            margin: [1, 4],
                             fontSize: 11,
                             alignment: 'right',
                           },
@@ -1389,17 +1224,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfradioy21, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 1],
                           },
-
                           {
                             text: 'N',
-
                             lineHeight: 1.1,
-                            margin: [5, 7],
-
+                            margin: [5, 4],
                             fontSize: 11,
                             alignment: 'left',
                           },
@@ -1410,14 +1240,10 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfradion21, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 1],
                           },
-
                         ],
                       ],
-
                     },
                     layout: {
                       defaultBorder: false,
@@ -1430,15 +1256,12 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox021, preserveLeadingSpaces: true }],
                     ],
                   },
-
-
-                  margin: [10, 5],
+                  margin: [10, 4],
                 },],
               ]
             }
           },
           {
-
             table: {
               widths: [30, 130, 277, 60],
               font: 'sans-serif',
@@ -1449,24 +1272,18 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [130, 5, 10, 10, 10],
                       body: [
-
                         [
                           {
                             text: '5 Min. Enabled?',
-
                             lineHeight: 1.1,
-                            margin: [20, 7],
-
+                            margin: [20, 4],
                             fontSize: 12,
                             alignment: 'left',
                           },
-
                           {
                             text: 'Y',
-
                             lineHeight: 1.1,
-                            margin: [1, 7],
-
+                            margin: [1, 4],
                             fontSize: 11,
                             alignment: 'right',
                           },
@@ -1477,17 +1294,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfradioy22, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 1],
                           },
-
                           {
                             text: 'N',
-
                             lineHeight: 1.1,
-                            margin: [5, 7],
-
+                            margin: [5, 4],
                             fontSize: 11,
                             alignment: 'left',
                           },
@@ -1498,14 +1310,10 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfradion22, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 1],
                           },
-
                         ],
                       ],
-
                     },
                     layout: {
                       defaultBorder: false,
@@ -1518,9 +1326,7 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox022, preserveLeadingSpaces: true }],
                     ],
                   },
-
-
-                  margin: [10, 6],
+                  margin: [10, 4],
                 },],
               ]
             }
@@ -1543,9 +1349,7 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox031, preserveLeadingSpaces: true }],
                     ],
                   },
-
-
-                  margin: [7, 10],
+                  margin: [10, 4],
                   fillColor: '#e6a2a2'
                 } : {
                   table: {
@@ -1554,9 +1358,7 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox031, preserveLeadingSpaces: true }],
                     ],
                   },
-
-
-                  margin: [10, 5],
+                  margin: [10, 4],
                   fillColor: '#fff'
                 },],
               ]
@@ -1580,9 +1382,7 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox032, preserveLeadingSpaces: true }],
                     ],
                   },
-
-
-                  margin: [7, 10],
+                  margin: [10, 4],
                   fillColor: '#e6a2a2'
                 } : {
                   table: {
@@ -1591,9 +1391,7 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox032, preserveLeadingSpaces: true }],
                     ],
                   },
-
-
-                  margin: [10, 5],
+                  margin: [10, 4],
                   fillColor: '#fff'
                 }],
               ]
@@ -1617,9 +1415,7 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox033, preserveLeadingSpaces: true }],
                     ],
                   },
-
-
-                  margin: [7, 10],
+                  margin: [10, 4],
                   fillColor: '#e6a2a2'
                 } : {
                   table: {
@@ -1628,9 +1424,7 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox033, preserveLeadingSpaces: true }],
                     ],
                   },
-
-
-                  margin: [10, 5],
+                  margin: [10, 4],
                   fillColor: '#fff'
                 }],
               ]
@@ -1654,9 +1448,7 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox04, preserveLeadingSpaces: true }],
                     ],
                   },
-
-
-                  margin: [7, 10],
+                  margin: [10, 4],
                   fillColor: '#e6a2a2'
                 } : {
                   table: {
@@ -1665,9 +1457,7 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox04, preserveLeadingSpaces: true }],
                     ],
                   },
-
-
-                  margin: [10, 5],
+                  margin: [10, 4],
                   fillColor: '#fff'
                 }],
               ]
@@ -1691,9 +1481,7 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox05, preserveLeadingSpaces: true }],
                     ],
                   },
-
-
-                  margin: [7, 10],
+                  margin: [10, 4],
                   fillColor: '#e6a2a2'
                 } : {
                   table: {
@@ -1702,9 +1490,7 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox05, preserveLeadingSpaces: true }],
                     ],
                   },
-
-
-                  margin: [10, 5],
+                  margin: [10, 4],
                   fillColor: '#fff'
                 }],
               ]
@@ -1728,9 +1514,7 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox06, preserveLeadingSpaces: true }],
                     ],
                   },
-
-
-                  margin: [7, 10],
+                  margin: [10, 4],
                   fillColor: '#e6a2a2'
                 } : {
                   table: {
@@ -1739,9 +1523,7 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox06, preserveLeadingSpaces: true }],
                     ],
                   },
-
-
-                  margin: [10, 5],
+                  margin: [10, 4],
                   fillColor: '#fff'
                 }],
               ]
@@ -1766,9 +1548,7 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox07, preserveLeadingSpaces: true }],
                     ],
                   },
-
-
-                  margin: [7, 10],
+                  margin: [10, 4],
                   fillColor: '#e6a2a2'
                 } : {
                   table: {
@@ -1777,9 +1557,7 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox07, preserveLeadingSpaces: true }],
                     ],
                   },
-
-
-                  margin: [7, 10],
+                  margin: [10, 4],
                   fillColor: '#fff'
                 }],
               ]
@@ -1803,9 +1581,7 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox081, preserveLeadingSpaces: true }],
                     ],
                   },
-
-
-                  margin: [7, 10],
+                  margin: [10, 4],
                   fillColor: '#e6a2a2'
                 } : {
                   table: {
@@ -1814,9 +1590,7 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox081, preserveLeadingSpaces: true }],
                     ],
                   },
-
-
-                  margin: [10, 5],
+                  margin: [10, 4],
                   fillColor: '#fff'
                 }],
 
@@ -1842,8 +1616,7 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox082, preserveLeadingSpaces: true }],
                     ],
                   },
-
-                  margin: [7, 10],
+                  margin: [10, 4],
                   fillColor: '#e6a2a2'
                 } : {
                   table: {
@@ -1852,9 +1625,7 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox082, preserveLeadingSpaces: true }],
                     ],
                   },
-
-
-                  margin: [10, 5],
+                  margin: [10, 4],
                   fillColor: '#fff'
                 }],
               ]
@@ -1878,9 +1649,7 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox09, preserveLeadingSpaces: true }],
                     ],
                   },
-
-
-                  margin: [7, 10],
+                  margin: [10, 4],
                   fillColor: '#e6a2a2'
                 } : {
                   table: {
@@ -1889,9 +1658,7 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox09, preserveLeadingSpaces: true }],
                     ],
                   },
-
-
-                  margin: [10, 5],
+                  margin: [10, 4],
                   fillColor: '#fff'
                 }],
               ]
@@ -1908,24 +1675,18 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [190, 5, 10, 10, 10],
                       body: [
-
                         [
                           {
                             text: 'Registered Intent or Submitted Data?',
-
                             lineHeight: 1.1,
-                            margin: [1, 7],
-
+                            margin: [1, 4],
                             fontSize: 12,
                             alignment: 'left',
                           },
-
                           {
                             text: 'Y',
-
                             lineHeight: 1.1,
-                            margin: [1, 7],
-
+                            margin: [1, 4],
                             fontSize: 11,
                             alignment: 'right',
                           },
@@ -1936,17 +1697,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfradioy101, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 1],
                           },
-
                           {
                             text: 'N',
-
                             lineHeight: 1.1,
-                            margin: [5, 7],
-
+                            margin: [5, 4],
                             fontSize: 11,
                             alignment: 'left',
                           },
@@ -1957,14 +1713,10 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfradion101, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 1],
                           },
-
                         ],
                       ],
-
                     },
                     layout: {
                       defaultBorder: false,
@@ -1977,9 +1729,7 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox0101, preserveLeadingSpaces: true }],
                     ],
                   },
-
-
-                  margin: [10, 5],
+                  margin: [10, 4],
                 },],
               ]
             }
@@ -1995,24 +1745,18 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [190, 5, 10, 10, 10],
                       body: [
-
                         [
                           {
                             text: 'Registered Intent or Submitted Data?',
-
                             lineHeight: 1.1,
-                            margin: [1, 7],
-
+                            margin: [1, 4],
                             fontSize: 12,
                             alignment: 'left',
                           },
-
                           {
                             text: 'Y',
-
                             lineHeight: 1.1,
-                            margin: [1, 7],
-
+                            margin: [1, 4],
                             fontSize: 11,
                             alignment: 'right',
                           },
@@ -2023,17 +1767,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfradioy102, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 1],
                           },
-
                           {
                             text: 'N',
-
                             lineHeight: 1.1,
-                            margin: [5, 7],
-
+                            margin: [5, 4],
                             fontSize: 11,
                             alignment: 'left',
                           },
@@ -2044,14 +1783,10 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfradion102, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 1],
                           },
-
                         ],
                       ],
-
                     },
                     layout: {
                       defaultBorder: false,
@@ -2064,9 +1799,7 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox0102, preserveLeadingSpaces: true }],
                     ],
                   },
-
-
-                  margin: [10, 5],
+                  margin: [10, 4],
                 },],
               ]
             }
@@ -2082,24 +1815,18 @@ export class MureportsComponent implements OnInit {
                     table: {
                       widths: [190, 5, 10, 10, 10],
                       body: [
-
                         [
                           {
                             text: 'Registered Intent or Submitted Data?',
-
                             lineHeight: 1.1,
-                            margin: [1, 7],
-
+                            margin: [1, 4],
                             fontSize: 12,
                             alignment: 'left',
                           },
-
                           {
                             text: 'Y',
-
                             lineHeight: 1.1,
-                            margin: [1, 7],
-
+                            margin: [1, 4],
                             fontSize: 11,
                             alignment: 'right',
                           },
@@ -2110,17 +1837,12 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfradioy103, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 1],
                           },
-
                           {
                             text: 'N',
-
                             lineHeight: 1.1,
-                            margin: [5, 7],
-
+                            margin: [5, 4],
                             fontSize: 11,
                             alignment: 'left',
                           },
@@ -2131,14 +1853,10 @@ export class MureportsComponent implements OnInit {
                                 [{ text: this.pdfradion103, preserveLeadingSpaces: true }],
                               ],
                             },
-
-
                             margin: [1, 1],
                           },
-
                         ],
                       ],
-
                     },
                     layout: {
                       defaultBorder: false,
@@ -2151,16 +1869,11 @@ export class MureportsComponent implements OnInit {
                       [{ text: this.pdfcheckbox0103, preserveLeadingSpaces: true }],
                     ],
                   },
-
-
-                  margin: [10, 5],
+                  margin: [10, 4],
                 },],
               ]
             }
           },
-
-
-
           ]
       };
       pdfMake.createPdf(documenDefinition).download('Stage2.Pdf');

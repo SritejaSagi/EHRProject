@@ -6,13 +6,13 @@ export const environment = {
   production: false,
 
   // 183 server
-    baseUrl:'http://183.82.111.111/EHRCQMReports/API/',
-    // baseUrl:'http://192.168.1.52/EHRCQMReports/API/',
-    // redirectUrl:'http://183.82.111.111/EHRCQMReports/dashboard',
-    // baseUrl:'http://localhost:4345/',
+  baseUrl: 'http://183.82.111.111/EHRCQMReports/API/',
+  // baseUrl:'http://192.168.1.52/EHRCQMReports/API/',
+  // redirectUrl:'http://183.82.111.111/EHRCQMReports/dashboard',
+  // baseUrl:'http://localhost:4345/',
 
   // Production server
-    //baseUrl: 'http://13.56.245.114:85/'
+  //baseUrl: 'http://13.56.245.114:85/'
 
 };
 

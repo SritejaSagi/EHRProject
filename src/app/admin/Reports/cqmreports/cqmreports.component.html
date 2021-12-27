@@ -844,15 +844,17 @@
                   </div>
                 </div>
 
-                <h4 style="margin-top: 2%;">Filter by</h4>
-                <form [formGroup]="patientlistfilterForm">
+                <h4 style="margin-top: 2%;" [hidden]="(patientlistfilterlength==0 || patientlistfilterlength==null)">
+                  Filter by</h4>
+                <form [formGroup]="patientlistfilterForm"
+                  [hidden]="(patientlistfilterlength==0 || patientlistfilterlength==null)">
                   <div class="row">
                     <div class="col-lg-2">
                       <div class="col-lg-12">
                         <span class="font">First Name</span>
                       </div>
                       <mat-form-field appearance="outline" class="col-lg-12">
-                        <input matInput placeholder="First Name Filter" formControlName="firstName"
+                        <input matInput autocomplete="off" placeholder="First Name Filter" formControlName="firstName"
                           style="text-overflow: ellipsis;">
                       </mat-form-field>
                     </div>
@@ -861,7 +863,7 @@
                         <span class="font">Last Name</span>
                       </div>
                       <mat-form-field appearance="outline" class="col-lg-12">
-                        <input matInput placeholder="Last Name Filter" formControlName="lastName"
+                        <input matInput autocomplete="off" placeholder="Last Name Filter" formControlName="lastName"
                           style="text-overflow: ellipsis;">
                       </mat-form-field>
                     </div>
@@ -870,7 +872,7 @@
                         <span class="font">Patient ID</span>
                       </div>
                       <mat-form-field appearance="outline" class="col-lg-12">
-                        <input matInput placeholder="Patient ID Filter" formControlName="patientId"
+                        <input matInput autocomplete="off" placeholder="Patient ID Filter" formControlName="patientId"
                           style="text-overflow: ellipsis;">
                       </mat-form-field>
                     </div>
@@ -962,12 +964,20 @@
                       </tr>
                     </tbody>
                   </table>
-                  <div style="color: red; text-align: center; font-size: 14px;" class="my-2"
-                    *ngIf="patientlistfilter.length==0">
+                  <!-- <div style="color: red; text-align: center; font-size: 14px;" class="my-2 Norecordstable"
+                    *ngIf="patientlistfilterlength==0">
                     No Records Found!
-                  </div>
+                  </div> -->
+                  <table class="Norecordstable">
+                    <tr *ngIf="patientlistfilterlength==0">
+                      <td style="color: red; text-align: center;">
+                        No Records Found!
+                      </td>
+                    </tr>
+                  </table>
                   <ul class="pagination my-3">
-                    <pagination-controls [hidden]="!patientlistfilter.length" (pageChange)="p = $event">
+                    <pagination-controls [hidden]="(patientlistfilterlength==0 || patientlistfilterlength==null)"
+                      (pageChange)="p = $event">
                     </pagination-controls>
                   </ul>
                 </div>
@@ -1309,7 +1319,8 @@
           <h3>Queued Reports</h3>
           <div class="row my-4">
             <div class="col-xl-1 col-lg-2 col-md-3 col-3"><button mat-button class="viewResult"
-                (click)="useFilterbtn()">Use Filter</button></div>
+                (click)="useFilterbtn()">Use
+                Filter</button></div>
             <div class="col-xl-1 col-lg-2 col-md-3 col-3"><button mat-button (click)="createreport()"
                 class="mx-3 viewResult">New Report</button></div>
             <div class="col-xl-2 col-lg-2 col-md-3 col-3"><button mat-button class="mx-5 viewResult"
@@ -1320,19 +1331,19 @@
             <form [formGroup]="queuedreportfilterForm" class="my-3">
               <div class="row">
                 <mat-form-field appearance="outline" class="col-xl-3 col-lg-3 col-md-3 col-12">
-                  <input matInput placeholder="Report Id" formControlName="reportId">
+                  <input matInput autocomplete="off" placeholder="Report Id" formControlName="reportId">
                 </mat-form-field>
 
                 <mat-form-field appearance="outline" class="col-xl-3 col-lg-3 col-md-3 col-12">
-                  <input matInput placeholder="Description" formControlName="description">
+                  <input matInput autocomplete="off" placeholder="Description" formControlName="description">
                 </mat-form-field>
 
                 <mat-form-field appearance="outline" class="col-xl-3 col-lg-3 col-md-3 col-12">
-                  <input matInput placeholder="Provider Name" formControlName="providerName">
+                  <input matInput autocomplete="off" placeholder="Provider Name" formControlName="providerName">
                 </mat-form-field>
 
                 <mat-form-field appearance="outline" class="col-xl-3 col-lg-3 col-md-3 col-12">
-                  <input matInput placeholder="Location Name" formControlName="locationName">
+                  <input matInput autocomplete="off" placeholder="Location Name" formControlName="locationName">
                 </mat-form-field>
               </div>
               <div class="row">
@@ -1451,7 +1462,7 @@
               <mat-row *matRowDef="let row; columns: queuedReportsColumns"></mat-row>
             </mat-table>
             <table class="Norecordstable">
-              <tr [hidden]="getoverrallreport.data.length!=0">
+              <tr [hidden]="getoverrallreportlength!=0">
                 <td style="color: red; text-align: center;">
                   No Records Found!
                 </td>
@@ -1485,9 +1496,9 @@
             </div>
             <div class="row">
               <mat-form-field appearance="outline" class="col-lg-12">
-                <input matInput placeholder="Description" formControlName="description">
+                <input matInput autocomplete="off" placeholder="Description" formControlName="description">
               </mat-form-field>
-              <div class="col-lg-12 ">
+              <div class="col-lg-12">
                 <h6>Begin Date:</h6>
               </div>
               <div class="col-xl-12 col-lg-12 col-md-12 col-12">

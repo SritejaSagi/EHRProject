@@ -186,6 +186,8 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   measures: any;
   filteredproviders: any;
   providerid: any;
+  patientlistfilterlength: number;
+  getoverrallreportlength: number;
 
   public downloadAsPDF() {
     debugger;
@@ -1309,12 +1311,14 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
     this.accountservice.getCQMReportsQueuedReports(obj).subscribe((data) => {
       this.getoverrallreport.data = [];
+      this.getoverrallreportlength = null;
       if (data.IsSuccess) {
         this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
         this.getoverrallreport.data = data.ListResult[0] as CQMReportsData[];
         this.queuedreportdata = JSON.parse(
           JSON.stringify(data.ListResult[0] as CQMReportsData[])
         );
+        this.getoverrallreportlength = this.getoverrallreport.data.length;
         this.showQueuedReportsTable = true;
         for (var i of data.ListResult[0]) {
           this.measures = i.MeasuresList;
@@ -1518,12 +1522,14 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     this.MeasureSetId = MeasureSetId;
     this.getPatientListTabData = [];
     this.patientlistfilter = [];
+    this.patientlistfilterlength = null;
     this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0)
     this.accountservice.getCQMReportsDashboard(req).subscribe((data) => {
       if (data.IsSuccess) {
         this.getPatientListTabData = data;
         this.getPatientListTabData = this.getPatientListTabData.ListResult;
         this.patientlistfilter = this.getPatientListTabData;
+        this.patientlistfilterlength = this.patientlistfilter.length;
         this.p = 1;
       }
       this.customizedspinner = false; $('body').removeClass('loadactive');
