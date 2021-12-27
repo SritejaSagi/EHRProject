@@ -11,6 +11,7 @@ import {
 import { Accountservice } from "src/app/Services/account.service";
 import { EncounterData } from "../../../_models";
 import { TableUtil } from "../tableUtil";
+declare const $: any;
 
 @Component({
   selector: "app-encounterlist",
@@ -160,18 +161,18 @@ export class EncounterlistComponent implements OnInit {
 
   getEncountersList(data: any) {
     this.encounters = data;
-    this.customizedspinner = true;
+    this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
     this.service.getEncountersList(data).subscribe((data) => {
       this.encounterlist.data = [];
       this.showencounterTable = true;
       if (data.IsSuccess) {
         this.showEncounterControls = true;
-        this.customizedspinner = true;
+        this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
         this.encounterlist.data = data.ListResult as EncounterData[];
         this.showencounterTable = true;
         this.disabledowloadExportbtn = false;
       }
-      this.customizedspinner = false;
+      this.customizedspinner = false; $('body').removeClass('loadactive');
     });
   }
   getProviderList() {

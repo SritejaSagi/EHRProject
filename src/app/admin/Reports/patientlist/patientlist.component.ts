@@ -11,6 +11,7 @@ import {
   PageEvent,
 } from "@angular/material";
 import { TableUtil } from "../tableUtil";
+declare const $: any;
 
 @Component({
   selector: "app-patientlist",
@@ -236,19 +237,19 @@ export class PatientlistComponent implements OnInit {
     }
   }
   getAllPatientList(data: any) {
-    this.customizedspinner = true;
+    this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
     this.service.getAllPatientList(data).subscribe((data) => {
       this.allPatientList.data = [];
       this.allPatientList.data = data.ListResult as PatientData[];
       this.showpatientTable = true;
       if (data.IsSuccess) {
         this.showPatientControls = true;
-        this.customizedspinner = true;
+        this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
         this.allPatientList.data = data.ListResult as PatientData[];
         this.showpatientTable = true;
         this.disabledowloadExportbtn = false;
       }
-      this.customizedspinner = false;
+      this.customizedspinner = false; $('body').removeClass('loadactive');
     });
   }
   getProviderList() {

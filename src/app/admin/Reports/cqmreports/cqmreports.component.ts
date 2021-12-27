@@ -1,4 +1,3 @@
-import { map } from 'rxjs/operators';
 import {
   AfterViewInit,
   Component,
@@ -622,6 +621,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
                       fillColor: "white",
                       decoration: "underline",
                       text: "Measure Section",
+                      margin: [-5, 0],
                     },
                   ],
                 ],
@@ -1418,6 +1418,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
       (PatientForm.endDate == "" || PatientForm.endDate == null)
     ) {
       this.getoverrallreport.data = this.queuedreportdata;
+      this.getoverrallreportlength = this.getoverrallreport.data.length;
       this.showUseFilterForm = false;
       this.showClearFilterBtn = true;
     } else {
@@ -1449,6 +1450,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
           (StartDate == startDate && EndDate == enDate)
         );
       });
+      this.getoverrallreportlength = this.getoverrallreport.data.length;
       this.showUseFilterForm = false;
       this.showClearFilterBtn = true;
     }
@@ -1456,6 +1458,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   queuedreporttabfilterClear() {
     this.queuedreportfilterForm.reset();
     this.getoverrallreport.data = this.queuedreportdata;
+    this.getoverrallreportlength = this.getoverrallreport.data.length;
     this.selected = "100";
     this.showUseFilterForm = false;
     this.showClearFilterBtn = false;
@@ -1569,7 +1572,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     this.DrilldownPatientData = [];
     this.ipp_conditions = [];
     this.deno_conditions = [];
-    this.customizedspinner = true;
+    this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
     this.accountservice
       .getCQMReportsMeasurePatientMetInfo(req)
       .subscribe((cmscoditions_data) => {
@@ -1863,7 +1866,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   }
 
   createreport() {
-    this.customizedspinner = true;
+    this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
     this.ViewResults = false;
     this.cqmcreatereport = true;
     this.showClearFilterBtn = false;

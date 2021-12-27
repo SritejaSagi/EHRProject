@@ -18,6 +18,7 @@ export class CategoryreportsComponent implements OnInit {
   Reports: any;
   mureports: boolean;
   showControls: boolean;
+  selected = "0";
 
   constructor() { }
 
@@ -46,38 +47,38 @@ export class CategoryreportsComponent implements OnInit {
         { RepId: 8, Name: 'View, Download, Transmit', Id: 1 },
         { RepId: 9, Name: 'Secure Messaging', Id: 1 },
       ];
-      this.reports == 0;
+      // this.reports == 0;
     }
 
     else if (req == 2) {
+      this.selected = "0";
       this.showReport(this.categoryId);
     }
     else if (req == 3) {
       this.Reports = [
-        { RepId: 1, Name: 'Patient List Report', Id: 3 },
+        { RepId: 11, Name: 'Patient List Report', Id: 3 },
       ];
-      this.reports == 0;
-      this.showReport(this.categoryId);
+      // this.reports == 0;
     }
     else if (req == 4) {
       this.Reports = [
-        { RepId: 1, Name: 'Encouter Report', Id: 4 },
+        { RepId: 12, Name: 'Encouter Report', Id: 4 },
       ];
-      this.reports == 0;
+      // this.reports == 0;
     }
     else if (req == 5) {
       this.Reports = [
-        { RepId: 1, Name: 'Problem List Report', Id: 5 },
+        { RepId: 13, Name: 'Problem List Report', Id: 5 },
       ];
-      this.reports == 0;
+      // this.reports == 0;
     }
     else {
       this.Reports = [
-        { RepId: 0, Name: 'No results found', Id: 0 },
+        { RepId: 14, Name: 'No results found', Id: 0 },
       ];
-      this.reports == 0;
+      // this.reports == 0;
     }
-    this.showReport(this.categoryId);
+    // this.showReport(this.categoryId);
   }
 
   reportsId(req) {
@@ -106,21 +107,21 @@ export class CategoryreportsComponent implements OnInit {
       this.problem = false;
       this.cqmreports = true;
     }
-    else if (this.categoryId == 3 && this.reports == 1) {
+    else if (this.categoryId == 3 && this.reports >= 1) {
       this.mureports = false;
       this.cqmreports = false;
       this.encounterlist = false;
       this.problem = false;
       this.patientlist = true;
     }
-    else if (this.categoryId == 4 && this.reports == 1) {
+    else if (this.categoryId == 4 && this.reports >= 1) {
       this.mureports = false;
       this.cqmreports = false;
       this.patientlist = false;
       this.problem = false;
       this.encounterlist = true;
     }
-    else if (this.categoryId == 5 && this.reports == 1) {
+    else if (this.categoryId == 5 && this.reports >= 1) {
       this.mureports = false;
       this.cqmreports = false;
       this.patientlist = false;

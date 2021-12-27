@@ -13,9 +13,9 @@ import {
   MatTableDataSource,
   PageEvent,
 } from "@angular/material";
-
 import { Accountservice } from "src/app/Services/account.service";
 import { TableUtil } from "../tableUtil";
+declare const $: any;
 
 @Component({
   selector: "app-problemlist",
@@ -167,19 +167,18 @@ export class ProblemlistComponent implements OnInit {
   }
 
   getProblemReportList(data: any) {
-    this.customizedspinner = true;
-
+    this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
     this.service.getProblemListReportByProviderId(data).subscribe((data) => {
       this.problemreportlist.data = [];
       this.showPromblemListTable = true;
       if (data.IsSuccess) {
         this.showProblemListControls = true;
-        this.customizedspinner = true;
+        this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
         this.problemreportlist.data = data.ListResult as ProblemData[];
         this.showPromblemListTable = true;
         this.disabledowloadExportbtn = false;
       }
-      this.customizedspinner = false;
+      this.customizedspinner = false; $('body').removeClass('loadactive');
     });
   }
   getProviderList() {
