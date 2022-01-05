@@ -6,7 +6,7 @@ import { Injectable } from "@angular/core";
 export class EndpointBase {
   //  UserData:any=JSON.parse(localStorage.getItem('UserInformation'));
 
-  constructor() {}
+  constructor() { }
 
   protected get requestHeaders(): {
     headers: HttpHeaders | { [header: string]: string | string[] };

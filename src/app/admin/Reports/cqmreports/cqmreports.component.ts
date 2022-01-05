@@ -1321,7 +1321,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
         this.getoverrallreportlength = this.getoverrallreport.data.length;
         this.showQueuedReportsTable = true;
         for (var i of data.ListResult[0]) {
-          this.measures = i.MeasuresList;
+          this.measures = i.MeasuresList == '68,69,74,75,127,138,147,155,165' ? '68,69,74,75,127,138,147,155,165' : i.MeasuresList;
           break;
         }
       }
