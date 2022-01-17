@@ -10,7 +10,7 @@ import { HttpClient } from "@angular/common/http";
 import { Accountservice } from "src/app/Services/account.service";
 import { Observable } from "rxjs/Observable";
 import { of } from "rxjs/observable/of";
-import { MatPaginator, MatSort, MatTableDataSource } from "@angular/material";
+import { MatSort, MatTableDataSource } from "@angular/material";
 import { PageEvent } from "@angular/material/paginator";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { formatDate } from "@angular/common";
@@ -119,10 +119,10 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     "Report",
     "Action",
   ];
-  pageSize = 10;
-  pageIndex = 0;
-  pageSizeOptions: number[] = [5, 10, 25, 100];
-  pageEvent: PageEvent;
+  // pageSize = 10;
+  // pageIndex = 0;
+  // pageSizeOptions: number[] = [5, 10, 25, 100];
+  // pageEvent: PageEvent;
   providerlist: any[] = [];
   locationslist: any;
   filteredproviderList: any = [];
@@ -130,7 +130,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   checksbtn: boolean = true;
   countsbtn: boolean = false;
 
-  @ViewChildren(MatPaginator) paginator = new QueryList<MatPaginator>();
+  // @ViewChildren(MatPaginator) paginator = new QueryList<MatPaginator>();
   @ViewChildren(MatSort) sort = new QueryList<MatSort>();
 
   public getoverrallreport = new MatTableDataSource<CQMReportsData>();
@@ -354,7 +354,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.getoverrallreport.paginator = this.paginator.toArray()[0];
+    // this.getoverrallreport.paginator = this.paginator.toArray()[0];
     this.getoverrallreport.sort = this.sort.toArray()[0];
   }
 
@@ -1841,7 +1841,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
     this.accountservice.CreateQueuedReport(data).subscribe((data) => {
       if (data.IsSuccess) {
-        this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);;
+        this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
         this.queuedreport();
         this.toastr.success("Report created successfully", "Success Message", {
           timeOut: 3000,

@@ -995,7 +995,7 @@
                             <span class="cstm-size"> {{this.DrilldownPatientData.MeasureIdentifier}}</span>
                             <span class="cstm-size mx-2"
                               [hidden]="this.DrilldownPatientData.MeasureVersionNumber==null || this.DrilldownPatientData.MeasureVersionNumber==''">v{{this.DrilldownPatientData.MeasureVersionNumber}}</span>
-                            <span class="cstm-size mx-2">{{this.DrilldownPatientData.MeasureTitle}}</span>
+                            <p class="cstm-size">{{this.DrilldownPatientData.MeasureTitle}}</p>
                           </ul>
                           <ul class="cstm-size"><b>Patient Name: </b>
                             <span class="cstm-size">{{this.DrilldownPatientData.PatientFirstName}}
@@ -1023,8 +1023,9 @@
                             <span class="cstm-size">{{patientlistmeasure.Description}}</span>
                           </ul>
                           <ul class="cstm-size"><b>Created on: </b>
-                            <span class="cstm-size">{{patientlistmeasure.DateCreated|date:'MM/dd/yyyy h:mm:ss
-                              a'}}</span>
+                            <span class="cstm-size">
+                              {{patientlistmeasure.DateCreated|date:'MM/dd/yyyy h:mm:ssa'}}
+                            </span>
                           </ul>
                           <ul class="cstm-size"><b>Measurement Period: </b>
                             <span class="cstm-size"> {{this.startdate|date:'MM/dd/yyyy'}} to
@@ -1420,8 +1421,8 @@
               </ng-container>
 
               <ng-container matColumnDef="Measurement">
-                <mat-header-cell fxFlex="20%" *matHeaderCellDef mat-sort-header="MeasurementPeriod"
-                  class="cstm-widthgd qr">Measurement Period
+                <mat-header-cell fxFlex="20%" *matHeaderCellDef mat-sort-header="StartDate" class="cstm-widthgd qr">
+                  Measurement Period
                 </mat-header-cell>
                 <mat-cell fxFlex="20%" *matCellDef="let queuedReportData" class="cstm-widthgd mat-row qc">
                   {{queuedReportData.MeasurementPeriod}}</mat-cell>
@@ -1474,8 +1475,6 @@
     </div>
   </div>
 
-
-
   <!-- Create Cqm report-->
   <div *ngIf="cqmcreatereport">
     <mat-card>
@@ -1492,14 +1491,14 @@
         <div class="row">
           <div class="col-lg-3  queuereprt">
             <div>
-              <h6>Description:</h6>
+              <h6>Description:<span class="asterisk">*</span></h6>
             </div>
             <div class="row">
               <mat-form-field appearance="outline" class="col-lg-12">
                 <input matInput autocomplete="off" placeholder="Description" formControlName="description">
               </mat-form-field>
               <div class="col-lg-12">
-                <h6>Begin Date:</h6>
+                <h6>Begin Date:<span class="asterisk">*</span></h6>
               </div>
               <div class="col-xl-12 col-lg-12 col-md-12 col-12">
                 <mat-form-field appearance="outline" class="w-75">
@@ -1522,7 +1521,7 @@
               </div>
 
               <div class="col-lg-12">
-                <h6>End Date:</h6>
+                <h6>End Date:<span class="asterisk">*</span></h6>
               </div>
               <mat-form-field appearance="outline" class="col-lg-12 ">
                 <input matInput class="pointer" style="text-overflow: ellipsis;" placeholder="End Date"
@@ -1532,7 +1531,7 @@
                 <mat-datepicker #picker2></mat-datepicker>
               </mat-form-field>
               <div class="col-lg-12">
-                <h6>CQM Update Year:</h6>
+                <h6>CQM Update Year:<span class="asterisk">*</span></h6>
               </div>
               <mat-form-field appearance="outline" class="col-lg-12">
                 <mat-select placeholder="Select Year" disableOptionCentering formControlName="bundleYear">
@@ -1582,6 +1581,7 @@
                 <mat-expansion-panel-header>
                   <mat-panel-title>
                     {{location}}
+                    <span class="asterisk">*</span>
                   </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div class="row ">

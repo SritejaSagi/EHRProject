@@ -8,7 +8,7 @@
     <form [formGroup]="muReportForm">
       <div class="row" style="background-color: #e5f8f5;font-family: serif;font-size: 16px;">
         <div class="col-lg-1 col-md-6">
-          <p class="float-left my-4">Provider:</p>
+          <p class="float-left my-4">Provider:<span class="asterisk">*</span></p>
         </div>
         <mat-form-field appearance="outline" class="col-lg-2 col-md-6 my-2 hover">
           <mat-select placeholder="Select One" disableOptionCentering #searchedItem formControlName="provider_Id">
@@ -36,7 +36,7 @@
       </div>
       <div class="row" style="background-color: #e5f8f5;">
         <div class="col-lg-1 col-md-6">
-          <p class="float-left my-3">Stage:</p>
+          <p class="float-left my-3">Stage:<span class="asterisk">*</span></p>
         </div>
         <mat-form-field appearance="outline" class="col-lg-2 col-md-6 hover">
           <mat-select placeholder="Select One" disableOptionCentering formControlName="stage_type">
@@ -48,7 +48,7 @@
           </div> -->
         <mat-form-field appearance="outline" class="col-lg-2 col-md-6">
           <input matInput class="pointer" autocomplete="off" [max]="tomorrow" (dateChange)="disableEndDate()"
-            [matDatepicker]="picker1" (click)="picker1.open()" readonly placeholder="Start Date"
+            [matDatepicker]="picker1" (click)="picker1.open()" readonly placeholder="Start Date *"
             formControlName="strSDate">
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
           <mat-datepicker #picker1></mat-datepicker>
@@ -56,7 +56,7 @@
         <span style="font-size: 30px;" class="d-none d-lg-inline-block my-1">-</span>
         <mat-form-field appearance="outline" class="col-lg-2 col-md-6">
           <input matInput class="cstm-disable pointer" autocomplete="off" [max]="tomorrow"
-            [min]="muReportForm.value.strSDate" placeholder="Stop Date" [matDatepicker]="picker2"
+            [min]="muReportForm.value.strSDate" placeholder="Stop Date *" [matDatepicker]="picker2"
             (click)="picker2.open()" readonly formControlName="strEDate" [disabled]="disableEndDateInput">
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker>
@@ -81,7 +81,7 @@
         <div class="mat-header-cell col-md-5" style="text-align: center;">Name</div>
         <div class="mat-header-cell col-md-3" style="text-align: center;">Goal</div>
         <div class="mat-header-cell col-md-2" style="text-align: center;">Status</div>
-        <div class="mat-header-cell col-md-2" style="text-align: center;">ExclusionClaimed</div>
+        <div class="mat-header-cell col-md-2" style="text-align: center;">Exclusion Claimed</div>
       </div>
       <div class="mat-row menu">
         <div class="mat-cell col-md-12 submenu">1. Protect Electronic Protected Health Info | {{this.result1}} of 1
@@ -115,7 +115,7 @@
 
       </div>
       <div class="mat-row">
-        <div class="mat-cell col-md-5 submenu">3-1. Clinical Decision Support interventions</div>
+        <div class="mat-cell col-md-5 submenu">3-1. Clinical Decision Support Interventions</div>
         <div class="mat-cell col-md-3 submenu" style="text-align: center;">5 CDS Interventions Implemented</div>
         <div class="mat-cell col-md-2 submenu" style="text-align: center;">
           <mat-checkbox class="example-margin" #checkbox31c (change)='checkboxevent31c(checkbox31c.checked)'>
@@ -177,7 +177,7 @@
         </div>
       </div>
       <div class="mat-row menu">
-        <div class="mat-cell col-md-12 submenu ">5. Patient Electronic Access | {{result5}}of 2</div>
+        <div class="mat-cell col-md-12 submenu ">5. Patient Electronic Access | {{result5}} of 2</div>
       </div>
       <div class="mat-row ">
         <div class="mat-cell col-md-5 submenu" onclick="document.getElementById('id06').style.display='block'">5-1.<a
@@ -291,7 +291,7 @@
         </div>
       </div>
       <div class="mat-row ">
-        <div class="mat-cell col-md-5 submenu">8-2. Syndromic Suriveillance Reporting</div>
+        <div class="mat-cell col-md-5 submenu">8-2. Syndromic Surveillance Reporting</div>
         <div class="mat-cell col-md-3 submenu" style="text-align: center;">Complete Agent Engagement</div>
         <div class="mat-cell col-md-2 submenu" style="text-align: center;">
           <mat-checkbox class="example-margin" #checkbox82c (change)='checkboxevent82c(checkbox82c.checked)'>
@@ -362,7 +362,7 @@
           <div class="row">
             <div class="col-md-2" style="color: #41b6a6;">Objective #: <span style="color: black;">2</span>
             </div>
-            <div class="col-md-2">Medication Orders</div>
+            <div class="col-md-2">Electronic Prescribing</div>
           </div>
           <br>
           <div class="row">
@@ -528,7 +528,7 @@
           <div class="row">
             <div class="col-md-2" style="color: #41b6a6;">Objective #: <span style="color: black;">4-3</span>
             </div>
-            <div class="col-md-2">Laboratory Orders</div>
+            <div class="col-md-2">Radiology Orders</div>
           </div>
           <br>
           <div class="row">
@@ -1059,7 +1059,7 @@
       </div>
       <div class="mat-row">
         <div class="mat-cell col-md-1 col-1 submenu">2-2</div>
-        <div class="mat-cell col-md-3 col-3 submenu">Drug-Drug/Drug-allergy Interaction</div>
+        <div class="mat-cell col-md-3 col-3 submenu">Drug-Drug/Drug-Allergy Interaction</div>
         <div class="mat-cell col-md-4 col-4 submenu">5 Min. Enabled? Y
           <mat-radio-group>
             <mat-radio-button value="1" #radioy22 (change)='checkboxeventry22(radioy22.checked)'></mat-radio-button>N

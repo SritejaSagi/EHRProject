@@ -368,7 +368,7 @@ export class MureportsComponent implements OnInit {
                       },
                     },]],
                   [{ text: '3. Clinical Decision Support (CDS) | ' + this.result3 + ' of 2', style: 'tableHeader', colSpan: '4', alignment: 'left', fillColor: '#ffb080' }],
-                  ['3-1. Clinical Decision Support interventions', '5 CDS Interventions Implemented', [{
+                  ['3-1. Clinical Decision Support Interventions', '5 CDS Interventions Implemented', [{
                     table: {
                       widths: [5, 80],
                       body: [
@@ -751,7 +751,7 @@ export class MureportsComponent implements OnInit {
                             text: '| Exclusion ',
                             lineHeight: 1.1,
                             margin: [5, 0],
-                            fontSize: 10,
+                            fontSize: 12,
                             alignment: 'center',
                           },
                         ],
@@ -846,7 +846,7 @@ export class MureportsComponent implements OnInit {
                         defaultBorder: false,
                       },
                     },]],
-                  ['8-2. Syndromic Suriveillance Reporting', 'Complete Agent Engagement', [{
+                  ['8-2. Syndromic Surveillance Reporting', 'Complete Agent Engagement', [{
                     table: {
                       widths: [5, 80],
                       body: [
@@ -1882,6 +1882,7 @@ export class MureportsComponent implements OnInit {
       console.log('No file');
     }
   }
+
   constructor(private authenticationService: AuthenticationService, private service: Accountservice, private fb: FormBuilder, public datepipe: DatePipe) {
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
   }
@@ -1961,10 +1962,12 @@ export class MureportsComponent implements OnInit {
     this.Stage2PatientList = [];
     this.Stage2PatientListlength = null;
     this.service.getStage2PatientList(data).subscribe(data => {
-      this.Stage2PatientListlength = 0;
       if (data.IsSuccess) {
         this.Stage2PatientList = data.ListResult;
         this.Stage2PatientListlength = data.ListResult.length;
+      }
+      else {
+        this.Stage2PatientListlength = 0;
       }
       this.customizedspinner = false; $('body').removeClass('loadactive');
     });
@@ -3153,15 +3156,16 @@ export class MureportsComponent implements OnInit {
 
   getPatientList(data: any) {
     this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
-
     this.mupatientList = [];
+    this.mupatientListlength = null;
     this.service.getPatientList(data).subscribe(data => {
-      this.mupatientList = [];
-      this.mupatientListlength = 0;
       if (data.IsSuccess) {
         this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
         this.mupatientList = data.ListResult;
         this.mupatientListlength = data.ListResult.length;
+      }
+      else {
+        this.mupatientListlength = 0;
       }
       this.customizedspinner = false; $('body').removeClass('loadactive');
     });

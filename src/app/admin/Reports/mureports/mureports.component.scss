@@ -427,3 +427,12 @@ td {
 //     background: #dddddd !important;
 //   }
 // }
+// ::ng-deep {
+//   .asterisk .mat-input-element::after {
+//     content: "*";
+//     color: #ee0d0d !important;
+//   }
+// }
+.required {
+  color: red !important;
+}

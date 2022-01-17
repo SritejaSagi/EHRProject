@@ -11,6 +11,7 @@ import {
 import { Accountservice } from "src/app/Services/account.service";
 import { EncounterData } from "../../../_models";
 import { TableUtil } from "../tableUtil";
+import { $$ } from "protractor";
 declare const $: any;
 
 @Component({
@@ -79,6 +80,21 @@ export class EncounterlistComponent implements OnInit {
   ngAfterViewInit(): void {
     this.encounterlist.paginator = this.paginator.toArray()[0];
     this.encounterlist.sort = this.sort.toArray()[0];
+    this.encounterlist.sortingDataAccessor = (data, header) => {
+      switch (header) {
+        case 'Birth_Date': {
+          let Birth_Date = new Date(data.Birth_Date);
+          return Birth_Date;
+        }
+        case 'Encounter_Date': {
+          let Encounter_Date = new Date(data.Encounter_Date);
+          return Encounter_Date;
+        }
+        default: {
+          return data[header];
+        }
+      }
+    };
   }
   disableApplyButtonEncounterlist() {
     var Provider_Id =

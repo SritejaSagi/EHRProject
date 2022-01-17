@@ -24,7 +24,7 @@ export class CategoryreportsComponent implements OnInit {
 
   ngOnInit(): void {
     this.category = [
-      { Id: 1, Name: 'MeaningfulUse' },
+      { Id: 1, Name: 'Meaningful Use' },
       { Id: 2, Name: ' Clinical Quality Measures' },
       { Id: 3, Name: ' Patient List' },
       { Id: 4, Name: ' Encouters' },

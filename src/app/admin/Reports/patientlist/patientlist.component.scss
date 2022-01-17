@@ -62,7 +62,7 @@ table {
 }
 .ehr-cqm-table-container {
   position: relative;
-  overflow: auto;
+  overflow-x: scroll;
   border: #41b6a6 1px solid;
   text-align: center;
 }
