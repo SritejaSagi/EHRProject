@@ -284,7 +284,7 @@ export class MureportsComponent implements OnInit {
               text: this.LocationStreetAddress, alignment: 'left'
             },
             {
-              text: this.LocationCity + ', ' + this.LocationState + ' ' + this.LocationZip, alignment: 'left'
+              text: this.LocationCity + ' ' + this.LocationState + ' ' + this.LocationZip, alignment: 'left'
             },
             {
               text: this.LocationPhone, alignment: 'left'
@@ -1095,7 +1095,7 @@ export class MureportsComponent implements OnInit {
             text: this.LocationStreetAddress, alignment: 'left'
           },
           {
-            text: this.LocationCity + ', ' + this.LocationState + ' ' + this.LocationZip, alignment: 'left'
+            text: this.LocationCity + ' ' + this.LocationState + ' ' + this.LocationZip, alignment: 'left'
           },
           {
             text: this.LocationPhone, alignment: 'left'
@@ -2924,7 +2924,7 @@ export class MureportsComponent implements OnInit {
     this.stage3NumeDenomicount = null;
     this.service.GetNumeDenomicount(data).subscribe(data => {
       if (data.IsSuccess) {
-        this.Stage2 = false;
+        this.Stage2 = false; $('body').removeClass('loadactive');
         this.Stage3 = true;
         this.checkboxevent1(this.checkbox1);
         this.checkboxevent2(this.checkbox2);
