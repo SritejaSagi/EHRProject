@@ -423,7 +423,7 @@ export class MureportsComponent implements OnInit {
                       defaultBorder: false,
                     },
                   },]],
-                  ['3-2. Drug-Drug/Drug-allergy Interaction ', 'Enable Interactions Alerts', [{
+                  ['3-2. Drug-Drug/Drug-Allergy Interaction ', 'Enable Interactions Alerts', [{
                     table: {
                       widths: [5, 80],
                       body: [
@@ -1266,7 +1266,7 @@ export class MureportsComponent implements OnInit {
               widths: [30, 130, 277, 60],
               font: 'sans-serif',
               body: [
-                [{ text: '2-2' }, { text: 'Drug-Drug/Drugallergy Interaction' },
+                [{ text: '2-2' }, { text: 'Drug-Drug/Drug-Allergy Interaction' },
                 [
                   [{
                     table: {
