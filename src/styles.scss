@@ -336,6 +336,9 @@ mat-paginator {
 .cdk-overlay-pane {
   z-index: 9999 !important;
 }
+.cdk-overlay-container {
+  z-index: 1000 !important;
+}
 a {
   color: #41b6a6;
   text-decoration: none;

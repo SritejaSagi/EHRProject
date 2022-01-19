@@ -20,7 +20,7 @@
                         <span class="cstm-size mx-2"
                           *ngIf="patientlistmeasure.Provider_NPI != ''">({{patientlistmeasure.Provider_NPI}})</span>
                       </ul>
-                      <ul class="cstm-size"><b>Ran by user: </b>
+                      <ul class="cstm-size"><b>Ran by User: </b>
                         <span class="cstm-size">{{patientlistmeasure.ProviderName}}</span>
                       </ul>
                       <ul class="cstm-size"><b>Data Source: </b>
@@ -366,7 +366,7 @@
                         <span class="cstm-size mx-2"
                           *ngIf="patientlistmeasure.Provider_NPI != ''">({{patientlistmeasure.Provider_NPI}})</span>
                       </ul>
-                      <ul class="cstm-size"><b>Ran by user: </b>
+                      <ul class="cstm-size"><b>Ran by User: </b>
                         <span class="cstm-size">{{patientlistmeasure.ProviderName}}</span>
                       </ul>
                       <ul class="cstm-size"><b>Data Source: </b>
@@ -439,7 +439,7 @@
                       <table id="common" class="cus-table-border" style="width: 100%;">
                         <tbody>
                           <tr>
-                            <td class="col-md-4 col-4">Document Created</td>
+                            <td class="col-md-4 col-4">Document created</td>
                             <td class="col-md-8 col-8">{{patientlistmeasure.DateCreated|date:'MMMM dd, yyyy'}} </td>
                           </tr>
                           <tr>
@@ -502,11 +502,11 @@
                           <thead>
                             <tr>
                               <th>eMeasure Title</th>
-                              <th>Version neutral identifier</th>
+                              <th>Version Neutral Identifier</th>
                               <th>eMeasure Version Number</th>
                               <th>NQF eMeasure Number</th>
                               <th>eMeasure Identifier (MAT)</th>
-                              <th>Version specific identifier</th>
+                              <th>Version Specific Identifier</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -670,7 +670,7 @@
                                   <span class="cstm-size mx-2"
                                     *ngIf="patientlistmeasure.Provider_NPI != ''">({{patientlistmeasure.Provider_NPI}})</span>
                                 </ul>
-                                <ul class="cstm-size"><b>Ran by user: </b>
+                                <ul class="cstm-size"><b>Ran by User: </b>
                                   <span class="cstm-size">{{patientlistmeasure.ProviderName}}</span>
                                 </ul>
                                 <ul class="cstm-size"><b>Data Source: </b>
@@ -1063,19 +1063,19 @@
 
                               <ng-container matColumnDef="{{column}}" *ngFor="let column of drilldownClientColumns">
                                 <ng-container *ngIf="column !== 'action'&&column == 'Patient_LastName'; else action">
-                                  <th mat-header-cell *matHeaderCellDef class="drillcell"> Name Last </th>
+                                  <th mat-header-cell *matHeaderCellDef class="drillcell"> Last Name </th>
                                   <td mat-cell *matCellDef="let element" class="drillrow"> {{element[column]}} </td>
                                 </ng-container>
                                 <ng-container *ngIf="column !== 'action'&&column == 'Patient_MiddleName'; else action">
-                                  <th mat-header-cell *matHeaderCellDef class="drillcell"> Name Middile </th>
+                                  <th mat-header-cell *matHeaderCellDef class="drillcell"> Middle Name </th>
                                   <td mat-cell *matCellDef="let element" class="drillrow"> {{element[column]}} </td>
                                 </ng-container>
                                 <ng-container *ngIf="column !== 'action'&&column == 'Patient_FirstName'; else action">
-                                  <th mat-header-cell *matHeaderCellDef class="drillcell"> Name First </th>
+                                  <th mat-header-cell *matHeaderCellDef class="drillcell"> First Name </th>
                                   <td mat-cell *matCellDef="let element" class="drillrow"> {{element[column]}} </td>
                                 </ng-container>
                                 <ng-container *ngIf="column !== 'action'&&column == 'Patient_DoB'; else action">
-                                  <th mat-header-cell *matHeaderCellDef class="drillcell">Date Of Birth </th>
+                                  <th mat-header-cell *matHeaderCellDef class="drillcell">Date of Birth </th>
                                   <td mat-cell *matCellDef="let element" class="drillrow">
                                     {{element[column]|date:'MM/dd/yyyy h:mm:ss a'}} </td>
                                 </ng-container>
@@ -1149,12 +1149,14 @@
 
                               <ng-container matColumnDef="{{column}}" *ngFor="let column of drilldownEncounterColumns">
                                 <ng-container *ngIf="column !== 'Action'&&column == 'Date_Start'; else Action">
-                                  <th mat-header-cell *matHeaderCellDef class="drillcell"> Date Start(Admission) </th>
-                                  <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+                                  <th mat-header-cell *matHeaderCellDef class="drillcell"> Start Date(Admission) </th>
+                                  <td mat-cell *matCellDef="let element">
+                                    {{element[column]|date:'MM/dd/yyyy h:mm:ss a'}} </td>
                                 </ng-container>
                                 <ng-container *ngIf="column !== 'Action'&&column == 'Date_Stop'; else Action">
-                                  <th mat-header-cell *matHeaderCellDef class="drillcell"> Date Stop(Discharge) </th>
-                                  <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+                                  <th mat-header-cell *matHeaderCellDef class="drillcell"> Stop Date(Discharge) </th>
+                                  <td mat-cell *matCellDef="let element">
+                                    {{element[column]|date:'MM/dd/yyyy h:mm:ss a'}} </td>
                                 </ng-container>
                                 <ng-container *ngIf="column !== 'Action'&&column == 'code'; else Action">
                                   <th mat-header-cell *matHeaderCellDef class="drillcell"> Code </th>
@@ -1188,8 +1190,7 @@
                                   [attr.colspan]="drilldownEncounterColumns.length">
                                   <div class="example-element-detail"
                                     [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-
-                                    <div class="example-element-description">
+                                    <div class="example-element-description Nodata col-md-12 col-sm-12">
                                       No Data Available
                                     </div>
                                   </div>
@@ -1220,16 +1221,16 @@
                               <ng-container matColumnDef="{{column}}" *ngFor="let column of drilldownAuthorsColumns">
                                 <ng-container
                                   *ngIf="column !== 'actionn' && column == 'Author_BusinessName'; else actionn">
-                                  <th mat-header-cell *matHeaderCellDef class="drillcell"> Name Family</th>
+                                  <th mat-header-cell *matHeaderCellDef class="drillcell"> Family Name </th>
                                   <td mat-cell *matCellDef="let column"> {{column.Author_BusinessName}} </td>
                                 </ng-container>
 
                                 <ng-container *ngIf="column !== 'actionn' && column == 'NameGiven'; else actionn">
-                                  <th mat-header-cell *matHeaderCellDef class="drillcell">Name Given</th>
+                                  <th mat-header-cell *matHeaderCellDef class="drillcell"> Given Name </th>
                                   <td mat-cell *matCellDef="let column"> {{column.Author_BusinessName}} </td>
                                 </ng-container>
                                 <ng-container *ngIf="column !== 'actionn' && column == 'NameSuffix'; else actionn">
-                                  <th mat-header-cell *matHeaderCellDef class="drillcell">Name Suffix</th>
+                                  <th mat-header-cell *matHeaderCellDef class="drillcell"> Suffix Name</th>
                                   <td mat-cell *matCellDef="let column"> {{column.Author_BusinessName}} </td>
                                 </ng-container>
 
@@ -1277,11 +1278,11 @@
                                             <td>{{i.Author_Zip}}</td>
                                           </tr>
                                           <tr>
-                                            <th>Represented Organisation name</th>
+                                            <th>Represented Organisation Name</th>
                                             <td>{{i.Author_BusinessName}}</td>
                                           </tr>
                                           <tr>
-                                            <th>EffectiveDate</th>
+                                            <th>Effective Date</th>
                                             <td>{{i.EffectiveDate|date:'MM/dd/yyyy'}}</td>
                                           </tr>
                                         </tbody>

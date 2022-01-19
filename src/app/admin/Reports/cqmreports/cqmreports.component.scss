@@ -708,7 +708,10 @@ tr.example-element-row1:not(.example-expanded-row):active {
 .example-element-description-attribution {
   opacity: 0.5;
 }
-
+.Nodata {
+  text-align: center !important;
+  color: red !important;
+}
 mat-icon {
   cursor: pointer;
 }
