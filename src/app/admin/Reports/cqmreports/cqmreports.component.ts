@@ -285,7 +285,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
             {
               fontSize: 9,
               decoration: "underline",
-              text: "Measure section",
+              text: "Measure Section",
               alignment: "left",
             },
           ],
@@ -303,7 +303,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
           ul: [
             {
               fontSize: 9,
-              text: "Reporting period :" + this.startdate + "-" + this.enddate,
+              text: "Reporting Period :" + this.startdate + "-" + this.enddate,
               alignment: "left",
             },
           ],
@@ -312,7 +312,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
           ul: [
             {
               fontSize: 9,
-              text: "First encounter :" + this.firstencounter,
+              text: "First Encounter :" + this.firstencounter,
               alignment: "left",
             },
           ],
@@ -321,7 +321,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
           ul: [
             {
               fontSize: 9,
-              text: "Last encounter :" + this.lastencounter,
+              text: "Last Encounter :" + this.lastencounter,
               alignment: "left",
             },
           ],
@@ -494,7 +494,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
                       color: "white",
                     },
                     {
-                      text: "Version neutral identifier",
+                      text: "Version Neutral Identifier",
                       fillColor: "#41b6a6",
                       color: "white",
                     },
@@ -514,7 +514,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
                       color: "white",
                     },
                     {
-                      text: "Version specific identifier",
+                      text: "Version Specific Identifier",
                       fillColor: "#41b6a6",
                       color: "white",
                     },
@@ -660,6 +660,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
                         element.seq +
                         ":" +
                         element.ResultsForCount,
+                    alignment: 'left'
                   },
                   {
                     type: "circle",

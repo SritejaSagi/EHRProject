@@ -436,13 +436,22 @@ td {
 .required {
   color: red !important;
 }
-.stage2 {
-  .w3-modal {
-    height: 138.5% !important;
-  }
-}
-.stage3 {
-  .w3-modal {
-    height: 206.5% !important;
-  }
-}
+// .stage2 {
+//   .w3-modal {
+//     height: 138.5% !important;
+//   }
+//   body {
+//     overflow: hidden !important;
+//   }
+// }
+// .stage3 {
+//   .w3-modal {
+//     height: 210% !important;
+//   }
+//   body {
+//     overflow: hidden !important;
+//   }
+// }
+// body.stage2 {
+//   overflow: hidden !important;
+// }

@@ -1469,7 +1469,7 @@ export class MureportsComponent implements OnInit {
               font: 'sans-serif',
               body: [
                 [this.numerator5 === 0 || this.denominator5 === 0 ? { text: '5', fillColor: '#e6a2a2' } : { text: '5', fillColor: '#fff' },
-                this.numerator5 === 0 || this.denominator5 === 0 ? { text: 'Health Info Exchange', fillColor: '#e6a2a2' } : { text: 'Health Info Exchange', fillColor: '#fff' },
+                this.numerator5 === 0 || this.denominator5 === 0 ? { text: 'Health Information Exchange', fillColor: '#e6a2a2' } : { text: 'Health Information Exchange', fillColor: '#fff' },
                 this.numerator5 === 0 || this.denominator5 === 0 ? { text: this.numerator5, fillColor: '#e6a2a2' } : { text: this.numerator5, fillColor: '#fff' },
                 this.numerator5 === 0 || this.denominator5 === 0 ? { text: this.denominator5, fillColor: '#e6a2a2' } : { text: this.denominator5, fillColor: '#fff' },
                 this.numerator5 === 0 || this.denominator5 === 0 ? { text: this.percentage5 + '%', fillColor: '#e6a2a2' } : { text: this.percentage5 + '%', fillColor: '#fff' },
@@ -1969,8 +1969,12 @@ export class MureportsComponent implements OnInit {
       else {
         this.Stage2PatientListlength = 0;
       }
-      this.customizedspinner = false; $('body').removeClass('loadactive');
+      this.customizedspinner = false;
     });
+  }
+
+  hideScroll() {
+    this.customizedspinner = false; $('body').removeClass('loadactive');
   }
 
   onSubmitMUReport() {
@@ -2924,7 +2928,7 @@ export class MureportsComponent implements OnInit {
     this.stage3NumeDenomicount = null;
     this.service.GetNumeDenomicount(data).subscribe(data => {
       if (data.IsSuccess) {
-        this.Stage2 = false; $('body').removeClass('loadactive');
+        this.Stage2 = false;
         this.Stage3 = true;
         this.checkboxevent1(this.checkbox1);
         this.checkboxevent2(this.checkbox2);
@@ -3167,7 +3171,7 @@ export class MureportsComponent implements OnInit {
       else {
         this.mupatientListlength = 0;
       }
-      this.customizedspinner = false; $('body').removeClass('loadactive');
+      this.customizedspinner = false;
     });
   }
   onSortClick(event) {
