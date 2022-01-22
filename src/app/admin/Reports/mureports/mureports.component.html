@@ -1028,15 +1028,15 @@
         <div class="mat-cell col-md-3 col-3 submenu">Protect PHI</div>
         <div class="mat-cell col-md-4 col-4 submenu">SRA Completed? Y
           <mat-radio-group>
-            <mat-radio-button value="1" #radioy1 (change)='checkboxeventry1(radioy1.checked)'></mat-radio-button>N
-            <mat-radio-button value="2" #checkboxn1 (change)='checkboxeventrn1(checkboxn1.checked)'></mat-radio-button>
+            <mat-radio-button value="1" [checked]="checkboxValuery1"  #radioy1 (change)='checkboxeventry1(radioy1.checked)'></mat-radio-button>N
+            <mat-radio-button value="2"  [checked]="checkboxValuern1" #checkboxn1 (change)='checkboxeventrn1(checkboxn1.checked)'></mat-radio-button>
           </mat-radio-group>
         </div>
         <div class="mat-cell col-md-1 col-1 submenu"></div>
         <div class="mat-cell col-md-1 col-1 submenu"></div>
         <div class="mat-cell col-md-2 col-2 submenu example-margin">
-
-          <mat-checkbox class="example-margin" #checkbox01 (change)='checkboxevent01(checkbox01.checked)'>
+         
+          <mat-checkbox class="example-margin" [checked]="checkboxValue01" #checkbox01 (change)='checkboxevent01(checkbox01.checked)'>
 
           </mat-checkbox>
         </div>
@@ -1046,14 +1046,14 @@
         <div class="mat-cell col-md-3 col-3 submenu">Clinical Decision Support</div>
         <div class="mat-cell col-md-4 col-4 submenu">5 Min. Enabled? Y
           <mat-radio-group>
-            <mat-radio-button value="1" #radioy21 (change)='checkboxeventry21(radioy21.checked)'></mat-radio-button>N
-            <mat-radio-button value="2" #radion21 (change)='checkboxeventrn21(radion21.checked)'></mat-radio-button>
+            <mat-radio-button value="1" [checked]="checkboxValuery21"  #radioy21 (change)='checkboxeventry21(radioy21.checked)'></mat-radio-button>N
+            <mat-radio-button value="2" [checked]="checkboxValuern21" #radion21 (change)='checkboxeventrn21(radion21.checked)'></mat-radio-button>
           </mat-radio-group>
         </div>
         <div class="mat-cell col-md-1 col-1 submenu"></div>
         <div class="mat-cell col-md-1 col-1 submenu"></div>
         <div class="mat-cell col-md-2 col-2 submenu example-margin">
-          <mat-checkbox #checkbox021 (change)='checkboxevent021(checkbox021.checked)'></mat-checkbox>
+          <mat-checkbox #checkbox021  [checked]="checkboxValue021" (change)='checkboxevent021(checkbox021.checked)'></mat-checkbox>
         </div>
 
       </div>
@@ -1062,14 +1062,14 @@
         <div class="mat-cell col-md-3 col-3 submenu">Drug-Drug/Drug-Allergy Interaction</div>
         <div class="mat-cell col-md-4 col-4 submenu">5 Min. Enabled? Y
           <mat-radio-group>
-            <mat-radio-button value="1" #radioy22 (change)='checkboxeventry22(radioy22.checked)'></mat-radio-button>N
-            <mat-radio-button value="2" #radion22 (change)='checkboxeventrn22(radion22.checked)'></mat-radio-button>
+            <mat-radio-button value="1" [checked]="checkboxValuery22"  #radioy22 (change)='checkboxeventry22(radioy22.checked)'></mat-radio-button>N
+            <mat-radio-button value="2" [checked]="checkboxValuern22"  #radion22 (change)='checkboxeventrn22(radion22.checked)'></mat-radio-button>
           </mat-radio-group>
         </div>
         <div class="mat-cell col-md-1 col-1 submenu"></div>
         <div class="mat-cell col-md-1 col-1 submenu"></div>
         <div class="mat-cell col-md-2 col-2 submenu example-margin">
-          <mat-checkbox #checkbox022 (change)='checkboxevent022(checkbox022.checked)'></mat-checkbox>
+          <mat-checkbox #checkbox022   [checked]="checkboxValue022" (change)='checkboxevent022(checkbox022.checked)'></mat-checkbox>
         </div>
 
       </div>
@@ -1084,7 +1084,7 @@
         <div class="mat-cell col-md-1 col-1 submenu">{{this.percentage3_1}}%</div>
         <div class="mat-cell col-md-1 col-1 submenu">60.0%</div>
         <div class="mat-cell col-md-2 col-2 submenu example-margin">
-          <mat-checkbox #checkbox031 (change)='checkboxevent031(checkbox031.checked)'></mat-checkbox>
+          <mat-checkbox #checkbox031 [checked]="checkboxValue031" (change)='checkboxevent031(checkbox031.checked)'></mat-checkbox>
         </div>
 
       </div>
@@ -1099,7 +1099,7 @@
         <div class="mat-cell col-md-1 col-1 submenu">{{this.percentage3_2}}%</div>
         <div class="mat-cell col-md-1 col-1 submenu">30.0%</div>
         <div class="mat-cell col-md-2 col-2 submenu example-margin">
-          <mat-checkbox #checkbox032 (change)='checkboxevent032(checkbox032.checked)'></mat-checkbox>
+          <mat-checkbox #checkbox032 [checked]="checkboxValue032" (change)='checkboxevent032(checkbox032.checked)'></mat-checkbox>
         </div>
 
       </div>
@@ -1114,7 +1114,7 @@
         <div class="mat-cell col-md-1 col-1 submenu">{{this.percentage3_3}}%</div>
         <div class="mat-cell col-md-1 col-1 submenu">30.0%</div>
         <div class="mat-cell col-md-2 col-2 submenu example-margin">
-          <mat-checkbox #checkbox033 (change)='checkboxevent033(checkbox033.checked)'></mat-checkbox>
+          <mat-checkbox #checkbox033 [checked]="checkboxValue033" (change)='checkboxevent033(checkbox033.checked)'></mat-checkbox>
         </div>
 
       </div>
@@ -1129,7 +1129,7 @@
         <div class="mat-cell col-md-1 col-1 submenu">{{this.percentage4}}%</div>
         <div class="mat-cell col-md-1 col-1 submenu">50.0%</div>
         <div class="mat-cell col-md-2 col-2 submenu example-margin">
-          <mat-checkbox #checkbox04 (change)='checkboxevent04(checkbox04.checked)'></mat-checkbox>
+          <mat-checkbox #checkbox04 [checked]="checkboxValue04" (change)='checkboxevent04(checkbox04.checked)'></mat-checkbox>
         </div>
 
       </div>
@@ -1138,13 +1138,13 @@
         <div class="mat-cell col-md-1 col-1 submenu">5</div>
         <div class="mat-cell col-md-3 col-3 submenu"><a
             onclick="document.getElementById('Obj#:5').style.display='block'"
-            (click)="onStage2SubmitPatientList('5')">Health Information Exchange</a></div>
+            (click)="onStage2SubmitPatientList('5')">Health Info Exchange</a></div>
         <div class="mat-cell col-md-2 col-2 submenu">{{this.numerator5}}</div>
         <div class="mat-cell col-md-2 col-2 submenu">{{this.denominator5}}</div>
         <div class="mat-cell col-md-1 col-1 submenu">{{this.percentage5}}%</div>
         <div class="mat-cell col-md-1 col-1 submenu">10.0%</div>
         <div class="mat-cell col-md-2 col-2 submenu example-margin">
-          <mat-checkbox #checkbox05 (change)='checkboxevent05(checkbox05.checked)'></mat-checkbox>
+          <mat-checkbox #checkbox05 [checked]="checkboxValue05" (change)='checkboxevent05(checkbox05.checked)'></mat-checkbox>
         </div>
 
       </div>
@@ -1159,7 +1159,7 @@
         <div class="mat-cell col-md-1 col-1 submenu">{{this.percentage6}}%</div>
         <div class="mat-cell col-md-1 col-1 submenu">10.0%</div>
         <div class="mat-cell col-md-2 col-2 submenu example-margin">
-          <mat-checkbox #checkbox06 (change)='checkboxevent06(checkbox06.checked)'></mat-checkbox>
+          <mat-checkbox #checkbox06 [checked]="checkboxValue06" (change)='checkboxevent06(checkbox06.checked)'></mat-checkbox>
         </div>
 
       </div>
@@ -1174,7 +1174,7 @@
         <div class="mat-cell col-md-1 col-1 submenu">{{this.percentage7}}%</div>
         <div class="mat-cell col-md-1 col-1 submenu">50.0%</div>
         <div class="mat-cell col-md-2 col-2 submenu example-margin">
-          <mat-checkbox #checkbox07 (change)='checkboxevent07(checkbox07.checked)'></mat-checkbox>
+          <mat-checkbox #checkbox07 [checked]="checkboxValue07" (change)='checkboxevent07(checkbox07.checked)'></mat-checkbox>
         </div>
 
       </div>
@@ -1189,7 +1189,7 @@
         <div class="mat-cell col-md-1 col-1 submenu">{{this.percentage8_1}}%</div>
         <div class="mat-cell col-md-1 col-1 submenu">50.0%</div>
         <div class="mat-cell col-md-2 col-2 submenu example-margin">
-          <mat-checkbox #checkbox081 (change)='checkboxevent081(checkbox081.checked)'></mat-checkbox>
+          <mat-checkbox #checkbox081 [checked]="checkboxValue081" (change)='checkboxevent081(checkbox081.checked)'></mat-checkbox>
         </div>
 
       </div>
@@ -1204,7 +1204,7 @@
         <div class="mat-cell col-md-1 col-1 submenu">{{this.percentage8_2}}%</div>
         <div class="mat-cell col-md-1 col-1 submenu">5.0%</div>
         <div class="mat-cell col-md-2 col-2 submenu example-margin">
-          <mat-checkbox #checkbox082 (change)='checkboxevent082(checkbox082.checked)'></mat-checkbox>
+          <mat-checkbox #checkbox082 [checked]="checkboxValue082" (change)='checkboxevent082(checkbox082.checked)'></mat-checkbox>
         </div>
 
       </div>
@@ -1219,7 +1219,7 @@
         <div class="mat-cell col-md-1 col-1 submenu">{{this.percentage9}}%</div>
         <div class="mat-cell col-md-1 col-1 submenu">5.0%</div>
         <div class="mat-cell col-md-2 col-2 submenu example-margin">
-          <mat-checkbox #checkbox09 (change)='checkboxevent09(checkbox09.checked)'></mat-checkbox>
+          <mat-checkbox #checkbox09 [checked]="checkboxValue09" (change)='checkboxevent09(checkbox09.checked)'></mat-checkbox>
         </div>
 
       </div>
@@ -1228,14 +1228,14 @@
         <div class="mat-cell col-md-3 col-3 submenu">PHR: Immunizations</div>
         <div class="mat-cell col-md-4 col-4 submenu">Registered Intent or Submitted Data? Y
           <mat-radio-group>
-            <mat-radio-button value="1" #radioy101 (change)='checkboxeventry101(radioy101.checked)'></mat-radio-button>N
-            <mat-radio-button value="2" #radion101 (change)='checkboxeventrn101(radion101.checked)'></mat-radio-button>
+            <mat-radio-button value="1"  [checked]="checkboxValuery101" #radioy101 (change)='checkboxeventry101(radioy101.checked)'></mat-radio-button>N
+            <mat-radio-button value="2"  [checked]="checkboxValuern101" #radion101 (change)='checkboxeventrn101(radion101.checked)'></mat-radio-button>
           </mat-radio-group>
         </div>
         <div class="mat-cell col-md-1 col-1 submenu"></div>
         <div class="mat-cell col-md-1 col-1 submenu"></div>
         <div class="mat-cell col-md-2 col-2 submenu example-margin">
-          <mat-checkbox #checkbox0101 (change)='checkboxevent0101(checkbox0101.checked)'></mat-checkbox>
+          <mat-checkbox #checkbox0101 [checked]="checkboxValue0101" (change)='checkboxevent0101(checkbox0101.checked)'></mat-checkbox>
         </div>
 
       </div>
@@ -1244,14 +1244,14 @@
         <div class="mat-cell col-md-3 col-3 submenu">PHR: Syndromic Surveillance</div>
         <div class="mat-cell col-md-4 col-4 submenu">Registered Intent or Submitted Data? Y
           <mat-radio-group>
-            <mat-radio-button value="1" #radioy102 (change)='checkboxeventry102(radioy102.checked)'></mat-radio-button>N
-            <mat-radio-button value="2" #radion102 (change)='checkboxeventrn102(radion102.checked)'></mat-radio-button>
+            <mat-radio-button value="1"  [checked]="checkboxValuery102" #radioy102 (change)='checkboxeventry102(radioy102.checked)'></mat-radio-button>N
+            <mat-radio-button value="2"  [checked]="checkboxValuern102" #radion102 (change)='checkboxeventrn102(radion102.checked)'></mat-radio-button>
           </mat-radio-group>
         </div>
         <div class="mat-cell col-md-1 col-1 submenu"></div>
         <div class="mat-cell col-md-1 col-1 submenu"></div>
         <div class="mat-cell col-md-2 col-2 submenu example-margin">
-          <mat-checkbox #checkbox0102 (change)='checkboxevent0102(checkbox0102.checked)'></mat-checkbox>
+          <mat-checkbox #checkbox0102 [checked]="checkboxValue0102" (change)='checkboxevent0102(checkbox0102.checked)'></mat-checkbox>
         </div>
 
       </div>
@@ -1260,14 +1260,14 @@
         <div class="mat-cell col-md-3 col-3 submenu">PHR: Specialized Registry</div>
         <div class="mat-cell col-md-4 col-4 submenu">Registered Intent or Submitted Data? Y
           <mat-radio-group>
-            <mat-radio-button value="1" #radioy103 (change)='checkboxeventry103(radioy103.checked)'></mat-radio-button>N
-            <mat-radio-button value="2" #radion103 (change)='checkboxeventrn103(radion103.checked)'></mat-radio-button>
+            <mat-radio-button value="1"  [checked]="checkboxValuery103" #radioy103 (change)='checkboxeventry103(radioy103.checked)'></mat-radio-button>N
+            <mat-radio-button value="2"  [checked]="checkboxValuern103" #radion103 (change)='checkboxeventrn103(radion103.checked)'></mat-radio-button>
           </mat-radio-group>
         </div>
         <div class="mat-cell col-md-1 col-1 submenu"></div>
         <div class="mat-cell col-md-1 col-1 submenu"></div>
         <div class="mat-cell col-md-2 col-2 submenu example-margin">
-          <mat-checkbox #checkbox0103 (change)='checkboxevent0103(checkbox0103.checked)'></mat-checkbox>
+          <mat-checkbox #checkbox0103 [checked]="checkboxValue0103" (change)='checkboxevent0103(checkbox0103.checked)'></mat-checkbox>
         </div>
 
       </div>
