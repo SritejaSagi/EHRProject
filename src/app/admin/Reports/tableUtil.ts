@@ -14,7 +14,7 @@ export class TableUtil {
   constructor() { }
   public exportAsExcelFilePatient(json: any[], excelFileName: string): void {
 
-    let Heading = [['Patient Id','Patient Name','Date of Birth','Age','Cell Phone','Home phone','Work Phone','Email Address','Gender','Address','City','State','Zip','Prime Subscriber Id','Prime Subscriber Name'
+    let Heading = [['Id','DOB','Patient Id','Patient Name','Date of Birth','Age','Cell Phone','Home phone','Work Phone','Email Address','Gender','Address','City','State','Zip','Prime Subscriber Id','Prime Subscriber Name'
   ]];
     const wb1 = XLSX.utils.book_new();
     const ws1: XLSX.WorkSheet = XLSX.utils.json_to_sheet([]);
@@ -22,6 +22,12 @@ export class TableUtil {
     XLSX.utils.sheet_add_json(ws1, json, { origin: 'A2', skipHeader: true });
     //ws.delete_cols(6, 3)
     ws1['!cols'] = [
+      {
+        "hidden": true
+      },
+      {
+        "hidden": true
+      },
      null,
      
      null,
