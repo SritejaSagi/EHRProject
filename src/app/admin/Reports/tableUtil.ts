@@ -29,7 +29,6 @@ export class TableUtil {
         "hidden": true
       },
      null,
-     
      null,
       null,
       null,
@@ -48,7 +47,7 @@ export class TableUtil {
   }
   public exportAsExcelFileEncounter(json: any[], excelFileName: string): void {
   
-    let Heading = [['Id','Birth Date','Encounter Date','Encounter Id','Patient Name','Provider Name','Birth Date',' Age','Encounter Date','Proc Code','Description','Proc Fees','Prime Subscriber Id','Prime Ins Company Name','Prim Source of Payment Typology'
+    let Heading = [['Id','Birth Date','Encounter Date','Encounter Id','Patient Name','Provider Name','Birth Date',' Age','Encounter Date','Proc Code','Description','Proc Fees','Prime Subscriber Id','Prime Ins Company Name','Prime Source of Payment Typology'
   ]];
     const wb1 = XLSX.utils.book_new();
     const ws1: XLSX.WorkSheet = XLSX.utils.json_to_sheet([]);
