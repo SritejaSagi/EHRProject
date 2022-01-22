@@ -20,9 +20,37 @@ export class TableUtil {
     this.saveAsExcelFile(excelBuffer, excelFileName);
   }
   public exportAsExcelFileEncounter(json: any[], excelFileName: string): void {
-
-    const myworksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(json);
-    const myworkbook: XLSX.WorkBook = { Sheets: { 'Encounter-Report': myworksheet }, SheetNames: ['Encounter-Report'] };
+  
+    let Heading = [['Id','Birth Date','Encounter Date','Encounter Id','Patient Name','Provider Name','Birth Date',' Age','Encounter Date','Proc Code','Description','Proc Fees','Prime Subscriber Id','Prime Ins Company Name','Prim Source of Payment Typology'
+  ]];
+    const wb1 = XLSX.utils.book_new();
+    const ws1: XLSX.WorkSheet = XLSX.utils.json_to_sheet([]);
+    XLSX.utils.sheet_add_aoa(ws1, Heading);
+    XLSX.utils.sheet_add_json(ws1, json, { origin: 'A2', skipHeader: true });
+    //ws.delete_cols(6, 3)
+    ws1['!cols'] = [
+      {
+        "hidden": true
+      },
+      {
+        "hidden": true
+      },
+      {
+        "hidden": true
+      },
+     null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ];
+    const myworkbook: XLSX.WorkBook = { Sheets: { 'Encounter-Report': ws1 }, SheetNames: ['Encounter-Report'] };
     const excelBuffer: any = XLSX.write(myworkbook, { bookType: 'xlsx', type: 'array' });
     this.saveAsExcelFile(excelBuffer, excelFileName);
   }
