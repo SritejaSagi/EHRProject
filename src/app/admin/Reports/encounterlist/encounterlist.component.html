@@ -105,7 +105,7 @@
 
     <ng-container matColumnDef="Birth_Date">
       <mat-header-cell class="flex2" *matHeaderCellDef mat-sort-header="Birth_Date">Birth Date</mat-header-cell>
-      <mat-cell class="flex2 submenu" *matCellDef="let lesson"> {{lesson.Birth_Date | date: 'MM/dd/yyyy' }}
+      <mat-cell class="flex2 submenu" *matCellDef="let lesson"> {{lesson.Birth_Date | date: 'yyyy/MM/dd' }}
       </mat-cell>
     </ng-container>
 
