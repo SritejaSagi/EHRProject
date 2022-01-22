@@ -14,8 +14,29 @@ export class TableUtil {
   constructor() { }
   public exportAsExcelFilePatient(json: any[], excelFileName: string): void {
 
-    const myworksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(json);
-    const myworkbook: XLSX.WorkBook = { Sheets: { 'Patient-Report': myworksheet }, SheetNames: ['Patient-Report'] };
+    let Heading = [['Patient Id','Patient Name','Date of Birth','Age','Cell Phone','Home phone','Work Phone','Email Address','Gender','Address','City','State','Zip','Prime Subscriber Id','Prime Subscriber Name'
+  ]];
+    const wb1 = XLSX.utils.book_new();
+    const ws1: XLSX.WorkSheet = XLSX.utils.json_to_sheet([]);
+    XLSX.utils.sheet_add_aoa(ws1, Heading);
+    XLSX.utils.sheet_add_json(ws1, json, { origin: 'A2', skipHeader: true });
+    //ws.delete_cols(6, 3)
+    ws1['!cols'] = [
+     null,
+     
+     null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,null,null,null
+    ];
+    const myworkbook: XLSX.WorkBook = { Sheets: { 'Patient-Report': ws1 }, SheetNames: ['Patient-Report'] };
     const excelBuffer: any = XLSX.write(myworkbook, { bookType: 'xlsx', type: 'array' });
     this.saveAsExcelFile(excelBuffer, excelFileName);
   }
