@@ -56,7 +56,7 @@ export class TableUtil {
   }
   public exportAsExcelFileProblem(json: any[], excelFileName: string): void {
 
-    let Heading = [['Id','Birth Date','Encounter Date','Encounter Id','Patient Name','Provider Name','Birth Date',' Age','Encounter Date','Proc Code','Description','Proc Fees','Prime Subscriber Id','Prime Ins Company Name','Prim Source of Payment Typology'
+    let Heading = [['Id','Patient Name','Sex','DOB','Address1','Address2','City','State','Zip Code',' Last Encounter','Active','Dx ICD10/SNOMED Code','Dx ICD10/SNOMED Description','Dx Start Date','Dx End Date','Smoking Status','Allergy'
   ]];
     const wb1 = XLSX.utils.book_new();
     const ws1: XLSX.WorkSheet = XLSX.utils.json_to_sheet([]);
@@ -67,12 +67,8 @@ export class TableUtil {
       {
         "hidden": true
       },
-      {
-        "hidden": true
-      },
-      {
-        "hidden": true
-      },
+      null,
+     null,
      null,
       null,
       null,
@@ -83,7 +79,7 @@ export class TableUtil {
       null,
       null,
       null,
-      null
+      null,null,null,null
     ];
     const myworkbook: XLSX.WorkBook = { Sheets: { 'Problem-Report': ws1 }, SheetNames: ['Problem-Report'] };
     const excelBuffer: any = XLSX.write(myworkbook, { bookType: 'xlsx', type: 'array' });
