@@ -54,7 +54,6 @@ declare const $: any;
   encapsulation: ViewEncapsulation.None,
 })
 export class CqmreportsComponent implements OnInit, AfterViewInit {
-
   drilldownEncounterColumns = [
     "Action",
     "Date_Start",
