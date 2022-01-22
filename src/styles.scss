@@ -333,7 +333,8 @@ mat-paginator {
   cursor: pointer !important;
 }
 .cdk-overlay-container {
-  height: 675vh !important;
+  height: 100vh !important;
+  z-index: 9999 !important;
 }
 a {
   color: #41b6a6;
