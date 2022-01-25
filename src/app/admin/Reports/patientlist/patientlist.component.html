@@ -96,7 +96,7 @@
 
     <ng-container matColumnDef="Date_of_Birth">
       <mat-header-cell *matHeaderCellDef mat-sort-header="Date_of_Birth">Date of Birth</mat-header-cell>
-      <mat-cell *matCellDef="let lesson"> {{lesson.Date_of_Birth | date: 'MM/dd/yyyy'}} </mat-cell>
+      <mat-cell *matCellDef="let lesson"> {{lesson.Date_of_Birth | date: 'yyyy/MM/dd'}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="Age">

@@ -98,7 +98,7 @@
 
     <ng-container matColumnDef="DOB">
       <mat-header-cell class="flex2" *matHeaderCellDef mat-sort-header="DOB">DOB</mat-header-cell>
-      <mat-cell class="flex2 submenu" *matCellDef="let lesson"> {{lesson.DOB | date: 'MM/dd/yyyy'}} </mat-cell>
+      <mat-cell class="flex2 submenu" *matCellDef="let lesson"> {{lesson.DOB | date: 'yyyy/MM/dd'}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="Address1">

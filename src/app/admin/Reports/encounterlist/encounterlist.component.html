@@ -105,7 +105,7 @@
 
     <ng-container matColumnDef="Birth_Date">
       <mat-header-cell class="flex2" *matHeaderCellDef mat-sort-header="Birth_Date">Birth Date</mat-header-cell>
-      <mat-cell class="flex2 submenu" *matCellDef="let lesson"> {{lesson.Birth_Date | date: 'MM/dd/yyyy' }}
+      <mat-cell class="flex2 submenu" *matCellDef="let lesson"> {{lesson.Birth_Date | date: 'yyyy/MM/dd' }}
       </mat-cell>
     </ng-container>
 
@@ -120,7 +120,7 @@
       <mat-header-cell class="flex1" *matHeaderCellDef mat-sort-header="Encounter_Date">Encounter Date
       </mat-header-cell>
       <mat-cell class="flex1 submenu" *matCellDef="let lesson"> {{lesson.Encounter_Date |
-        date: 'MM/dd/yyyy'}} </mat-cell>
+        date: 'yyyy/MM/dd'}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="Proc_Code">
