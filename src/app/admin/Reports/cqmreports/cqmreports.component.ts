@@ -561,9 +561,11 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
               text: " Member of Measure Set:",
             },
           ],
+       
           {
             fontSize: 11,
             bold: true,
+           
             ul: [
               [
                 element.eMeasure_Identifier_MAT === 138 ||
