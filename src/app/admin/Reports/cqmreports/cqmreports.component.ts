@@ -332,11 +332,11 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
         this.getMeasures(),
       ],
     };
-    //pdfMake.createPdf(documenDefinition).open();
+    // pdfMake.createPdf(documenDefinition).open();
     pdfMake
       .createPdf(documenDefinition)
       .download(this.patientlistmeasure.ReportId + ".pdf");
-  }
+   }
 
   constructor(
     private downloadservice: DownloadService,
@@ -566,41 +566,42 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
             fontSize: 11,
             bold: true,
            
+           
             ul: [
               [
                 element.eMeasure_Identifier_MAT === 138 ||
                   element.eMeasure_Identifier_MAT === 155
-                  ? { text: "Performance Rate 1 :" + element.Performance_Rate1 }
-                  : { text: "Performance Rate  :" + element.Performance_Rate1 },
+                  ? { text: "Performance Rate 1 :" + element.Performance_Rate1 , margin: [11, 2, 11, 2] }
+                  : { text: "Performance Rate  :" + element.Performance_Rate1,margin: [11, 2, 11, 2]  },
               ],
               [
                 element.eMeasure_Identifier_MAT === 138 ||
                   element.eMeasure_Identifier_MAT === 155
-                  ? { text: "Performance Rate 2 :" + element.Performance_Rate2 }
+                  ? { text: "Performance Rate 2 :" + element.Performance_Rate2 ,margin: [11, 2, 11, 2] }
                   : { text: "" },
               ],
               [
                 element.eMeasure_Identifier_MAT === 138 ||
                   element.eMeasure_Identifier_MAT === 155
-                  ? { text: "Performance Rate 3 :" + element.Performance_Rate3 }
+                  ? { text: "Performance Rate 3 :" + element.Performance_Rate3, margin: [11, 2, 11, 2] }
                   : { text: "" },
               ],
               [
                 element.eMeasure_Identifier_MAT === 138 ||
                   element.eMeasure_Identifier_MAT === 155
-                  ? { text: "Reporting Rate 1 :" + element.Reporting_Rate1 }
-                  : { text: "Reporting Rate  :" + element.Reporting_Rate1 },
+                  ? { text: "Reporting Rate 1 :" + element.Reporting_Rate1, margin: [11, 2, 11, 2] }
+                  : { text: "Reporting Rate  :" + element.Reporting_Rate1 ,margin: [11, 2, 11, 2] },
               ],
               [
                 element.eMeasure_Identifier_MAT === 138 ||
                   element.eMeasure_Identifier_MAT === 155
-                  ? { text: "Reporting Rate 2 :" + element.Reporting_Rate2 }
+                  ? { text: "Reporting Rate 2 :" + element.Reporting_Rate2,margin: [11, 2, 11, 2] }
                   : { text: "" },
               ],
               [
                 element.eMeasure_Identifier_MAT === 138 ||
                   element.eMeasure_Identifier_MAT === 155
-                  ? { text: "Reporting Rate 3 :" + element.Reporting_Rate3 }
+                  ? { text: "Reporting Rate 3 :" + element.Reporting_Rate3,margin: [11, 2, 11, 2] }
                   : { text: "" },
               ],
 
