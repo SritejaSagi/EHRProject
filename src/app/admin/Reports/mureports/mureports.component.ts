@@ -289,6 +289,33 @@ export class MureportsComponent implements OnInit {
   LocationCity: any;
   LocationState: any;
   disableEndDateInput: boolean = true;
+  checkboxvalue1:boolean = false;
+  checkboxvalue2:boolean = false;
+  checkboxvalue31:boolean = false;
+  checkboxvalue32:boolean = false;
+  checkboxvalue41:boolean = false;
+  checkboxvalue42:boolean = false;
+  checkboxvalue43:boolean = false;
+  checkboxvalue51:boolean = false;
+  checkboxvalue52:boolean = false;
+  checkboxvalue61:boolean = false;
+  checkboxvalue62:boolean = false;
+  checkboxvalue63:boolean = false;
+  checkboxvalue71:boolean = false;
+  checkboxvalue72:boolean = false;
+  checkboxvalue31c: boolean = false;
+  checkboxvalue32c:boolean = false;
+  checkboxvalue81c:boolean = false;
+  checkboxvalue82c:boolean = false;
+  checkboxvalue83c:boolean = false;
+  checkboxvalue84c:boolean = false;
+  checkboxvalue85c:boolean = false;
+  checkboxvalue73:boolean = false;
+  checkboxvalue81:boolean = false;
+  checkboxvalue82:boolean = false;
+  checkboxvalue83:boolean = false;
+  checkboxvalue84:boolean = false;
+  checkboxvalue85:boolean = false;
 
   public downloadAsPDF() {
     debugger;
@@ -2025,6 +2052,26 @@ export class MureportsComponent implements OnInit {
     else if (this.muReportForm.value.stage_type == 3) {
       this.getStage3NumeDenomicount(MUreport);
     }
+    this.checkboxevent1(false);
+    this.checkboxevent2(false);
+    this.checkboxevent31(false);
+    this.checkboxevent32(false);
+    this.checkboxevent41(false);
+    this.checkboxevent42(false);
+    this.checkboxevent43(false);
+    this.checkboxevent51(false);
+    this.checkboxevent52(false);
+    this.checkboxevent61(false);
+    this.checkboxevent62(false);
+    this.checkboxevent63(false);
+    this.checkboxevent71(false);
+    this.checkboxevent72(false);
+    this.checkboxevent73(false);
+    this.checkboxevent81(false);
+    this.checkboxevent82(false);
+    this.checkboxevent83(false);
+    this.checkboxevent84(false);
+    this.checkboxevent85(false);
     this.checkboxevent01(false);
     this.checkboxevent021(false);
     this.checkboxevent022(false);
@@ -2053,6 +2100,14 @@ export class MureportsComponent implements OnInit {
     this.checkboxeventrn21(false);
     this.checkboxeventry1(false);
     this.checkboxeventrn1(false);
+    this.checkboxevent1(false);
+    this.checkboxevent85c(false);
+    this.checkboxevent84c(false);
+    this.checkboxevent31c(false);
+    this.checkboxevent32c(false);
+    this.checkboxevent81c(false);
+    this.checkboxevent82c(false);
+    this.checkboxevent83c(false);
   }
 
   getStage2NumeDenomicount(data: any) {
@@ -2282,6 +2337,7 @@ export class MureportsComponent implements OnInit {
     }
   }
   checkboxevent2(event) {
+    this.checkboxvalue2=event;
     var count: number = 0;
     this.checkbox2 = event;
     if (this.percentage2 > 60.0 || this.checkbox2 == true) {
@@ -2300,6 +2356,7 @@ export class MureportsComponent implements OnInit {
     this.result2 = this.patientelectronicacess2 == undefined ? 0 : this.patientelectronicacess2;
   }
   checkboxevent1(event) {
+    this.checkboxvalue1=event;
     this.checkbox1 = event;
     var count: number = 0;
     if (this.checkbox1 == true) {
@@ -2318,6 +2375,7 @@ export class MureportsComponent implements OnInit {
     }
   }
   checkboxevent31c(event) {
+    this.checkboxvalue31c=event;
     this.checkbox31c = event;
     var count: number = 0;
     if (this.checkbox31c == true || this.checkbox31 == true) {
@@ -2336,6 +2394,7 @@ export class MureportsComponent implements OnInit {
     }
   }
   checkboxevent32c(event) {
+    this.checkboxvalue32c=event;
     this.checkbox32c = event;
     var count: number = 0;
     if (this.checkbox32c == true || this.checkbox32 == true) {
@@ -2354,6 +2413,7 @@ export class MureportsComponent implements OnInit {
     }
   }
   checkboxevent41(event) {
+    this.checkboxvalue41=event;
     this.checkbox41 = event;
     var count: number = 0;
     if (this.percentage41 > 60.0 || this.checkbox41 == true) {
@@ -2372,6 +2432,7 @@ export class MureportsComponent implements OnInit {
     }
   }
   checkboxevent42(event) {
+    this.checkboxvalue42=event;
     this.checkbox42 = event;
     var count: number = 0;
     if (this.percentage42 > 60.0 || this.checkbox42 == true) {
@@ -2390,6 +2451,7 @@ export class MureportsComponent implements OnInit {
     }
   }
   checkboxevent43(event) {
+    this.checkboxvalue43=event;
     this.checkbox43 = event;
     var count: number = 0;
     if (this.percentage43 > 60.0 || this.checkbox43 == true) {
@@ -2408,6 +2470,7 @@ export class MureportsComponent implements OnInit {
     }
   }
   checkboxevent51(event) {
+    this.checkboxvalue51=event;
     this.checkbox51 = event;
     var count: number = 0;
     if (this.percentage51 > 80.0 || this.checkbox51 == true) {
@@ -2426,6 +2489,7 @@ export class MureportsComponent implements OnInit {
     }
   }
   checkboxevent52(event) {
+    this.checkboxvalue52=event;
 
     this.checkbox52 = event;
     var count: number = 0;
@@ -2445,6 +2509,7 @@ export class MureportsComponent implements OnInit {
     }
   }
   checkboxevent61(event) {
+    this.checkboxvalue61=event;
 
     this.checkbox61 = event;
     var count: number = 0;
@@ -2464,6 +2529,7 @@ export class MureportsComponent implements OnInit {
     }
   }
   checkboxevent62(event) {
+    this.checkboxvalue62=event;
 
     this.checkbox62 = event;
     var count: number = 0;
@@ -2483,6 +2549,7 @@ export class MureportsComponent implements OnInit {
     }
   }
   checkboxevent63(event) {
+    this.checkboxvalue63=event;
 
     this.checkbox63 = event;
     var count: number = 0;
@@ -2502,6 +2569,7 @@ export class MureportsComponent implements OnInit {
     }
   }
   checkboxevent71(event) {
+    this.checkboxvalue71=event;
 
     this.checkbox71 = event;
     var count: number = 0;
@@ -2521,6 +2589,7 @@ export class MureportsComponent implements OnInit {
     }
   }
   checkboxevent72(event) {
+    this.checkboxvalue72=event;
 
     this.checkbox72 = event;
     var count: number = 0;
@@ -2541,6 +2610,7 @@ export class MureportsComponent implements OnInit {
     //this.onSubmitMUReport();
   }
   checkboxevent73(event) {
+    this.checkboxvalue73=event;
 
     this.checkbox73 = event;
     var count: number = 0;
@@ -2561,6 +2631,7 @@ export class MureportsComponent implements OnInit {
     //this.onSubmitMUReport();
   }
   checkboxevent31(event) {
+    this.checkboxvalue31=event;
 
     this.checkbox31 = event;
     var count: number = 0;
@@ -2581,6 +2652,7 @@ export class MureportsComponent implements OnInit {
     //this.onSubmitMUReport();
   }
   checkboxevent32(event) {
+    this.checkboxvalue32=event;
 
     this.checkbox32 = event;
     var count: number = 0;
@@ -2601,6 +2673,7 @@ export class MureportsComponent implements OnInit {
     //this.onSubmitMUReport();
   }
   checkboxevent81c(event) {
+    this.checkboxvalue81c=event;
     this.checkbox81c = event;
     var count: number = 0;
     if (this.checkbox81c == true || this.checkbox81 == true) {
@@ -2620,7 +2693,7 @@ export class MureportsComponent implements OnInit {
     //this.onSubmitMUReport();
   }
   checkboxevent82c(event) {
-
+    this.checkboxvalue82c=event;
     this.checkbox82c = event;
     var count: number = 0;
     if (this.checkbox82c == true || this.checkbox82 == true) {
@@ -2640,7 +2713,7 @@ export class MureportsComponent implements OnInit {
     //this.onSubmitMUReport();
   }
   checkboxevent83c(event) {
-
+    this.checkboxvalue83c=event;
     this.checkbox83c = event;
     var count: number = 0;
     if (this.checkbox83c == true || this.checkbox83 == true) {
@@ -2660,7 +2733,7 @@ export class MureportsComponent implements OnInit {
     //this.onSubmitMUReport();
   }
   checkboxevent84c(event) {
-
+    this.checkboxvalue84c=event;
     this.checkbox84c = event;
     var count: number = 0;
     if (this.checkbox84c == true || this.checkbox84 == true) {
@@ -2680,7 +2753,7 @@ export class MureportsComponent implements OnInit {
     //this.onSubmitMUReport();
   }
   checkboxevent85c(event) {
-
+this.checkboxvalue85c=event;
     this.checkbox85c = event;
     var count: number = 0;
     if (this.checkbox85c == true || this.checkbox85 == true) {
@@ -2700,6 +2773,7 @@ export class MureportsComponent implements OnInit {
     //this.onSubmitMUReport();
   }
   checkboxevent81(event) {
+    this.checkboxvalue81=event;
 
     this.checkbox81 = event;
     var count: number = 0;
@@ -2720,6 +2794,7 @@ export class MureportsComponent implements OnInit {
     //this.onSubmitMUReport();
   }
   checkboxevent82(event) {
+    this.checkboxvalue82=event;
 
     this.checkbox82 = event;
     var count: number = 0;
@@ -2740,6 +2815,7 @@ export class MureportsComponent implements OnInit {
     //this.onSubmitMUReport();
   }
   checkboxevent83(event) {
+    this.checkboxvalue83=event;
 
     this.checkbox83 = event;
     var count: number = 0;
@@ -2760,6 +2836,7 @@ export class MureportsComponent implements OnInit {
     //this.onSubmitMUReport();
   }
   checkboxevent84(event) {
+    this.checkboxvalue84=event;
 
     this.checkbox84 = event;
     var count: number = 0;
@@ -2780,6 +2857,7 @@ export class MureportsComponent implements OnInit {
     //this.onSubmitMUReport();
   }
   checkboxevent85(event) {
+    this.checkboxvalue85=event;
 
     this.checkbox85 = event;
     var count: number = 0;
