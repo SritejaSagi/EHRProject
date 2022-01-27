@@ -25,12 +25,12 @@ export class TableUtil {
       {
         "hidden": true
       },
-      {
-        "hidden": true
-      },
      null,
      null,
-      null,
+     null,
+     {
+      "hidden": true
+    },
       null,
       null,
       null,
@@ -58,9 +58,7 @@ export class TableUtil {
       {
         "hidden": true
       },
-      {
-        "hidden": true
-      },
+     null,
       {
         "hidden": true
       },
@@ -68,7 +66,9 @@ export class TableUtil {
       null,
       null,
       null,
-      null,
+      {
+        "hidden": true
+      },
       null,
       null,
       null,

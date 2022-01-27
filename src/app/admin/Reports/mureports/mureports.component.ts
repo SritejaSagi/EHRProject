@@ -13,7 +13,7 @@ declare const $: any;
   styleUrls: ['./mureports.component.scss']
 })
 export class MureportsComponent implements OnInit {
-  checkboxValue021: boolean=false;
+   checkboxValue021: boolean=false;
   checkboxValue01: boolean=false;
   checkboxValue022: boolean=false;
   checkboxValue031: boolean=false;
@@ -316,6 +316,12 @@ export class MureportsComponent implements OnInit {
   checkboxvalue83:boolean = false;
   checkboxvalue84:boolean = false;
   checkboxvalue85:boolean = false;
+  protectvalue=null;
+  clinicalvalue=null;
+  drugvalue=null;
+  immunizationvalue=null;
+  syndromicvalue=null;
+  specializedvalue=null;
 
   public downloadAsPDF() {
     debugger;
@@ -2046,12 +2052,30 @@ export class MureportsComponent implements OnInit {
     this.Dates = this.datepipe.transform(this.muReportForm.value.strEDate, 'MM/dd/yyyy', 'en-US');
 
     if (this.muReportForm.value.stage_type == 2) {
+      this.protectvalue=null;
+      this.clinicalvalue=null;
+      this.drugvalue=null;
+      this.immunizationvalue=null;
+      this.syndromicvalue=null;
+      this.specializedvalue=null;
       this.getStage2NumeDenomicount(MUreport);
       this.checkboxeventry1(this.radioy1);
     }
     else if (this.muReportForm.value.stage_type == 3) {
       this.getStage3NumeDenomicount(MUreport);
     }
+    this.checkboxeventry1(false);
+    this.checkboxeventrn1(false);
+    this.checkboxeventry21(false);
+    this.checkboxeventrn21(false);
+    this.checkboxeventry22(false);
+    this.checkboxeventrn22(false);
+    this.checkboxeventry101(false);
+    this.checkboxeventrn101(false);
+    this.checkboxeventry102(false);
+    this.checkboxeventrn102(false);
+    this.checkboxeventry103(false);
+    this.checkboxeventrn103(false);
     this.checkboxevent1(false);
     this.checkboxevent2(false);
     this.checkboxevent31(false);

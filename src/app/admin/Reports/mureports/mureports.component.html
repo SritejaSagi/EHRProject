@@ -1027,9 +1027,9 @@
         <div class="mat-cell col-md-1 col-1 submenu">1</div>
         <div class="mat-cell col-md-3 col-3 submenu">Protect PHI</div>
         <div class="mat-cell col-md-4 col-4 submenu">SRA Completed? Y
-          <mat-radio-group>
-            <mat-radio-button value="1" [checked]="checkboxValuery1"  #radioy1 (change)='checkboxeventry1(radioy1.checked)'></mat-radio-button>N
-            <mat-radio-button value="2"  [checked]="checkboxValuern1" #checkboxn1 (change)='checkboxeventrn1(checkboxn1.checked)'></mat-radio-button>
+          <mat-radio-group [(ngModel)]="protectvalue">
+            <mat-radio-button [value]="1"  #radioy1 (change)='checkboxeventry1(radioy1.checked)'></mat-radio-button>N
+            <mat-radio-button [value]="2"   #checkboxn1 (change)='checkboxeventrn1(checkboxn1.checked)'></mat-radio-button>
           </mat-radio-group>
         </div>
         <div class="mat-cell col-md-1 col-1 submenu"></div>
@@ -1045,9 +1045,9 @@
         <div class="mat-cell col-md-1 col-1 submenu">2-1</div>
         <div class="mat-cell col-md-3 col-3 submenu">Clinical Decision Support</div>
         <div class="mat-cell col-md-4 col-4 submenu">5 Min. Enabled? Y
-          <mat-radio-group>
-            <mat-radio-button value="1" [checked]="checkboxValuery21"  #radioy21 (change)='checkboxeventry21(radioy21.checked)'></mat-radio-button>N
-            <mat-radio-button value="2" [checked]="checkboxValuern21" #radion21 (change)='checkboxeventrn21(radion21.checked)'></mat-radio-button>
+          <mat-radio-group [(ngModel)]="clinicalvalue">
+            <mat-radio-button [value]="1" [checked]="checkboxValuery21"  #radioy21 (change)='checkboxeventry21(radioy21.checked)'></mat-radio-button>N
+            <mat-radio-button [value]="2" [checked]="checkboxValuern21" #radion21 (change)='checkboxeventrn21(radion21.checked)'></mat-radio-button>
           </mat-radio-group>
         </div>
         <div class="mat-cell col-md-1 col-1 submenu"></div>
@@ -1061,9 +1061,9 @@
         <div class="mat-cell col-md-1 col-1 submenu">2-2</div>
         <div class="mat-cell col-md-3 col-3 submenu">Drug-Drug/Drug-Allergy Interaction</div>
         <div class="mat-cell col-md-4 col-4 submenu">5 Min. Enabled? Y
-          <mat-radio-group>
-            <mat-radio-button value="1" [checked]="checkboxValuery22"  #radioy22 (change)='checkboxeventry22(radioy22.checked)'></mat-radio-button>N
-            <mat-radio-button value="2" [checked]="checkboxValuern22"  #radion22 (change)='checkboxeventrn22(radion22.checked)'></mat-radio-button>
+          <mat-radio-group [(ngModel)]="drugvalue">
+            <mat-radio-button [value]="1" [checked]="checkboxValuery22"  #radioy22 (change)='checkboxeventry22(radioy22.checked)'></mat-radio-button>N
+            <mat-radio-button [value]="2" [checked]="checkboxValuern22"  #radion22 (change)='checkboxeventrn22(radion22.checked)'></mat-radio-button>
           </mat-radio-group>
         </div>
         <div class="mat-cell col-md-1 col-1 submenu"></div>
@@ -1227,9 +1227,9 @@
         <div class="mat-cell col-md-1 col-1 submenu">10-1</div>
         <div class="mat-cell col-md-3 col-3 submenu">PHR: Immunizations</div>
         <div class="mat-cell col-md-4 col-4 submenu">Registered Intent or Submitted Data? Y
-          <mat-radio-group>
-            <mat-radio-button value="1"  [checked]="checkboxValuery101" #radioy101 (change)='checkboxeventry101(radioy101.checked)'></mat-radio-button>N
-            <mat-radio-button value="2"  [checked]="checkboxValuern101" #radion101 (change)='checkboxeventrn101(radion101.checked)'></mat-radio-button>
+          <mat-radio-group [(ngModel)]="immunizationvalue">
+            <mat-radio-button [value]="1"  [checked]="checkboxValuery101" #radioy101 (change)='checkboxeventry101(radioy101.checked)'></mat-radio-button>N
+            <mat-radio-button [value]="2"  [checked]="checkboxValuern101" #radion101 (change)='checkboxeventrn101(radion101.checked)'></mat-radio-button>
           </mat-radio-group>
         </div>
         <div class="mat-cell col-md-1 col-1 submenu"></div>
@@ -1243,9 +1243,9 @@
         <div class="mat-cell col-md-1 col-1 submenu">10-2</div>
         <div class="mat-cell col-md-3 col-3 submenu">PHR: Syndromic Surveillance</div>
         <div class="mat-cell col-md-4 col-4 submenu">Registered Intent or Submitted Data? Y
-          <mat-radio-group>
-            <mat-radio-button value="1"  [checked]="checkboxValuery102" #radioy102 (change)='checkboxeventry102(radioy102.checked)'></mat-radio-button>N
-            <mat-radio-button value="2"  [checked]="checkboxValuern102" #radion102 (change)='checkboxeventrn102(radion102.checked)'></mat-radio-button>
+          <mat-radio-group [(ngModel)]="syndromicvalue">
+            <mat-radio-button [value]="1"  [checked]="checkboxValuery102" #radioy102 (change)='checkboxeventry102(radioy102.checked)'></mat-radio-button>N
+            <mat-radio-button [value]="2"  [checked]="checkboxValuern102" #radion102 (change)='checkboxeventrn102(radion102.checked)'></mat-radio-button>
           </mat-radio-group>
         </div>
         <div class="mat-cell col-md-1 col-1 submenu"></div>
@@ -1259,9 +1259,9 @@
         <div class="mat-cell col-md-1 col-1 submenu">10-3</div>
         <div class="mat-cell col-md-3 col-3 submenu">PHR: Specialized Registry</div>
         <div class="mat-cell col-md-4 col-4 submenu">Registered Intent or Submitted Data? Y
-          <mat-radio-group>
-            <mat-radio-button value="1"  [checked]="checkboxValuery103" #radioy103 (change)='checkboxeventry103(radioy103.checked)'></mat-radio-button>N
-            <mat-radio-button value="2"  [checked]="checkboxValuern103" #radion103 (change)='checkboxeventrn103(radion103.checked)'></mat-radio-button>
+          <mat-radio-group [(ngModel)]="specializedvalue">
+            <mat-radio-button [value]="1"  [checked]="checkboxValuery103" #radioy103 (change)='checkboxeventry103(radioy103.checked)'></mat-radio-button>N
+            <mat-radio-button [value]="2"  [checked]="checkboxValuern103" #radion103 (change)='checkboxeventrn103(radion103.checked)'></mat-radio-button>
           </mat-radio-group>
         </div>
         <div class="mat-cell col-md-1 col-1 submenu"></div>
