@@ -13,34 +13,34 @@ declare const $: any;
   styleUrls: ['./mureports.component.scss']
 })
 export class MureportsComponent implements OnInit {
-  checkboxValue021: boolean=false;
-  checkboxValue01: boolean=false;
-  checkboxValue022: boolean=false;
-  checkboxValue031: boolean=false;
-  checkboxValue032: boolean=false;
-  checkboxValue033: boolean=false;
-  checkboxValue04: boolean=false;
-  checkboxValue05: boolean=false;
-  checkboxValue06: boolean=false;
-  checkboxValue07: boolean=false;
-  checkboxValue081: boolean=false;
-  checkboxValue082: boolean=false;
-  checkboxValue09: boolean=false;
-  checkboxValue0101: boolean=false;
-  checkboxValue0102: boolean=false;
-  checkboxValue0103: boolean=false;
-  checkboxValuery1: boolean=false;
-  checkboxValuern1: boolean=false;
-  checkboxValuery21: boolean=false;
-  checkboxValuern21: boolean=false;
-  checkboxValuery22: boolean=false;
-  checkboxValuern22: boolean=false;
-  checkboxValuery101: boolean=false;
-  checkboxValuern101: boolean=false;
-  checkboxValuery102: boolean=false;
-  checkboxValuern102: boolean=false;
-  checkboxValuery103: boolean=false;
-  checkboxValuern103: boolean=false;
+  checkboxValue021: boolean = false;
+  checkboxValue01: boolean = false;
+  checkboxValue022: boolean = false;
+  checkboxValue031: boolean = false;
+  checkboxValue032: boolean = false;
+  checkboxValue033: boolean = false;
+  checkboxValue04: boolean = false;
+  checkboxValue05: boolean = false;
+  checkboxValue06: boolean = false;
+  checkboxValue07: boolean = false;
+  checkboxValue081: boolean = false;
+  checkboxValue082: boolean = false;
+  checkboxValue09: boolean = false;
+  checkboxValue0101: boolean = false;
+  checkboxValue0102: boolean = false;
+  checkboxValue0103: boolean = false;
+  checkboxValuery1: boolean = false;
+  checkboxValuern1: boolean = false;
+  checkboxValuery21: boolean = false;
+  checkboxValuern21: boolean = false;
+  checkboxValuery22: boolean = false;
+  checkboxValuern22: boolean = false;
+  checkboxValuery101: boolean = false;
+  checkboxValuern101: boolean = false;
+  checkboxValuery102: boolean = false;
+  checkboxValuern102: boolean = false;
+  checkboxValuery103: boolean = false;
+  checkboxValuern103: boolean = false;
   sortDir = 1;
   tomorrow = new Date();
   // beforestartdate = Date('06/06/2020');
@@ -2802,184 +2802,184 @@ export class MureportsComponent implements OnInit {
   //stage2 checkbox
   checkboxevent01(event) {
     debugger;
-        this.checkbox01 = event;
-        this.checkboxValue01 = event;
-        if (this.checkbox01 == true) {
-          this.pdfcheckbox01 = "√"
-        }
-        else if (this.checkbox01 == false || this.checkbox01 == undefined) {
-          this.pdfcheckbox01 = "\t"
-        }
-    
-      }
-      checkboxevent021(event) {
-    
-        this.checkbox021 = event;
-        this.checkboxValue021 = event;
-        if (this.checkbox021 == true) {
-          this.pdfcheckbox021 = "√"
-        }
-        else if (this.checkbox021 == false || this.checkbox021 == undefined) {
-          this.pdfcheckbox021 = "\t"
-        }
-    
-      }
-      checkboxevent022(event) {
-    
-        this.checkbox022 = event;
-        this.checkboxValue022 = event;
-        if (this.checkbox022 == true) {
-          this.pdfcheckbox022 = "√"
-        }
-        else if (this.checkbox022 == false || this.checkbox022 == undefined) {
-          this.pdfcheckbox022 = "\t"
-        }
-    
-      }
-      checkboxevent031(event) {
-        this.checkboxValue031 = event;
-        this.checkbox031 = event;
-        if (this.checkbox031 == true) {
-          this.pdfcheckbox031 = "√"
-        }
-        else if (this.checkbox031 == false || this.checkbox031 == undefined) {
-          this.pdfcheckbox031 = "\t"
-        }
-    
-      }
-      checkboxevent032(event) {
-        this.checkboxValue032 = event;
-        this.checkbox032 = event;
-        if (this.checkbox032 == true) {
-          this.pdfcheckbox032 = "√"
-        }
-        else if (this.checkbox032 == false || this.checkbox032 == undefined) {
-          this.pdfcheckbox032 = "\t"
-        }
-    
-      }
-      checkboxevent033(event) {
-        this.checkboxValue033 = event;
-        this.checkbox033 = event;
-        if (this.checkbox033 == true) {
-          this.pdfcheckbox033 = "√"
-        }
-        else if (this.checkbox033 == false || this.checkbox033 == undefined) {
-          this.pdfcheckbox033 = "\t"
-        }
-    
-      }
-      checkboxevent04(event) {
-        this.checkboxValue04 = event;
-        this.checkbox04 = event;
-        if (this.checkbox04 == true) {
-          this.pdfcheckbox04 = "√"
-        }
-        else if (this.checkbox04 == false || this.checkbox04 == undefined) {
-          this.pdfcheckbox04 = "\t"
-        }
-    
-      }
-      checkboxevent05(event) {
-        this.checkboxValue05 = event;
-        this.checkbox05 = event;
-        if (this.checkbox05 == true) {
-          this.pdfcheckbox05 = "√"
-        }
-        else if (this.checkbox05 == false || this.checkbox05 == undefined) {
-          this.pdfcheckbox05 = "\t"
-        }
-    
-      }
-      checkboxevent06(event) {
-        this.checkboxValue06 = event;
-        this.checkbox06 = event;
-        if (this.checkbox06 == true) {
-          this.pdfcheckbox06 = "√"
-        }
-        else if (this.checkbox06 == false || this.checkbox06 == undefined) {
-          this.pdfcheckbox06 = "\t"
-        }
-    
-      }
-      checkboxevent07(event) {
-        this.checkboxValue07 = event;
-        this.checkbox07 = event;
-        if (this.checkbox07 == true) {
-          this.pdfcheckbox07 = "√"
-        }
-        else if (this.checkbox07 == false || this.checkbox07 == undefined) {
-          this.pdfcheckbox07 = "\t"
-        }
-    
-      }
-      checkboxevent081(event) {
-        this.checkboxValue081 = event;
-        this.checkbox081 = event;
-        if (this.checkbox081 == true) {
-          this.pdfcheckbox081 = "√"
-        }
-        else if (this.checkbox081 == false || this.checkbox081 == undefined) {
-          this.pdfcheckbox081 = "\t"
-        }
-    
-      }
-      checkboxevent082(event) {
-    
-        this.checkbox082 = event;
-        this.checkboxValue082 = event;
-        if (this.checkbox082 == true) {
-          this.pdfcheckbox082 = "√"
-        }
-        else if (this.checkbox082 == false || this.checkbox082 == undefined) {
-          this.pdfcheckbox082 = "\t"
-        }
-    
-      }
-      checkboxevent09(event) {
-        this.checkboxValue09 = event;
-        this.checkbox09 = event;
-        if (this.checkbox09 == true) {
-          this.pdfcheckbox09 = "√"
-        }
-        else if (this.checkbox09 == false || this.checkbox09 == undefined) {
-          this.pdfcheckbox09 = "\t"
-        }
-    
-      }
-      checkboxevent0101(event) {
-        this.checkboxValue0101 = event;
-        this.checkbox0101 = event;
-        if (this.checkbox0101 == true) {
-          this.pdfcheckbox0101 = "√"
-        }
-        else if (this.checkbox0101 == false || this.checkbox0101 == undefined) {
-          this.pdfcheckbox0101 = "\t"
-        }
-    
-      }
-      checkboxevent0102(event) {
-        this.checkboxValue0102 = event;
-        this.checkbox0102 = event;
-        if (this.checkbox0102 == true) {
-          this.pdfcheckbox0102 = "√"
-        }
-        else if (this.checkbox0102 == false || this.checkbox0102 == undefined) {
-          this.pdfcheckbox0102 = "\t"
-        }
-    
-      }
-      checkboxevent0103(event) {
-        this.checkboxValue0103 = event;
-        this.checkbox0103 = event;
-        if (this.checkbox0103 == true) {
-          this.pdfcheckbox0103 = "√"
-        }
-        else if (this.checkbox0103 == false || this.checkbox0103 == undefined) {
-          this.pdfcheckbox0103 = "\t"
-        }
-    
-      }
+    this.checkbox01 = event;
+    this.checkboxValue01 = event;
+    if (this.checkbox01 == true) {
+      this.pdfcheckbox01 = "√"
+    }
+    else if (this.checkbox01 == false || this.checkbox01 == undefined) {
+      this.pdfcheckbox01 = "\t"
+    }
+
+  }
+  checkboxevent021(event) {
+
+    this.checkbox021 = event;
+    this.checkboxValue021 = event;
+    if (this.checkbox021 == true) {
+      this.pdfcheckbox021 = "√"
+    }
+    else if (this.checkbox021 == false || this.checkbox021 == undefined) {
+      this.pdfcheckbox021 = "\t"
+    }
+
+  }
+  checkboxevent022(event) {
+
+    this.checkbox022 = event;
+    this.checkboxValue022 = event;
+    if (this.checkbox022 == true) {
+      this.pdfcheckbox022 = "√"
+    }
+    else if (this.checkbox022 == false || this.checkbox022 == undefined) {
+      this.pdfcheckbox022 = "\t"
+    }
+
+  }
+  checkboxevent031(event) {
+    this.checkboxValue031 = event;
+    this.checkbox031 = event;
+    if (this.checkbox031 == true) {
+      this.pdfcheckbox031 = "√"
+    }
+    else if (this.checkbox031 == false || this.checkbox031 == undefined) {
+      this.pdfcheckbox031 = "\t"
+    }
+
+  }
+  checkboxevent032(event) {
+    this.checkboxValue032 = event;
+    this.checkbox032 = event;
+    if (this.checkbox032 == true) {
+      this.pdfcheckbox032 = "√"
+    }
+    else if (this.checkbox032 == false || this.checkbox032 == undefined) {
+      this.pdfcheckbox032 = "\t"
+    }
+
+  }
+  checkboxevent033(event) {
+    this.checkboxValue033 = event;
+    this.checkbox033 = event;
+    if (this.checkbox033 == true) {
+      this.pdfcheckbox033 = "√"
+    }
+    else if (this.checkbox033 == false || this.checkbox033 == undefined) {
+      this.pdfcheckbox033 = "\t"
+    }
+
+  }
+  checkboxevent04(event) {
+    this.checkboxValue04 = event;
+    this.checkbox04 = event;
+    if (this.checkbox04 == true) {
+      this.pdfcheckbox04 = "√"
+    }
+    else if (this.checkbox04 == false || this.checkbox04 == undefined) {
+      this.pdfcheckbox04 = "\t"
+    }
+
+  }
+  checkboxevent05(event) {
+    this.checkboxValue05 = event;
+    this.checkbox05 = event;
+    if (this.checkbox05 == true) {
+      this.pdfcheckbox05 = "√"
+    }
+    else if (this.checkbox05 == false || this.checkbox05 == undefined) {
+      this.pdfcheckbox05 = "\t"
+    }
+
+  }
+  checkboxevent06(event) {
+    this.checkboxValue06 = event;
+    this.checkbox06 = event;
+    if (this.checkbox06 == true) {
+      this.pdfcheckbox06 = "√"
+    }
+    else if (this.checkbox06 == false || this.checkbox06 == undefined) {
+      this.pdfcheckbox06 = "\t"
+    }
+
+  }
+  checkboxevent07(event) {
+    this.checkboxValue07 = event;
+    this.checkbox07 = event;
+    if (this.checkbox07 == true) {
+      this.pdfcheckbox07 = "√"
+    }
+    else if (this.checkbox07 == false || this.checkbox07 == undefined) {
+      this.pdfcheckbox07 = "\t"
+    }
+
+  }
+  checkboxevent081(event) {
+    this.checkboxValue081 = event;
+    this.checkbox081 = event;
+    if (this.checkbox081 == true) {
+      this.pdfcheckbox081 = "√"
+    }
+    else if (this.checkbox081 == false || this.checkbox081 == undefined) {
+      this.pdfcheckbox081 = "\t"
+    }
+
+  }
+  checkboxevent082(event) {
+
+    this.checkbox082 = event;
+    this.checkboxValue082 = event;
+    if (this.checkbox082 == true) {
+      this.pdfcheckbox082 = "√"
+    }
+    else if (this.checkbox082 == false || this.checkbox082 == undefined) {
+      this.pdfcheckbox082 = "\t"
+    }
+
+  }
+  checkboxevent09(event) {
+    this.checkboxValue09 = event;
+    this.checkbox09 = event;
+    if (this.checkbox09 == true) {
+      this.pdfcheckbox09 = "√"
+    }
+    else if (this.checkbox09 == false || this.checkbox09 == undefined) {
+      this.pdfcheckbox09 = "\t"
+    }
+
+  }
+  checkboxevent0101(event) {
+    this.checkboxValue0101 = event;
+    this.checkbox0101 = event;
+    if (this.checkbox0101 == true) {
+      this.pdfcheckbox0101 = "√"
+    }
+    else if (this.checkbox0101 == false || this.checkbox0101 == undefined) {
+      this.pdfcheckbox0101 = "\t"
+    }
+
+  }
+  checkboxevent0102(event) {
+    this.checkboxValue0102 = event;
+    this.checkbox0102 = event;
+    if (this.checkbox0102 == true) {
+      this.pdfcheckbox0102 = "√"
+    }
+    else if (this.checkbox0102 == false || this.checkbox0102 == undefined) {
+      this.pdfcheckbox0102 = "\t"
+    }
+
+  }
+  checkboxevent0103(event) {
+    this.checkboxValue0103 = event;
+    this.checkbox0103 = event;
+    if (this.checkbox0103 == true) {
+      this.pdfcheckbox0103 = "√"
+    }
+    else if (this.checkbox0103 == false || this.checkbox0103 == undefined) {
+      this.pdfcheckbox0103 = "\t"
+    }
+
+  }
   getStage3NumeDenomicount(data: any) {
     this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
     this.stage2NumeDenomicount = null;
