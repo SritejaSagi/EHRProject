@@ -2697,6 +2697,7 @@ export class MureportsComponent implements OnInit {
     //this.onSubmitMUReport();
   }
   checkboxevent81c(event) {
+    debugger;
     this.checkboxvalue81c=event;
     this.checkbox81c = event;
     var count: number = 0;
@@ -2797,6 +2798,7 @@ this.checkboxvalue85c=event;
     //this.onSubmitMUReport();
   }
   checkboxevent81(event) {
+    debugger;
     this.checkboxvalue81=event;
 
     this.checkbox81 = event;
@@ -3083,6 +3085,7 @@ this.checkboxvalue85c=event;
 
   }
   getStage3NumeDenomicount(data: any) {
+    debugger;
     this.customizedspinner = true; $('body').addClass('loadactive').scrollTop(0);
     this.stage2NumeDenomicount = null;
     this.stage3NumeDenomicount = null;
