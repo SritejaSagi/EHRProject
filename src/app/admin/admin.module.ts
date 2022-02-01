@@ -16,11 +16,13 @@ import { ConditionpadderPipe } from "../admin/Reports/cqmreports/viewhelpers/con
 import { ConditionformaterPipe } from "../admin/Reports/cqmreports/viewhelpers/conditionformater.pipe";
 import { FooterComponent } from "../footer/footer.component";
 import { AdminComponent } from "./admin.component";
+import { ProviderregComponent } from "../providerreg/providerreg.component";
 
 
 @NgModule({
   exports: [],
   declarations: [
+    ProviderregComponent,
     AdminComponent,
     NavbarComponent,
     CategoryreportsComponent,
