@@ -609,6 +609,8 @@ export class MureportsComponent implements OnInit {
                             },
                             margin: [1, 0],
                           },
+                           
+                           
                           {
                             text: '| Exclusion ',
                             lineHeight: 1.1,
