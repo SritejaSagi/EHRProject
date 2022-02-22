@@ -609,8 +609,6 @@ export class MureportsComponent implements OnInit {
                             },
                             margin: [1, 0],
                           },
-                           
-                           
                           {
                             text: '| Exclusion ',
                             lineHeight: 1.1,
@@ -2120,6 +2118,12 @@ export class MureportsComponent implements OnInit {
     this.checkboxeventrn103(false);
     this.checkboxeventry101(false);
     this.checkboxeventrn101(false);
+    this.checkboxeventry22(false);
+    this.checkboxeventrn22(false);
+    this.checkboxeventry21(false);
+    this.checkboxeventrn21(false);
+    this.checkboxeventry1(false);
+    this.checkboxeventrn1(false);
     this.checkboxevent1(false);
     this.checkboxevent85c(false);
     this.checkboxevent84c(false);
@@ -2218,14 +2222,11 @@ export class MureportsComponent implements OnInit {
     if (this.radioy1 == true) {
       this.pdfradioy1 = "√";
       this.radion1 = false;
-      this.pdfradion1 = "\t";
-      //this.checkboxeventrn1(this.radion1);
+      this.checkboxeventrn1(this.radion1);
     }
     else if (this.radioy1 == false || this.radioy1 == undefined) {
       this.pdfradioy1 = "\t";
-      this.radion1 = true;
-      this.pdfradion1 = "√";
-      //this.checkboxeventrn1(this.radion1);
+      this.checkboxeventrn1(this.radion1);
     }
   }
   checkboxeventrn1(event) {
@@ -2233,44 +2234,35 @@ export class MureportsComponent implements OnInit {
     if (this.radion1 == true) {
       this.pdfradion1 = "√";
       this.radioy1 = false;
-      this.pdfradioy1 = "\t";
-      //this.checkboxeventry1(this.radioy1);
+      this.checkboxeventry1(this.radioy1);
     }
     else if (this.radion1 == false || this.radion1 == undefined) {
       this.pdfradion1 = "\t";
-      this.radioy1 = true;
-      this.pdfradioy1 = "√";
     }
-    //this.checkboxeventry21(this.radioy21);
+    this.checkboxeventry21(this.radioy21);
   }
   checkboxeventrn21(event) {
     this.radion21 = event;
     if (this.radion21 == true) {
       this.pdfradion21 = "√";
       this.radioy21 = false;
-      this.pdfradioy21 = "\t";
-      //this.checkboxeventry21(this.radioy21);
+      this.checkboxeventry21(this.radioy21);
     }
     else if (this.radion21 == false || this.radion21 == undefined) {
       this.pdfradion21 = "\t";
-      this.radioy21 = false;
-      this.pdfradioy21 = "√";
     }
-    //this.checkboxeventry22(this.radioy22);
+    this.checkboxeventry22(this.radioy22);
   }
   checkboxeventry21(event) {
     this.radioy21 = event;
     if (this.radioy21 == true) {
       this.pdfradioy21 = "√";
       this.radion21 = false;
-      this.pdfradion21 = "\t";
-      //this.checkboxeventrn21(this.radion21);
+      this.checkboxeventrn21(this.radion21);
     }
     else if (this.radioy21 == false || this.radioy21 == undefined) {
       this.pdfradioy21 = "\t";
-      this.radion21 = true;
-      this.pdfradion21 = "√";
-      //this.checkboxeventrn21(this.radion21);
+      this.checkboxeventrn21(this.radion21);
     }
   }
   checkboxeventry22(event) {
@@ -2278,14 +2270,11 @@ export class MureportsComponent implements OnInit {
     if (this.radioy22 == true) {
       this.pdfradioy22 = "√";
       this.radion22 = false;
-      this.pdfradion22 = "\t";
-     //this.checkboxeventrn22(this.radion22);
+      this.checkboxeventrn22(this.radion22);
     }
     else if (this.radioy22 == false || this.radioy22 == undefined) {
       this.pdfradioy22 = "\t";
-      this.radion22 = true;
-      this.pdfradion22 = "√";
-      //this.checkboxeventrn22(this.radion22);
+      this.checkboxeventrn22(this.radion22);
     }
   }
   checkboxeventrn22(event) {
@@ -2293,29 +2282,23 @@ export class MureportsComponent implements OnInit {
     if (this.radion22 == true) {
       this.pdfradion22 = "√";
       this.radioy22 = false;
-      this.pdfradion22 = "\t";
-      //this.checkboxeventry22(this.radioy22);
+      this.checkboxeventry22(this.radioy22);
     }
     else if (this.radion22 == false || this.radion22 == undefined) {
       this.pdfradion22 = "\t";
-      this.radioy22 = true;
-      this.pdfradioy22 = "√";
     }
-    //this.checkboxeventry101(this.radioy101);
+    this.checkboxeventry101(this.radioy101);
   }
   checkboxeventry101(event) {
     this.radioy101 = event;
     if (this.radioy101 == true) {
       this.pdfradioy101 = "√";
       this.radion101 = false;
-      this.pdfradion101 = "\t";
-      //this.checkboxeventrn101(this.radion101);
+      this.checkboxeventrn101(this.radion101);
     }
     else if (this.radioy101 == false || this.radioy101 == undefined) {
       this.pdfradioy101 = "\t";
-      this.pdfradion101 = "√";
-      this.radion101 = true;
-      //this.checkboxeventrn101(this.radion101);
+      this.checkboxeventrn101(this.radion101);
     }
   }
   checkboxeventrn101(event) {
@@ -2323,29 +2306,23 @@ export class MureportsComponent implements OnInit {
     if (this.radion101 == true) {
       this.pdfradion101 = "√";
       this.radioy101 = false;
-      this.pdfradioy101 = "\t";
-      //this.checkboxeventry101(this.radioy101);
+      this.checkboxeventry101(this.radioy101);
     }
     else if (this.radion101 == false || this.radion101 == undefined) {
       this.pdfradion101 = "\t";
-      this.pdfradioy101 = "√";
-      this.radioy101 = true;
     }
-    //this.checkboxeventry102(this.radioy102);
+    this.checkboxeventry102(this.radioy102);
   }
   checkboxeventry102(event) {
     this.radioy102 = event;
     if (this.radioy102 == true) {
       this.pdfradioy102 = "√";
       this.radion102 = false;
-      this.pdfradion102 = "\t";
-      //this.checkboxeventrn102(this.radion102);
+      this.checkboxeventrn102(this.radion102);
     }
     else if (this.radioy102 == false || this.radioy102 == undefined) {
       this.pdfradioy102 = "\t";
-      this.pdfradion102 = "√";
-      this.radion102 = true;
-      //this.checkboxeventrn102(this.radion102);
+      this.checkboxeventrn102(this.radion102);
     }
   }
   checkboxeventrn102(event) {
@@ -2353,30 +2330,23 @@ export class MureportsComponent implements OnInit {
     if (this.radion102 == true) {
       this.pdfradion102 = "√";
       this.radioy102 = false;
-      this.pdfradioy102 = "\t";
-      //this.checkboxeventry102(this.radioy102);
+      this.checkboxeventry102(this.radioy102);
     }
     else if (this.radion102 == false || this.radion102 == undefined) {
       this.pdfradion102 = "\t";
-      this.pdfradioy102 = "√";
-      this.radioy102 = false;
     }
-    //this.checkboxeventry103(this.radioy103);
+    this.checkboxeventry103(this.radioy103);
   }
   checkboxeventry103(event) {
     this.radioy103 = event;
     if (this.radioy103 == true) {
       this.pdfradioy103 = "√";
       this.radion103 = false;
-      this.pdfradion103 = "\t";
-     // this.checkboxeventrn103(this.radion103);
+      this.checkboxeventrn103(this.radion103);
     }
     else if (this.radioy103 == false || this.radioy103 == undefined) {
       this.pdfradioy103 = "\t";
-      this.pdfradion103 = "√";
-      this.radion103 = true;
-
-      //this.checkboxeventrn103(this.radion103);
+      this.checkboxeventrn103(this.radion103);
     }
   }
   checkboxeventrn103(event) {
@@ -2384,13 +2354,10 @@ export class MureportsComponent implements OnInit {
     if (this.radion103 == true) {
       this.pdfradion103 = "√";
       this.radioy103 = false;
-	  this.pdfradioy103 = "\t";
-      //this.checkboxeventry103(this.radioy103);
+      this.checkboxeventry103(this.radioy103);
     }
     else if (this.radion103 == false || this.radion103 == undefined) {
       this.pdfradion103 = "\t";
-	  this.pdfradioy103 = "√";
-	  this.radioy103 = false;
     }
   }
   checkboxevent2(event) {
@@ -2692,7 +2659,7 @@ export class MureportsComponent implements OnInit {
 
     this.checkbox31 = event;
     var count: number = 0;
-    if (this.checkbox31 == true || this.checkbox31c == true) {
+    if (this.checkbox31 == true) {
       count++;
       this.patientelectronicacess31 = count;
     }
@@ -2713,7 +2680,7 @@ export class MureportsComponent implements OnInit {
 
     this.checkbox32 = event;
     var count: number = 0;
-    if (this.checkbox32 == true||this.checkbox32c == true) {
+    if (this.checkbox32 == true) {
       count++;
       this.patientelectronicacess32 = count;
     }
@@ -2730,7 +2697,6 @@ export class MureportsComponent implements OnInit {
     //this.onSubmitMUReport();
   }
   checkboxevent81c(event) {
-   
     debugger;
     this.checkboxvalue81c=event;
     this.checkbox81c = event;
@@ -2837,7 +2803,7 @@ this.checkboxvalue85c=event;
 
     this.checkbox81 = event;
     var count: number = 0;
-    if (this.checkbox81 ==  true || this.checkbox81c == true ) {
+    if (this.checkbox81 == true) {
       count++;
       this.patientelectronicacess81 = count;
     }
@@ -2858,7 +2824,7 @@ this.checkboxvalue85c=event;
 
     this.checkbox82 = event;
     var count: number = 0;
-    if (this.checkbox82 == true || this.checkbox82c == true) {
+    if (this.checkbox82 == true) {
       count++;
       this.patientelectronicacess82 = count;
     }
@@ -2879,7 +2845,7 @@ this.checkboxvalue85c=event;
 
     this.checkbox83 = event;
     var count: number = 0;
-    if (this.checkbox83 == true || this.checkbox83c == true) {
+    if (this.checkbox83 == true) {
       count++;
       this.patientelectronicacess83 = count;
     }
@@ -2900,7 +2866,7 @@ this.checkboxvalue85c=event;
 
     this.checkbox84 = event;
     var count: number = 0;
-    if (this.checkbox84 == true||this.checkbox84c == true) {
+    if (this.checkbox84 == true) {
       count++;
       this.patientelectronicacess84 = count;
     }
@@ -2921,7 +2887,7 @@ this.checkboxvalue85c=event;
 
     this.checkbox85 = event;
     var count: number = 0;
-    if (this.checkbox85 == true||this.checkbox85c == true) {
+    if (this.checkbox85 == true) {
       count++;
       this.patientelectronicacess85 = count;
     }

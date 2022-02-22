@@ -2,7 +2,6 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { LoginComponent } from "../login/login.component";
 import { MainComponent } from "../main/main.component";
-import { ProviderregComponent } from "../providerreg/providerreg.component";
 import { AuthGuard } from "../_helpers/auth.guard";
 import { CategoryreportsComponent } from "./Reports/categoryreports/categoryreports.component";
 import { CqmreportsComponent } from "./Reports/cqmreports/cqmreports.component";
@@ -28,10 +27,6 @@ const routes: Routes = [
   {
     path: "login",
     component: LoginComponent,
-  },
-  {
-    path: "providerreg",
-    component: ProviderregComponent,
   },
 ];
 

@@ -1578,18 +1578,18 @@
 
             <div class="panel panel-overflow col-md-12">
               <mat-expansion-panel class="my-4" (opened)="panelOpenState = true" (closed)="panelOpenState = false"
-                [expanded]="true" *ngFor="let location of locationarray">
+                [expanded]="true" *ngFor="let location of locationNewReportList">
                 <mat-expansion-panel-header>
                   <mat-panel-title>
-                    {{location}}
+                    {{location.Name}}
                     <span class="asterisk">*</span>
                   </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div class="row ">
-                  <div class="panel-body col-lg-12" *ngFor="let loc of filteredproviders">
-                    <mat-checkbox class="example-margin" [checked]="loc.Provider_Id" (click)="matCheckbox(loc,location)"
-                      formControlName="measureList">
-                      <span> {{loc.Provider_Name }}
+                  <div class="panel-body col-lg-12" *ngFor="let provider of filteredproviders">
+                    <mat-checkbox class="example-margin" [checked]="provider.Provider_Id"
+                      (click)="matCheckbox(provider,location)" formControlName="measureList">
+                      <span> {{provider.Provider_Name }}
                         <!-- &nbsp;({{loc.Measures}}) -->
                       </span>
                       <!-- {{ loc | json }} -->

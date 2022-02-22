@@ -16,6 +16,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { formatDate } from "@angular/common";
 import * as pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
+
 import {
   animate,
   state,
@@ -36,6 +37,8 @@ import {
 
 import { DownloadService } from "src/app/Services/download.service";
 import { AuthenticationService } from "src/app/Services/authentication.service";
+import { sample } from "rxjs/operators";
+import { locationClass } from "src/app/_models/locationClass";
 declare const $: any;
 @Component({
   selector: "app-cqmreports",
@@ -95,7 +98,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   ipp68: any;
   Denominator68: any;
   ipp: any[] = [];
-  sample: any = [];
+  samplee: any = [];
   isViewResults: boolean;
   ViewResults: boolean = true;
   customizedspinner: boolean = true;
@@ -156,7 +159,6 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   providerslocationwise: any;
   providerslocationwise1: any;
   MeasureReportId: any;
-  loc: any;
   location: any;
   providerslocationwisefilter: any;
   startDate: any;
@@ -186,6 +188,8 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
   providerid: any;
   patientlistfilterlength: number;
   getoverrallreportlength: number;
+  locationNewReportList: any[];
+  provider: any;
 
   public downloadAsPDF() {
     debugger;
@@ -336,7 +340,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     pdfMake
       .createPdf(documenDefinition)
       .download(this.patientlistmeasure.ReportId + ".pdf");
-   }
+  }
 
   constructor(
     private downloadservice: DownloadService,
@@ -409,11 +413,26 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
       this.getProviderList(ProviderId);
     });
   }
+  // getlocations() {
+  //   var location = this.user.LocationName;
+  //   this.locationarray = location.split(',');
+  //   for (var i = 0; i < this.locationarray.length; i++) {
+  //     this.locationarray[i] = this.locationarray[i].replace(/^\s*/, "").replace(/\s*$/, "");
+  //   }
+  // }
   getlocations() {
-    var location = this.user.LocationName;
-    this.locationarray = location.split(',');
-    for (var i = 0; i < this.locationarray.length; i++) {
-      this.locationarray[i] = this.locationarray[i].replace(/^\s*/, "").replace(/\s*$/, "");
+    this.locationNewReportList = [];
+
+    let locationId = this.user.LocationId;
+    let locationName = this.user.LocationName;
+    let locationIdArray = locationId.split(',');
+    let locationNameArray = locationName.split(',');
+
+    for (var i = 0; i < locationNameArray.length; i++) {
+      var obj = new locationClass();
+      obj.Id = locationIdArray[i];
+      obj.Name = locationNameArray[i];
+      this.locationNewReportList.push(obj);
     }
   }
 
@@ -561,23 +580,23 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
               text: " Member of Measure Set:",
             },
           ],
-       
+
           {
             fontSize: 11,
             bold: true,
-           
-           
+
+
             ul: [
               [
                 element.eMeasure_Identifier_MAT === 138 ||
                   element.eMeasure_Identifier_MAT === 155
-                  ? { text: "Performance Rate 1 :" + element.Performance_Rate1 , margin: [11, 2, 11, 2] }
-                  : { text: "Performance Rate  :" + element.Performance_Rate1,margin: [11, 2, 11, 2]  },
+                  ? { text: "Performance Rate 1 :" + element.Performance_Rate1, margin: [11, 2, 11, 2] }
+                  : { text: "Performance Rate  :" + element.Performance_Rate1, margin: [11, 2, 11, 2] },
               ],
               [
                 element.eMeasure_Identifier_MAT === 138 ||
                   element.eMeasure_Identifier_MAT === 155
-                  ? { text: "Performance Rate 2 :" + element.Performance_Rate2 ,margin: [11, 2, 11, 2] }
+                  ? { text: "Performance Rate 2 :" + element.Performance_Rate2, margin: [11, 2, 11, 2] }
                   : { text: "" },
               ],
               [
@@ -590,18 +609,18 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
                 element.eMeasure_Identifier_MAT === 138 ||
                   element.eMeasure_Identifier_MAT === 155
                   ? { text: "Reporting Rate 1 :" + element.Reporting_Rate1, margin: [11, 2, 11, 2] }
-                  : { text: "Reporting Rate  :" + element.Reporting_Rate1 ,margin: [11, 2, 11, 2] },
+                  : { text: "Reporting Rate  :" + element.Reporting_Rate1, margin: [11, 2, 11, 2] },
               ],
               [
                 element.eMeasure_Identifier_MAT === 138 ||
                   element.eMeasure_Identifier_MAT === 155
-                  ? { text: "Reporting Rate 2 :" + element.Reporting_Rate2,margin: [11, 2, 11, 2] }
+                  ? { text: "Reporting Rate 2 :" + element.Reporting_Rate2, margin: [11, 2, 11, 2] }
                   : { text: "" },
               ],
               [
                 element.eMeasure_Identifier_MAT === 138 ||
                   element.eMeasure_Identifier_MAT === 155
-                  ? { text: "Reporting Rate 3 :" + element.Reporting_Rate3,margin: [11, 2, 11, 2] }
+                  ? { text: "Reporting Rate 3 :" + element.Reporting_Rate3, margin: [11, 2, 11, 2] }
                   : { text: "" },
               ],
 
@@ -1796,8 +1815,8 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
     });
   }
 
-  matCheckbox(loc, location) {
-    this.loc = loc;
+  matCheckbox(provider, location) {
+    this.provider = provider;
     this.location = location;
   }
 
@@ -1811,12 +1830,12 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
       providerId:
         this.createReportForm.value.providerId == "" ||
           this.createReportForm.value.providerId == null
-          ? this.loc.Provider_Id
+          ? this.provider.Provider_Id
           : this.createReportForm.value.providerId,
       locationId:
         this.createReportForm.value.locationId == "" ||
           this.createReportForm.value.locationId == null
-          ? this.user.LocationId
+          ? this.location.Id
           : this.createReportForm.value.locationId,
       bundleYear: this.createReportForm.value.bundleYear,
       startDate: formatDate(
@@ -1833,7 +1852,7 @@ export class CqmreportsComponent implements OnInit, AfterViewInit {
       ranByUserID:
         this.createReportForm.value.providerId == "" ||
           this.createReportForm.value.providerId == null
-          ? this.loc.Provider_Id
+          ? this.provider.Provider_Id
           : this.createReportForm.value.providerId,
     };
     this.createupdateEmployee(Createreport);

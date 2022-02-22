@@ -14,7 +14,7 @@ export class TableUtil {
   constructor() { }
   public exportAsExcelFilePatient(json: any[], excelFileName: string): void {
 
-    let Heading = [['Id','Patient Id','Patient Name','Date of Birth','DOB','Age','Cell Phone','Home phone','Work Phone','Email Address','Gender','Address','City','State','Zip','Prim Subscriber Id','Prim Subscriber Name'
+    let Heading = [['Id','DOB','Patient Id','Patient Name','Date of Birth','Age','Cell Phone','Home phone','Work Phone','Email Address','Gender','Address','City','State','Zip','Prime Subscriber Id','Prime Subscriber Name'
   ]];
     const wb1 = XLSX.utils.book_new();
     const ws1: XLSX.WorkSheet = XLSX.utils.json_to_sheet([]);
@@ -25,13 +25,12 @@ export class TableUtil {
       {
         "hidden": true
       },
-     
      null,
      null,
-      null,
-      {
-        "hidden": true
-      },
+     null,
+     {
+      "hidden": true
+    },
       null,
       null,
       null,
@@ -48,7 +47,7 @@ export class TableUtil {
   }
   public exportAsExcelFileEncounter(json: any[], excelFileName: string): void {
   
-    let Heading = [['Id','Encounter Id','Patient Name','Provider Name','Birth Date','Birth Date',' Age','Encounter Date','Encounter Date','Proc Code','Description','Proc Fees','Prim Subscriber Id','Prim Ins Company Name','Prim Source of Payment Typology'
+    let Heading = [['Id','Birth Date','Encounter Date','Encounter Id','Patient Name','Provider Name','Birth Date',' Age','Encounter Date','Proc Code','Description','Proc Fees','Prime Subscriber Id','Prime Ins Company Name','Prime Source of Payment Typology'
   ]];
     const wb1 = XLSX.utils.book_new();
     const ws1: XLSX.WorkSheet = XLSX.utils.json_to_sheet([]);
@@ -59,13 +58,12 @@ export class TableUtil {
       {
         "hidden": true
       },
-    null,
      null,
-     null,
-      null,
       {
         "hidden": true
       },
+     null,
+      null,
       null,
       null,
       {

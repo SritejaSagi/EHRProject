@@ -21,7 +21,6 @@ import { IdService } from "./_helpers/_id.service";
 import { AuthGuard } from "./_helpers/auth.guard";
 import { RubyAuthenticationFailedComponenet } from "./login/ruby.authentication.failed.component";
 
-
 @NgModule({
   exports: [],
   declarations: [
@@ -29,7 +28,6 @@ import { RubyAuthenticationFailedComponenet } from "./login/ruby.authentication.
     UserRegistrationComponent,
     UserLoginComponent,
     RubyAuthenticationFailedComponenet,
-    
   ],
   imports: [
     ToastrModule.forRoot(),
